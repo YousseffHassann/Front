@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1 class="t1">{{'equipment-validate-gpr.name' |translate}}</h1>
+
+    </div>
+</div>
+<label>{{'equipment-validate-gpr.Street_name' |translate}}</label>
+
+<select (ngModelChange)="onChange($event)" required name="MAIN_NO" [(ngModel)]="MAIN_NO" ngModel
+    class="form-control grid-width-100" data-style="btn-success">
+    <option *ngFor="let streetsIRI of StreetsIRI" [value]="streetsIRI.MAIN_NO">
+        {{ streetsIRI.ARNAME }}
+    </option>
+</select>
+<p>&nbsp;</p>
+
+<ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>

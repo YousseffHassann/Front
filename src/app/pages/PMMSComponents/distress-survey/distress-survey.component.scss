@@ -1,0 +1,123 @@
+.b 
+{
+   // background: url("imgs/77.jpg");
+  //  background-color: blue;
+    background-size: cover;
+   // font-size: 20px;
+   // overflow: hidden;
+}
+
+th
+{
+    color: black;
+}
+
+.myfont
+{
+    font-weight: bold;
+}
+
+.c
+{
+  color: #277DA1;
+    background-color: #000;
+    font-weight: bold;
+}
+
+td {
+    border: 1px solid;
+    border-color:white;
+  }
+
+th{
+    border-top: 10px solid tomato;
+}
+
+
+input[type='radio']:after{
+//.go::after {
+  width: 5px;
+  height: 5px;
+  border-radius: 15px;
+  top: 2px;
+  left: 5px;
+  position: relative;
+  background-color: red;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+  width: 1px;
+  height: 1px;
+  border-radius: 5px;
+  top: 2px;
+  left: 5px;
+  position: relative;
+  background-color: #ffa500;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #ffa5;
+}
+
+
+
+.borderForm
+{
+  //background-image: url("imgs/00000.jpg");
+  //background-size: cover;
+  border: 30px solid #277DA1;
+  border-radius: 60px;
+  padding: 20px;
+  border-style: groove;
+}
+
+.myfontForm
+{
+  font-size: large;
+}
+
+:host ::ng-deep .ng2-smart-actions ng2-st-tbody-edit-delete {display: none !important;}
+
+:host ::ng-deep ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.colg
+{
+overflow-y: hidden;
+overflow-x: hidden;
+overflow-inline: auto;
+height: 300px;
+}
+
+
+
+
+
+
+ :host ::deep ng2-smart-table thead > tr > th  { 
+  background-color:#277DA1;
+}
+
+
+ .v
+{
+  font-size: larger;
+  font-weight: bold;
+}
+
+.HideScrool {
+  //width: 200px;
+  height: 300px;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+}

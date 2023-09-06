@@ -1,0 +1,106 @@
+<!--else hambozodiv -->
+
+<!--
+  <div *ngIf="selectedItems.length!==0">
+  <div *ngIf="messageSuccess " class="alert  myalert col-md-3 text-center">
+    <h1> حسنا معلومات صحيحة شكرا لك</h1>
+  </div>
+</div>
+-->
+
+
+<div *ngIf="messageSuccess " class="alert  myalert col-md-3 text-center">
+  <h1> حسنا معلومات صحيحة شكرا لك</h1>
+</div>
+
+<div *ngIf="deletedMessage " class="alert  myalert2 col-md-3 text-center">
+  <h1> تم المسح </h1>
+</div>
+
+
+
+
+
+
+<form (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm" class="container mb-5">
+
+  <div class="container ">
+    <div class="row ">
+      <div class="col-md-3  m-auto">
+
+        <label for='USERNAME '>{{'add-user.username' |translate }} </label>
+        <input formControlName="USERNAME" class="my-2 form-control" type="text">
+        <div *ngIf="registerationForm.get('USERNAME')?.errors && registerationForm.get('USERNAME')?.touched "
+          class="alert  mydecorate">
+          <p *ngIf="registerationForm.get('USERNAME')?.errors?.['required']">first name is required</p>
+          <p *ngIf="registerationForm.get('USERNAME')?.errors?.['minlength']">min length 4</p>
+          <p *ngIf="registerationForm.get('USERNAME')?.errors?.['maxlength']">max length 20</p>
+        </div>
+
+        <label for='PASSWORD'>{{'add-user.PASSWORD' |translate}} </label>
+        <input formControlName="PASSWORD" class="my-2 form-control" type="password">
+        <div *ngIf="registerationForm.get('PASSWORD')?.errors && registerationForm.get('PASSWORD')?.touched "
+          class="alert  mydecorate">
+          <p *ngIf="registerationForm.get('PASSWORD')?.errors?.['required']">Password is required</p>
+          <!-- <p *ngIf="registerationForm.get('PASSWORD')?.errors?.['pattern']" >Must start with capital letter</p>-->
+        </div>
+
+        <label class="" for='ENTRY_DATE '>{{'add-user.ENTRY_DATE' |translate}}</label>
+        <input id="date" formControlName="ENTRY_DATE" class="my-2 form-control " type="date">
+        <div *ngIf="registerationForm.get('ENTRY_DATE')?.errors && registerationForm.get('ENTRY_DATE')?.touched "
+          class="alert  mydecorate">
+          <p *ngIf="registerationForm.get('ENTRY_DATE')?.errors?.['required']">Date is required (Day/month/year)</p>
+        </div>
+
+        <!--
+         <form class=""  action="" [formGroup]="form " >
+         <ng-multiselect-dropdown formControlName="roles"
+         [placeholder]="'اختر صلاحية او اكثر'"
+         [settings]="dropdownSettings"
+         [data]="rolesarray"
+         [(ngModel)]="selectedItems"
+         (onSelect)="onItemSelect($event)"
+         (onSelectAll)="onSelectAll($event)"
+       >
+       </ng-multiselect-dropdown>
+   
+       </form>
+  -->
+        <!--<button type="submit" (click)="handlebuttonclick()">press Button</button> Befor form-->
+
+        <label formControlName="ROLE_ID">{{'add-user.ROLE_ID' |translate }}</label>
+        <select formControlName="ROLE_ID" (click)="getallRoles($event)"
+          class="form-select form-control mydecorate mt-2 ">
+
+
+          <option [value]="role.ROLEID" *ngFor="let role of myRolesArray ; let i=even ;"
+            [style.backgroundColor]="i===true?'#ccc':'' ">
+            {{role.ROLE}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="  d-flex justify-content-center align-items-center">
+    <button [disabled]="registerationForm.invalid" class="btn btn-info mt-3  " type="submit"> Submit Form</button>
+
+  </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng2-smart-table [settings]="settings1" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onEditConfirm($event)"
+  [source]="source1">

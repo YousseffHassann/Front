@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="t1">{{'EquipmentSectionsDetails.name' |translate}}</h1>
+
+  </div>
+</div>
+<nb-card [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="danger">
+  <nb-card-body>
+    <div *ngIf="!loading" class="row">
+
+    </div>
+    <select (ngModelChange)="onChange($event)" required name="STREET_ID" [(ngModel)]="STREET_ID" ngModel
+      class="form-control grid-width-100" data-style="btn-success">
+      <option *ngFor="let streetsIRI of StreetsIRI" [value]="streetsIRI.MAIN_NO">
+        {{ streetsIRI.ARNAME }}
+      </option>
+    </select>
+    <div class="row">
+      <div class="col-sm-12">
+        <nb-radio-group>
+          <nb-radio (click)="radioChange1()" checked=check1 value="1">{{'EquipmentSectionsDetails.from-equipment'
+            |translate}}</nb-radio>
+          <nb-radio (click)="radioChange2()" value="2">{{'EquipmentSectionsDetails.From_system' |translate}} </nb-radio>
+          <nb-radio (click)="radioChange3()" value="3"> {{'EquipmentSectionsDetails.New_from_equipment' |translate}}
+          </nb-radio>
+        </nb-radio-group>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+<div *ngIf="radio3">
+  <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+
+</div>
+<div *ngIf="!radio3">
+  <ng2-smart-table [settings]="settings2" [source]="source2"> </ng2-smart-table>
+
+</div>

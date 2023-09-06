@@ -1,0 +1,153 @@
+<div class="row">
+    <div class="col-lg-6">
+        <nb-card nbSpinnerSize="large" nbSpinnerStatus="primary" [nbSpinner]="isLoading">
+            <nb-card-header> معايير تقييم الأصل</nb-card-header>
+            <nb-card-body>
+                <form #assetsParamsForm="ngForm" (ngSubmit)="onSubmit(assetsParamsForm)">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">كود
+                                الأصل</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.assetId" name="assetId">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">المميزات المناخية</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.climaticFeatures" name="climaticFeatures" id="climaticFeatures" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">البعد المرن</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.flexDimention" name="flexDimention" id="flexDimention" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">منطقة الملاءمة</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.suitabilityArea" name="suitabilityArea" id="suitabilityArea" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">إمكانية الوصول</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.accessibility" name="accessibility" id="accessibility" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">دفاع الخدمة
+                                المدنية</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.civilServicesDefence" name="civilServicesDefence" id="civilServicesDefence" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">سكني</label>
+
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.residential" name="residential" id="residential" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">تجاري</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.commerical" name="commerical" id="commerical" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">صناعي</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.industrial" name="industrial" id="industrial" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">إداري</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.managerial" name="managerial" id="managerial" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">منطقة تخزين</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.storageArea" name="storageArea" id="storageArea" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">كهرباء</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.electricity" name="electricity" id="electricity" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">ماء</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.water" name="water" id="water" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">نظام التصريف
+                                الصحي</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.sewageSystem" name="sewageSystem" id="sewageSystem" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">غاز طبيعي</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.naturalGas" name="naturalGas" id="naturalGas" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">مواصلات</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.transportation" name="transportation" id="transportation" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">هايبر ماركت</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.hypermarkets" name="hypermarkets" id="hypermarkets" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">تسلية</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.entertainment" name="entertainment" id="entertainment" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">مجمعات سكنية</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.resedetialCompounds" name="resedetialCompounds" id="resedetialCompounds" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">المستشفيات</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.hospitals" name="hospitals" id="hospitals" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">مؤسسات الجامعات</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.universitiesInstitutions" name="universitiesInstitutions" id="universitiesInstitutions" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">المناطق الصناعية</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.industrialZones" name="industrialZones" id="industrialZones" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">آراء خاصة</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.specialViews" name="specialViews" id="specialViews" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">حدائق</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.gardens" name="gardens" id="gardens" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6 form-group">
+                            <label class="label" style="margin-right: 0.5rem;">المستوى الاجتماعي</label>
+                            <input type="number" nbInput [(ngModel)]="assetsParamsData.socialLevel" name="socialLevel" id="socialLevel" required>
+                        </div>
+                    </div>
+
+                    <button nbButton status="primary" type="submit" style="margin-right: 0rem;">
+                        تعديل معايير تقييم الأصل
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-lg-6">
+        <ngx-assets-parameters-chart [resData]="assetsParamsChartData" [isLoading]="isLoading">
+        </ngx-assets-parameters-chart>
+    </div>
+
+</div>

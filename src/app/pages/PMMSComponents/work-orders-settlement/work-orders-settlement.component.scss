@@ -1,0 +1,52 @@
+h1{
+    text-align: center;
+    border: 2px double #277DA1;
+    border-radius: 25px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 5rem;
+  }
+  
+  .borderForm {
+    margin-left: auto;
+    margin-right: auto;
+      justify-content: end;
+     width:70rem;
+      border: 0.8rem solid #277DA1;
+      border-radius: 15px;
+      padding: 20px;
+      border-style: groove;
+    }
+
+ 
+    ::ng-deep {
+      ng2-smart-table {
+        table {
+          tbody {
+            /* Alternating row colour */
+            tr {
+              background-color: white;
+            }
+            tr:hover {
+              background-color: nb-theme(color-primary-100) !important;
+            }
+          }
+    
+          /* headers */
+          tr.ng2-smart-titles th {
+            a {
+              font-weight:bolder !important;
+            }
+    
+            background-color: nb-theme(color-primary-200);
+            a {
+              color: nb-theme(color-basic-100);
+            }
+            a.sort.desc::after, a.sort.asc::after {
+              // arrow colour
+              border-bottom-color: nb-theme(color-basic-100);
+            }
+          }
+        }
+      }
+    }

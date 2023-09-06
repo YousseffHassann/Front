@@ -1,0 +1,110 @@
+
+<div class="contracts-container">
+  <form [formGroup]="registerationForm" (ngSubmit)="onSubmit(registerationForm,contractform)" #contractform="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Contract Name</label>
+        <input type="text" class="form-control" formControlName="contractname" [(ngModel)]="contractToAdd.CONTRACT_NAME" required>
+        <div *ngIf="registerationForm.get('contractname')?.errors && registerationForm.get('contractname')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractname')?.errors?.['required']">contract name is required</p>
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractname')?.errors?.['minlength']">min length 4</p>
+          <p  class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractname')?.errors?.['maxlength']">max length 20</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>Contract Description</label>
+      <input type="text" class="form-control" formControlName="contractdesc" [(ngModel)]="contractToAdd.CONT_DESCR" required>
+      <div *ngIf="registerationForm.get('contractdesc')?.errors && registerationForm.get('contractdesc')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractdesc')?.errors?.['required']">contract description is required</p>
+        </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Contract Number</label>
+        <input type="text" class="form-control" formControlName="contractnumber" [(ngModel)]="contractToAdd.CONTRACT_NO" required>
+        <div *ngIf="registerationForm.get('contractnumber')?.errors && registerationForm.get('contractnumber')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractnumber')?.errors?.['required']">contract number is required</p>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Contract Amount</label>
+        <input type="number" class="form-control" formControlName="contractamount" [(ngModel)]="contractToAdd.CONT_AMOUNT" required>
+        <div *ngIf="registerationForm.get('contractamount')?.errors && registerationForm.get('contractamount')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractamount')?.errors?.['required']">contract amount is required</p>
+        </div>
+      </div>
+      <!-- <div class="form-group col-md-4">
+        <label>Contractor Numebr</label>
+        <input type="number" class="form-control" name="contractorid" [(ngModel)]="contractToAdd.CONTRACTOR_ID">
+      </div> -->
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Start Date</label>
+        <input type="date" class="form-control" formControlName="startdate" [(ngModel)]="contractToAdd.START_DATE" required>
+        <div *ngIf="registerationForm.get('startdate')?.errors && registerationForm.get('startdate')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('startdate')?.errors?.['required']">contract startdate is required</p>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>End Date</label>
+        <input type="date" class="form-control" formControlName="enddate" [(ngModel)]="contractToAdd.END_DATE" required>
+        <div *ngIf="registerationForm.get('enddate')?.errors && registerationForm.get('enddate')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('enddate')?.errors?.['required']">contract enddate is required</p>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Contract Date</label>
+        <input type="date" class="form-control" formControlName="contractdate" [(ngModel)]="contractToAdd.CONTRACT_DATE" required>
+        <div *ngIf="registerationForm.get('contractdate')?.errors && registerationForm.get('contractdate')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractdate')?.errors?.['required']">contract date is required</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <ng-multiselect-dropdown formControlName="zones" [placeholder]="'Zones'" [settings]="municdropdownSettings" [data]="municdropdownList" [(ngModel)]="municselectedItems"
+        (onSelect)="onmunicDDItemSelect($event)" (onDeSelect)="onmunicDDItemDeSelect($event)"></ng-multiselect-dropdown>
+      </div>
+      <div class="form-group col-md-6">
+        <ng-multiselect-dropdown formControlName="contractor" [placeholder]="'Contractors'" [settings]="contdropdownSettings" [data]="contdropdownList" [(ngModel)]="contselectedItems"
+        (onSelect)="oncontDDItemSelect($event)" (onDeSelect)="oncontDDItemDeSelect($event)"></ng-multiselect-dropdown>
+      </div>
+    </div>
+
+    <div class="sub-button">
+      <button type="submit" class="btn btn-primary" [disabled]="registerationForm.invalid">SAVE</button>
+    </div>
+    <br>
+  </form>
+  <div>
+    <button type="button" class="btn btn-info" (click)="celarForm(contractform)">Clear Form</button>
+  </div>
+</div>
+<br>
+
+<nb-card>
+  <nb-card-header>
+    Contracts Table
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table #table [settings]="settings" [source]="source" (deleteConfirm)="deletecontract($event)" (edit)="refillform($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

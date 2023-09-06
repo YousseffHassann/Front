@@ -1,0 +1,124 @@
+.b 
+{
+   // background: url("imgs/77.jpg");
+  //  background-color: blue;
+   // background-size: cover;
+   // font-size: 20px;
+}
+
+th
+{
+    color: black;
+}
+
+.myfont
+{
+    font-weight: bold;
+}
+
+.c
+{
+  color: #277DA1;
+    background-color: #000;
+    font-weight: bold;
+}
+
+td {
+    border: 1px solid;
+    border-color:white;
+    border-style: groove;
+    border: 2px solid aliceblue;
+   
+  }
+
+th{
+    border-top: 10px solid tomato;
+    
+   
+}
+
+
+//input[type='radio']:after
+.go::after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: red;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+/*
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #ffa500;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}*/
+
+
+.borderForm
+{
+  
+  //background-color: #000;
+ // background-image: url("img/00000.jpg");
+ // background-size: cover;
+  border: 30px solid #277DA1;
+  border-radius: 60px;
+  padding: 20px;
+  border-style: groove;
+  //border-style: double;
+
+}
+
+.myfontForm
+{
+  font-size: larger;
+  
+}
+
+:host ::ng-deep .ng2-smart-actions ng2-st-tbody-edit-delete {display: none !important;}
+
+:host ::ng-deep ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+:host ::deep ng2-smart-table thead > tr > th  { 
+  // background-color:aquamarine;  
+  background-color:#277DA1;
+  //color: crimson;
+ }
+
+
+
+ .v
+ {
+   font-size: larger;
+   font-weight: bold;
+ }
+
+ :host ::deep ng2-smart-table-title > a { color: white; }
+
+
+    .HideScrool {
+      //width: 200px;
+      height: 300px;
+      //overflow-x: hidden;
+      overflow-y: hidden;
+      white-space: nowrap;
+    }

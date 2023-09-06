@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+    <!-- <div class="col-xs-12 col-md-6 col-md-offset-3"> -->
+    <nb-card [nbSpinner]="isLoading" nbSpinnerSize="large" nbSpinnerStatus="primary">
+        <nb-card-header>إنشاء حساب</nb-card-header>
+        <nb-card-body>
+            <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="label" style="margin-right: 0.5rem;">الاسم الأول</label>
+                        <input type="text" nbInput fullWidth placeholder="الاسم الأول" ngModel name="firstName" id="firstName" required>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="label" style="margin-right: 0.5rem;">الاسم الأوسط</label>
+                        <input type="text" nbInput fullWidth placeholder="الاسم الأوسط" ngModel name="middleName" id="middleName" required>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="label" style="margin-right: 0.5rem;">الكنية</label>
+                        <input type="text" nbInput fullWidth placeholder="الكنية" ngModel name="lastName" id="lastName" required>
+                    </div>
+                </div>
+                <label class="label" style="margin-right: 0.5rem;">عنوان البريد الإلكتروني</label>
+                <input type="email" nbInput fullWidth placeholder="عنوان البريد الإلكتروني" ngModel name="email" id="email" required email>
+                <label class="label" style="margin-right: 0.5rem;">كلمه السر</label>
+                <input type="password" nbInput fullWidth placeholder="كلمه السر" ngModel name="password" id="password" required minlength="3">
+                <label class="label" style="margin-right: 0.5rem;">المصدر</label>
+                <input type="text" nbInput fullWidth placeholder="المصدر" ngModel name="source" id="source" required>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label class="label" style="margin-right: 0.5rem;">معرف الدور</label>
+                        <input type="number" nbInput fullWidth placeholder="معرف الدور" ngModel name="roleId" id="roleId" required>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="label" style="margin-right: 0.5rem;">معرف الناشر</label>
+                        <input type="number" nbInput fullWidth placeholder="معرف الناشر" ngModel name="pubId" id="pubId" required>
+                    </div>
+                </div>
+                <label class="label" style="margin-right: 0.5rem;">موعد التوظيف</label>
+                <input type="date" nbInput fullWidth placeholder="موعد التوظيف" ngModel name="hireDate" id="hireDate" required>
+                <div class="row">
+                    <button nbButton status="primary" type="submit" [disabled]="!authForm.valid">
+                        إنشاء حساب
+                    </button>
+
+                </div>
+            </form>
+        </nb-card-body>
+    </nb-card>
+</div>

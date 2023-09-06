@@ -1,0 +1,47 @@
+
+<form  (ngSubmit)="UpdateRole(roleid,registerationForm)" [formGroup]="registerationForm"  class="container mb-5" >
+
+    <div class="col-md-3 m-auto">
+      <label for='ROLE '>الصلاحية</label>
+      <input  id="ROLE" formControlName="ROLE" class="form-control my-2 " type="text" >
+      <div *ngIf="registerationForm.get('ROLE')?.errors && registerationForm.get('ROLE')?.touched "class="alert  mydecorate">
+        <p *ngIf="registerationForm.get('ROLE')?.errors?.['required']">ROLE is required</p>
+        <p *ngIf="registerationForm.get('ROLE')?.errors?.['minlength']" >min length 4</p>
+        <p *ngIf="registerationForm.get('ROLE')?.errors?.['maxlength']" >max length 20</p>
+     </div>
+    </div>
+     
+  <div class="col-md-3 m-auto">
+    <label for='EN_NAME'>الاسم عربيا</label>
+    <input  id="en_name" formControlName="EN_NAME" class="form-control my-2" type="text">
+    <div *ngIf="registerationForm.get('EN_NAME')?.errors && registerationForm.get('EN_NAME')?.touched "class="alert  mydecorate">
+      <p *ngIf="registerationForm.get('EN_NAME')?.errors?.['required']">EN_NAME is required</p>
+      <p *ngIf="registerationForm.get('EN_NAME')?.errors?.['minlength']" >min length 4</p>
+      <p *ngIf="registerationForm.get('EN_NAME')?.errors?.['maxlength']" >max length 20</p>
+   </div>
+  </div>
+    
+   <div class="col-md-3 m-auto">
+    <label  for="AR_NAME">الاسم انجليزيا</label>
+    <input id="ar_name" formControlName="AR_NAME" class="form-control my-2" type="text">
+    <div *ngIf="registerationForm.get('AR_NAME')?.errors && registerationForm.get('AR_NAME')?.touched "class="alert  mydecorate">
+      <p *ngIf="registerationForm.get('AR_NAME')?.errors?.['required']">AR_NAME is required</p>
+      <p *ngIf="registerationForm.get('AR_NAME')?.errors?.['minlength']" >min length 4</p>
+      <p *ngIf="registerationForm.get('AR_NAME')?.errors?.['maxlength']" >max length 20</p>
+   </div>
+   </div>
+    
+  
+  
+  
+    <div class=" d-flex justify-content-center align-items-center">
+    <button   class="btn btn-info mb-5 mt-2" type="submit"> اقرار التعديل</button>
+    </div>
+      
+    </form>
+
+
+
+
+
+

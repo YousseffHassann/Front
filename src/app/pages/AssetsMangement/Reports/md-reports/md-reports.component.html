@@ -1,0 +1,257 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="t1">{{'Reports.NameMd' |translate}}</h1>
+
+  </div>
+</div>
+<ngx-refresh></ngx-refresh>
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card status="defult">
+      <nb-card-header class="text-center"> </nb-card-header>
+
+  
+            <form [formGroup]="form" id="my-form" (ngSubmit)="submitForm()">
+              <div class="row ">
+                <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                  <label class="v">{{'Reports.SURVEY_NO' |translate}}</label>
+
+
+                </div>
+                <div class="col-md-8 mt-3 mb-3  ">
+                  <div class="">
+
+                    <ng-multiselect-dropdown formControlName="SN" [placeholder]="'Select'"
+                      [settings]="SurveyDropdownSettings" [data]="surveys" (onDeSelect)="onDeSelectSurvey($event)"
+                      [(ngModel)]="SurveySelectedItems" (onSelect)="Surveys($event)"></ng-multiselect-dropdown>
+                    <div *ngIf="form.get('SN')?.errors && form.get('SN')?.touched " class="alert  mydecorate">
+                      <p class="alert alert-info text-danger text-center" *ngIf="form.get('SN')?.errors?.['required']">
+                        Please Select a Survey No </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row ">
+                <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                  <label class="v">Area</label>
+
+
+                </div>
+                <div class="col-md-8 mt-3 mb-3">
+                  <div class="">
+
+                    <ng-multiselect-dropdown formControlName="AreaId" [placeholder]="'Select'"
+                      [settings]="dropdownSettings" [data]="regions" (onDeSelect)="onDeSelect($event)"
+                      [(ngModel)]="selectedItems" (onSelect)="GetRegions($event)"></ng-multiselect-dropdown>
+                    <div *ngIf="form.get('AreaId')?.errors && form.get('AreaId')?.touched " class="alert  mydecorate">
+                      <p class="alert alert-info text-danger text-center"
+                        *ngIf="form.get('AreaId')?.errors?.['required']">Please Select Area </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row ">
+                <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                  <label class="v">Road</label>
+
+
+                </div>
+                <div class="col-md-8 mt-3 mb-3  ">
+                  <div class="">
+
+                    <ng-multiselect-dropdown formControlName="StreetId" [placeholder]="'Select'"
+                      [settings]="streetsDropdownSettings" [data]="streets" (onDeSelect)="onDeSelectStreet($event)"
+                      [(ngModel)]="streetsSelectedItems" (onSelect)="streetsDDL($event)"></ng-multiselect-dropdown>
+                    <div *ngIf="form.get('StreetId')?.errors && form.get('StreetId')?.touched "
+                      class="alert  mydecorate">
+                      <p class="alert alert-info text-danger text-center"
+                        *ngIf="form.get('StreetId')?.errors?.['required']">Please Select Street </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row ">
+                <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                  <label class="v">Section</label>
+
+
+                </div>
+                <div class="col-md-8 mt-3 mb-3  ">
+                  <div class="">
+
+                    <ng-multiselect-dropdown formControlName="SectionNo" [placeholder]="'Select'"
+                      [settings]="sectionsDropdownSettings" [data]="sections" (onDeSelect)="onDeSelectSections($event)"
+                      [(ngModel)]="sectionsSelectedItems" (onSelect)="SectionsDDL($event)"></ng-multiselect-dropdown>
+
+
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="showLane" class="row ">
+                <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                  <label class="v">Lane</label>
+
+
+                </div>
+                <div class="col-md-8 mt-3 mb-3  ">
+                  <div class="row">
+                    <nb-radio-group formControlName="Lane" *ngFor="let lane of  lanes" (valueChange)=" LanesRD($event)"
+                      class=" col-md-1  ">
+                      <nb-radio [(value)]="lane.LANE_TYPE">
+                        {{lane.LANE_TYPE}}
+                      </nb-radio>
+                    </nb-radio-group>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex mb-5 justify-content-center mt-3">
+
+                <button [disabled]="form.invalid" class="btn btn-info" type="submit">
+                  {{'Reports.run_report' |translate}}</button>
+              </div>
+            </form>
+          <!-- <nb-tab tabTitle="  {{'Reports.tab2' |translate}}  
+                  
+                   ">
+                   <form [formGroup]="form2" (ngSubmit)="submitForm2()">
+                    <div class="row ">
+                      <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                        <label class="v">{{'Reports.SURVEY_NO' |translate}}</label>
+                          
+                          
+                      </div>
+                              <div class="col-md-8 mt-3 mb-3  ">
+                                    <div class="">
+                
+                                      <ng-multiselect-dropdown formControlName="SN" [placeholder]="'Select'" [settings]="SurveyDropdownSettings" [data]="surveys"(onDeSelect)="onDeSelectSurvey($event)"
+                          [(ngModel)]="SurveySelectedItems" (onSelect)="Surveys($event)"
+                          ></ng-multiselect-dropdown>  
+                          <div *ngIf="form2.get('SN')?.errors && form2.get('SN')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center"
+            *ngIf="form2.get('SN')?.errors?.['required']">Please Select a Survey No </p>
+                   </div>
+                                      
+                                    </div>
+                              </div>
+                      </div>
+                 
+             
+                  <div class="row ">
+                    <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                      <label class="v">Area</label>
+                        
+                        
+                    </div>
+                            <div class="col-md-8 mt-3 mb-3  ">
+                                  <div class="">
+              
+                                    <ng-multiselect-dropdown formControlName="AreaId" [placeholder]="'Select'" [settings]="dropdownSettings" [data]="regions"  (onDeSelect)="onDeSelect($event)"
+                                    [(ngModel)]="selectedItems" (onSelect)="GetRegions($event)"
+                                    ></ng-multiselect-dropdown>
+                                    <div *ngIf="form2.get('AreaId')?.errors && form2.get('AreaId')?.touched "
+                        class="alert  mydecorate">
+                        <p class="alert alert-info text-danger text-center"
+                          *ngIf="form2.get('AreaId')?.errors?.['required']">Please Select Area </p>
+                                 </div>
+                                    
+                                  </div>
+                            </div>
+                    </div>
+
+
+                    <div class="row ">
+                      <div class="col-md-2 my-3 mx-5 align-items-center d-flex ">
+                        <label class="v">Streets</label>
+                          
+                          
+                      </div>
+                              <div class="col-md-8 mt-3 mb-3  ">
+                                    <div class="">
+                
+                                      <ng-multiselect-dropdown formControlName="StreetId" [placeholder]="'Select'" [settings]="streetsDropdownSettings" [data]="streets" (onDeSelect)="onDeSelectStreet($event)"
+                                      [(ngModel)]="streetsSelectedItems" (onSelect)="streetsDDL($event)"
+                                      ></ng-multiselect-dropdown> 
+                                      <div *ngIf="form2.get('StreetId')?.errors && form2.get('StreetId')?.touched "
+                                      class="alert  mydecorate">
+                                      <p class="alert alert-info text-danger text-center"
+                                        *ngIf="form2.get('StreetId')?.errors?.['required']">Please Select Street </p>
+                                               </div>
+                                    </div>
+                              </div>
+                      </div>
+
+
+               
+                      <div class="d-flex justify-content-center mt-3">
+                 
+                        <button  [disabled]="form.invalid" class="btn btn-info" type="submit">
+                          {{'Reports.run_report' |translate}}</button>
+                          </div>
+              
+                 
+                      
+                </form>
+
+                  </nb-tab> -->
+
+      <div *ngIf="showReport" class="col-lg-12">
+        <nb-card status="">
+          <nb-card-header>{{'Reports.Reports' |translate}} </nb-card-header>
+          <nb-card-body>
+    
+            <nb-tabset (changeTab)="selectTab($event)">
+              <nb-tab tabTitle="Section MD">
+                <div class="row">
+                  <iframe [src]="sectionMDSafeSrc" width="1500" height="1000" frameborder="0" webkitallowfullscreen
+                    mozallowfullscreen allowfullscreen></iframe>
+    
+                  <button class="btn btn-success btn-sm mb-5 mt-5  button1"
+                    (click)="downloadSectionMDReport()">Export to Excel</button>
+    
+                </div>
+              </nb-tab>
+              <nb-tab tabTitle="Lane MD">
+                <div class="row">
+                  <iframe [src]="laneMDSafeSrc" width="1500" height="1000" frameborder="0" webkitallowfullscreen
+                    mozallowfullscreen allowfullscreen></iframe>
+    
+                  <button class="btn btn-success btn-sm mb-5 mt-5  button1" (click)="downloadLaneMDReport()">Export
+                    to Excel</button>
+    
+                </div>
+    
+              </nb-tab>
+              <nb-tab tabTitle="Sample MD">
+                <div class="row">
+                  <iframe [src]="safeSrc" width="1500" height="1000" frameborder="0" webkitallowfullscreen
+                    mozallowfullscreen allowfullscreen></iframe>
+    
+    
+                  <button class="btn btn-success btn-sm mb-5 mt-5  button1"
+                    (click)="downloadSampleMDReport()">Export to Excel</button>
+    
+                </div>
+    
+              </nb-tab>
+            </nb-tabset>
+          </nb-card-body>
+    
+        </nb-card>
+      </div>
+    </nb-card>
+
+  </div>
+
+
+ 
+</div>

@@ -1,0 +1,121 @@
+<div class="  ">
+  <h3 class="t1  d-flex justify-content-center align-items-center mb-5   text-center w-50 m-auto  ">
+    {{'RegionUpdateComponent.name' |translate}}</h3>
+</div>
+
+
+
+
+
+<div class="container">
+  <div class="row   mt-2 p-0 borderFormsearch">
+    <div class="col-md-2 mt-3 align-items-center d-flex ">
+      <p class="v"> {{'RegionUpdateComponent.munic' |translate}} </p>
+    </div>
+    <div class="col-md-3 mb-3 mt-3">
+      <div>
+        <select (click)="Municipalitieo($event)" class="form-select form-control foo  ">
+          <option class="test" selected>اختيار</option>
+          <option [value]="munic.MUNIC_ID" *ngFor="let munic of  municipalities; let i=even ;"
+            [style.backgroundColor]="i===true?'#ccc':'' ">
+            {{munic.MUNIC_NAME}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-md-2 mt-3 align-items-center d-flex ">
+      <p class="v"> {{'RegionUpdateComponent.dis' |translate}} </p>
+    </div>
+    <div class="col-md-3 mb-3 mt-3">
+      <div>
+        <select (click)="Districtss($event)" class="form-select form-control foo  ">
+          <option class="test" selected>اختيار</option>
+          <option [value]="dist.DIST_ID" *ngFor="let dist of  Districts; let i=even ;"
+            [style.backgroundColor]="i===true?'#ccc':'' ">
+            {{dist.ARNAME}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 mt-3 align-items-center d-flex">
+      <p class="d-flex v align-items-center"> {{'RegionUpdateComponent.region' |translate}} </p>
+    </div>
+    <div class="col-md-3 mt-3 mb-3">
+
+
+      <select (click)="AllRegions($event)" class="form-select form-control foo">
+        <option class="test" selected>اختيار</option>
+        <option [value]="region.REGION_ID" *ngFor="let region of  regions; let i=even ;"
+          [style.backgroundColor]="i===true?'#ccc':'' ">
+          {{region.REGION_TITLE}}
+        </option>
+      </select>
+
+
+
+    </div>
+  </div>
+
+  <br>
+
+  <br>
+
+  <div *ngIf="tableshow && regionId!='اختيار' ">
+
+    <ng2-smart-table class="mb-3" *ngIf="regionId!='اختيار'" [settings]="settings1"
+      [source]="source1"></ng2-smart-table>
+
+    <br>
+
+    <br>
+
+    <br>
+    <!-- <div class="row " >
+    <div class="col-md-2 mt-3 align-items-center d-flex"> 
+       <p class="d-flex  align-items-center"> الشارع الفرعي</p>
+    </div>
+<div class="col-md-3 mt-3 mb-3">
+
+<select (click)="AllStreeto($event)"  class="form-select form-control foo">
+    <option class="test" selected>اختيار</option>
+    <option  [value]="street.REGION_ID" *ngFor="let street of  streets; let i=even ;" 
+    [style.backgroundColor]="i===true?'#ccc':'' ">
+   {{street.ARNAME}}
+    </option>
+  </select>
+
+</div>
+  </div> -->
+
+
+    <ng2-smart-table class="mt-4" *ngIf="regionId!='اختيار'" [settings]="settings2" [source]="source2"
+      (editConfirm)="EditInterSampel($event)" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+
+
+
+
+
+  </div>
+
+</div>

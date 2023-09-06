@@ -1,0 +1,83 @@
+
+
+
+
+
+<div class="title bg-warning p-4 mt-2 mb-5 m-auto  ">
+  <h1 class="text-center text-danger">الكميات والمساحات لعيوب الرصف والارصفة  </h1>
+  </div>
+
+
+  <div class="col-lg-6 m-auto">
+    <nb-card>
+      <nb-card-header><h2 class="text-center text-success">الكميات والمساحات</h2></nb-card-header>
+      <nb-card-body>
+        <ngx-chartjs-bar></ngx-chartjs-bar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+
+<div class="container ">
+  <div class="row justify-content-end">
+    <div class="col-md-3">
+
+      <div class="form-check form-check-inline fooo mb-5 p-3">
+        <input (click)="radio($event)" class="form-check-input form-control opt2" type="radio" name="inlineRadioOptions"  id="opt2" value="option2">
+        <label class="form-check-label " for="inlineRadio2">عيوب الارصفه</label>
+      </div>
+
+
+      <div class="form-check form-check-inline mb-5 p-3 fooo ">
+        <input checked="true" (click)="radio($event)"  class=" form-check-input form-control" type="radio" name="inlineRadioOptions" id="opt1" value="option1">
+        <label class="form-check-label " for="inlineRadio1">عيوب الرصف</label>
+      </div>
+
+  
+
+    </div>
+    
+
+    <div class="col-md-3">
+      <h3>المدن</h3>
+      <select (click)="City($event)"  class="form-select form-control foo bg-danger " aria-label=".form-select-lg example">
+        <option class="test" selected>المدن</option>
+        <option  [value]="city.CITY_ID" *ngFor="let city of arrofallcities ; let i=even ;" 
+        [style.backgroundColor]="i===true?'#ccc':'' ">
+          {{city.ARNAME}}
+        </option>
+      </select>
+      
+    </div>
+
+
+
+    <div class="col-md-3">
+      <h3>البلدية</h3>
+      <select (click)="Munipilarity($event)" class="form-select fw-bold form-control foo bg-warning" aria-label=".form-select-lg example">
+        <option  selected>البلدية</option>
+        <option [value]="munipilarity.MUNIC_ID"  *ngFor="let munipilarity of allMunicipalitiesBySpesificCityId; let i=even ;"  [style.backgroundColor]="i===true?'#ccc':''">
+          {{munipilarity.MUNIC_NAME}}
+        </option>
+      </select>
+    </div>
+
+
+
+    <div class="col-md-3">
+      <h3>الحي</h3>
+      <select (click)="District($event)"   class="form-select form-control foo bg-success" aria-label=".form-select-lg example">
+        <option selected>الحي</option>
+        <option [value]="district.DIST_ID "   *ngFor="let district of Districts ; let i=even ;"[style.backgroundColor]="i===true?'#ccc':''" >
+          {{district.ARNAME}}
+        </option>
+      </select>
+      
+    </div>
+
+
+
+  </div>
+</div>
+

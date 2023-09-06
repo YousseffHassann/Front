@@ -1,0 +1,70 @@
+<div class=" d-flex justify-content-center align-items-center">
+    <ng2-smart-table   [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"  (editConfirm)="EditSurvey($event)" ></ng2-smart-table>
+  </div>
+  <div   class="d-flex justify-content-center align-items-center">
+    <button (click)="openForm()" class="btn btn-info btn-sm   m-1 my-5"> Add Survey</button>
+  </div>
+
+  <div  class="borderForm" *ngIf="checkAdd ">
+
+    <h4 class="m-auto text-end  text-black my-5 mx-5" > Add Survey</h4>
+
+  <div>
+    <form #formDirective="ngForm"    (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm">
+      <label class="mx-5" for=' '> From</label>
+      <input id="" formControlName="DATE_FROM" class="my-2 form-control" type="date">
+      <div *ngIf="registerationForm.get('DATE_FROM')?.errors && registerationForm.get('DATE_FROM')?.touched "
+        class="alert  mydecorate">
+        <p class="alert alert-danger  text-center"
+          *ngIf="registerationForm.get('DATE_FROM')?.errors?.error">This date is exist</p>
+          <p class="alert alert-info text-danger text-center"
+                  *ngIf="registerationForm.get('DATE_FROM')?.errors?.['required']"> This field is required</p>
+       
+      </div>
+    
+      <label class="mx-5" for=' '> To</label>
+      <input id="" formControlName="DATE_TO" class="my-2 form-control  " type="date">
+      <div *ngIf="registerationForm.get('DATE_TO')?.errors && registerationForm.get('DATE_TO')?.touched "
+      class="alert  mydecorate">
+      <p class="alert alert-danger  text-center"
+        *ngIf="registerationForm.get('DATE_TO')?.errors?.error"> This date is exist</p>
+        <p class="alert alert-info text-danger text-center"
+                *ngIf="registerationForm.get('DATE_TO')?.errors?.['required']">This field is required</p>
+     
+    </div>
+    <div class="alert  mydecorate">
+    <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.errors?.dateValid && (registerationForm.touched ||registerationForm.dirty)">Please add a valid from and to date</p>
+  </div>
+  <div class="alert  mydecorate">
+    <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.errors?.error1 && (registerationForm.touched ||registerationForm.dirty)">Invalid interval</p>
+  </div>
+        <div class="form-group my">
+          <label class="mx-5 mt-5" for=' '> Current Survey</label>
+          <nb-radio-group class="status-info" formControlName="CURRENT_SURVEY" name="rd1">
+            <nb-radio class="status-info" [value]="1">
+              Yes
+            </nb-radio>
+            <nb-radio class="status-info" [value]="0">
+              No
+            </nb-radio>
+          </nb-radio-group>
+          <div *ngIf="registerationForm.get('CURRENT_SURVEY')?.errors && registerationForm.get('CURRENT_SURVEY')?.touched "
+        class="alert  mydecorate">
+        
+          <p class="alert alert-info text-danger text-center"
+                  *ngIf="registerationForm.get('CURRENT_SURVEY')?.errors?.['required']">This field is required</p>     
+      </div>
+        </div>
+    
+        
+      <div class="  d-flex justify-content-center align-items-center">
+        <button [disabled]="registerationForm.invalid" class="btn btn-info mt-3" type="submit"> Add Survey
+        </button>
+        <button  class="btn btn-danger mt-3 ml-5"  (click)="Close(formDirective)"> Exit
+        </button>
+      </div>
+     </form>
+  </div>
+    </div>
+
+  

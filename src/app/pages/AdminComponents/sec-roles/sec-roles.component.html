@@ -1,0 +1,89 @@
+<div class="container">
+  
+  <div *ngIf="messageSuccess " class="alert  myalert col-md-3 text-center">
+    <h1>مرحبا تم التسجيل بنجاح</h1>
+  </div>
+
+<div class="row">
+  <form (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm"   class="container mb-5" >
+
+  <div class="col-md-3 m-auto">
+    <label for='ROLE '>الصلاحية</label>
+    <input  id="ROLE" formControlName="ROLE" class="form-control my-2 " type="text" value=" ">
+    <div *ngIf="registerationForm.get('ROLE')?.errors && registerationForm.get('ROLE')?.touched "class="alert  mydecorate">
+      <p *ngIf="registerationForm.get('ROLE')?.errors?.['required']">ROLE is required</p>
+      <p *ngIf="registerationForm.get('ROLE')?.errors?.['minlength']" >min length 4</p>
+      <p *ngIf="registerationForm.get('ROLE')?.errors?.['maxlength']" >max length 20</p>
+   </div>
+  </div>
+   
+<div class="col-md-3 m-auto">
+  <label for='EN_NAME'>الاسم عربيا</label>
+  <input  id="en_name" formControlName="EN_NAME" class="form-control my-2" type="text">
+  <div *ngIf="registerationForm.get('EN_NAME')?.errors && registerationForm.get('EN_NAME')?.touched "class="alert  mydecorate">
+    <p *ngIf="registerationForm.get('EN_NAME')?.errors?.['required']">EN_NAME is required</p>
+    <p *ngIf="registerationForm.get('EN_NAME')?.errors?.['minlength']" >min length 4</p>
+    <p *ngIf="registerationForm.get('EN_NAME')?.errors?.['maxlength']" >max length 20</p>
+ </div>
+</div>
+  
+ <div class="col-md-3 m-auto">
+  <label  for="AR_NAME">الاسم انجليزيا</label>
+  <input id="ar_name" formControlName="AR_NAME" class="form-control my-2" type="text">
+  <div *ngIf="registerationForm.get('AR_NAME')?.errors && registerationForm.get('AR_NAME')?.touched "class="alert  mydecorate">
+    <p *ngIf="registerationForm.get('AR_NAME')?.errors?.['required']">AR_NAME is required</p>
+    <p *ngIf="registerationForm.get('AR_NAME')?.errors?.['minlength']" >min length 4</p>
+    <p *ngIf="registerationForm.get('AR_NAME')?.errors?.['maxlength']" >max length 20</p>
+ </div>
+
+ </div>
+  
+
+
+
+  <div class=" d-flex justify-content-center align-items-center">
+  <button [disabled]="registerationForm.invalid"  class="btn btn-info mb-5 mt-2" type="submit"> Submit Form</button>
+  
+  </div>
+    
+  </form>
+</div>
+
+
+
+
+
+
+<table class="table  mt-5">
+  <thead>
+    <tr class="text-danger text-bold">
+      <th class=" mydecorate" scope="col">الرقم التعريفي</th>
+      <th class=" mydecorate" scope="col">الصلاحية</th>
+      <th class=" mydecorate" scope="col">الاسم عربيا</th>
+      <th class=" mydecorate" scope="col">الاسم انجليزيا</th>
+
+      <th class=" mydecorate" scope="col"> مسح </th>
+      <th class=" mydecorate" scope="col"> تعديل </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let role of rolesarray let i=even" [style.backgroundColor]="i===true?'#205':'#110' ">
+      <td class="mydecorate2">{{role.ROLEID}}</td>
+      <td class="mydecorate2">{{role.ROLE}}</td>
+      <td class="mydecorate2">{{role.EN_NAME}}</td>
+      <td class="mydecorate2">{{role.AR_NAME}}</td>
+      <td><Button (click)="DeleteRole(role.ROLEID)" class="text-white btn bg-danger">مسح</Button></td>
+   <!--   <td><Button  class=" btn bg-success">تعديل</Button></td>-->
+      <td><a class=" text-white mydecorate btn " [routerLink]="['/pages/UpdateRole',role.ROLEID]">تعديل</a></td>
+     <!-- <td><Button (click)="UpdateRole(role.ROLEID,role)" class=" btn bg-success"   >submitUpdate</Button></td>-->
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+
+<!--<button (click)="UpdateRole(myupdateId,updateObject)">update</button>-->
+
+
+

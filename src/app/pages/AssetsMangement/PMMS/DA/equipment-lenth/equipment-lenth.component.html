@@ -1,0 +1,22 @@
+<nb-card status="warning">
+    <nb-card-header class="text-center"><h1>
+        حارات مربوطة خطأ بالمقاطع  <br>
+      <span class="red">مراجعه العيوب قبل الإدخال النهائي </span> </h1> </nb-card-header>
+  </nb-card>
+  <div *ngIf="loading">
+  
+
+    <nb-card [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="danger">
+      <nb-card-body>
+        <div *ngIf="!loading" class="row">
+          
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div *ngIf="!loading">
+  <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+
+</div>
+

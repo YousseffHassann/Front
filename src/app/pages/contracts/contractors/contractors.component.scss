@@ -1,0 +1,11 @@
+:host ::ng-deep ng2-smart-table thead > tr > th  {
+  background-color:#277DA1;
+}
+
+:host ::ng-deep ng2-smart-table-title > a { color: white; }
+
+.contractors-container{
+  border: 5px #277DA1;
+  border-style: solid;
+  padding: 10px;
+}

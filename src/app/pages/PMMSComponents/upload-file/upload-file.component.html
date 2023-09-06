@@ -1,0 +1,201 @@
+<!-- <div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <p>LOL</p>
+  </mat-form-field>
+</div> -->
+<div class="text-center w-100">
+  <ngx-refresh></ngx-refresh>
+</div>
+
+<div class="b mb-5 container">
+  <div class="container">
+    <div>
+      <!-- <div class="myinpute w-50 m-auto">
+        <i class="fas fa-upload text-info myicone m-2"></i>
+
+        <input
+          class="btn btn-danger MyUpload"
+          type="file"
+          name="currentInput"
+          [ngClass]="{ my_class: currentInput }"
+          [(ngModel)]="currentInput"
+          (change)="onFileSelected3($event)"
+        />
+      </div> -->
+
+      <div class="containerupload">
+        <div class="cardupload">
+          <h3>Data Upload</h3>
+          <div class="drop_boxupload">
+            <header>
+              <h4>Select File here</h4>
+            </header>
+            <p>Files Supported: MDB ONLY</p>
+            <input class="btnupload" type="file" name="currentInput" [ngClass]="{ my_class: currentInput }"
+              [(ngModel)]="currentInput" (change)="onFileSelected3($event)" />
+            <div class="myinpute w-25 m-auto" *ngIf="thereisfilechoosen == true">
+              <br />
+              <button class="btnupload" type="button" (click)="onUpload()">
+                Upload
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="myinpute w-25 m-auto">
+        <i class="fas fa-handshake text-success myicone m-2 mt-6"></i>
+        <button class="bg-success btn" type="button" (click)="onUpload()">
+          Upload
+        </button>
+      </div> -->
+    </div>
+
+    <br />
+    <br />
+    <div class="unabletoupload" *ngIf="!allowUpload">
+      <div class="text-center">UNABLE TO UPLOAD DUE TO CURRENT MD CALCULATIONS</div>
+    </div>
+    <div class="surveysbuffer" *ngIf="AfterUploaded && !surveycompleted && allowUpload">
+      <div class="loader"></div>
+    </div>
+
+    <!-- <div class="container mt-6 mt-6">
+      <div class="container">
+        <div class="container">
+          <ng2-smart-table
+            *ngIf="resultShow"
+            [settings]="settings1"
+            [source]="source1"
+          ></ng2-smart-table>
+        </div>
+      </div>
+    </div> -->
+
+    <mat-dialog-actions *ngIf="inConsistSectionsFound">
+      <button class="inconsist_button" (click)="inConsistantSections()">Inconsistent Sections</button>
+    </mat-dialog-actions>
+
+    <br />
+    <br />
+
+
+    <div class="container mt-6" *ngIf="AfterUploaded && resultShow">
+      <nb-card-header class="CardHeader">
+        File Name : {{ filename }} .....
+        Survey Number : {{surveyNumber}}
+      </nb-card-header>
+
+      <div class="container">
+        <ng2-smart-table [settings]="settings" [source]="source" (userRowSelect)="onUserRowSelect($event)">
+        </ng2-smart-table>
+      </div>
+    </div>
+    <!-- *ngIf="AfterUploaded && resultShow" -->
+    <br />
+    <br />
+
+    <div class="unabletoupload" *ngIf="AfterUploaded && resultShow && !allowUpload">
+      <div class="text-center">UNABLE TO UPLOAD DUE TO CURRENT MD CALCULATIONS</div>
+    </div>
+    <div class="sub-button">
+      <div class="m-auto d-flex justify-content-center w-25">
+        <button *ngIf="AfterUploaded && resultShow && allowUpload" type="submit" class="pci_calc_button" (click)="onSubmit()">
+          PCI CALCULATION
+        </button>
+      </div>
+    </div>
+
+    <ngx-alerts></ngx-alerts>
+
+    <br />
+    <br />
+    <div class="calctabsbuffer"
+      *ngIf="submitbuttonpressed == true && (!seccalccompleted || !samplecalccompleted || !lanecalccompleted)">
+      <div class="loader"></div>
+    </div>
+
+    <div class="row"
+      *ngIf="submitbuttonpressed == true && (seccalccompleted==true && samplecalccompleted==true && lanecalccompleted==true)">
+      <div class="col-12">
+        <nb-card size="large">
+          <nb-tabset fullWidth>
+            <nb-tab tabTitle="Sample">
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table [settings]="settingsTab2" [source]="sourceTab2">
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+
+            <nb-tab tabTitle="Lanes">
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table [settings]="settingsTab1" [source]="sourceTab1">
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+
+            <nb-tab tabTitle="Sections">
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table [settings]="settingsTab3" [source]="sourceTab3">
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+
+            <nb-tab tabTitle="Samples Distresses">
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table [settings]="settingsTab4" [source]="sourceTab4">
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+
+            <nb-tab tabTitle="IRI">
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table [settings]="settingsTab5" [source]="sourceTab5">
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+
+
+
+          </nb-tabset>
+        </nb-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="show_report_btn"
+    *ngIf="submitbuttonpressed == true && (seccalccompleted==true && samplecalccompleted==true && lanecalccompleted==true)">
+    <button (click)="showReport()">Show Distresses Report</button>
+  </div>
+</div>
+
+<div *ngIf="showReportBool && submitbuttonpressed == true && (seccalccompleted==true && samplecalccompleted==true && lanecalccompleted==true)" class="col-lg-12" >
+  <nb-card status="">
+    <nb-card-header>Distresses Report</nb-card-header>
+    <nb-card-body>
+
+
+      <div class="row">
+        <iframe [src]="safeReportLink" width="1500" height="1000" frameborder="0" webkitallowfullscreen mozallowfullscreen
+          allowfullscreen></iframe>
+
+        <button class="btn btn-success btn-sm mb-5 mt-5  button1" (click)="downloadDistressesReport()">Export to
+          Excel</button>
+
+      </div>
+
+    </nb-card-body>
+
+  </nb-card>
+</div>

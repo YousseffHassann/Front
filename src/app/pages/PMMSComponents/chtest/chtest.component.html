@@ -1,0 +1,257 @@
+<div class="container">
+
+    <div class="row ">
+        <div class="col-md-12 text-center">
+            <h1 class="t1">{{'chtest.name' |translate}}  </h1>
+    
+        </div>
+    </div>
+    
+    
+</div>
+
+
+
+
+
+
+<!-- <div class="">
+    <div class="container HideScrool" >
+        <div class="row">
+          <div class="col-md-2 mt-3 align-items-center d-flex"> 
+             <p class="d-flex v align-items-center "> 
+              Survey Number</p>
+          </div>
+      <div class="col-md-3 mt-3 mb-3  ">
+
+        
+    <select (change)="SURVEIES($event)" class="form-select fw-bold form-control foo "
+        aria-label=".form-select-lg example">
+        <option selected>Survey_No</option>
+        <option [value]="survey.SURVEY_NO" *ngFor="let survey of allSyrvey;">
+            {{survey.SURVEY_NO}}
+        </option>
+    </select>
+
+ </div> -->
+
+
+
+<div class="col-lg-12 m-auto ">
+
+
+
+
+
+
+
+    <nb-card class="backbord">
+
+
+
+
+
+        
+        <nb-card-header>
+            
+
+
+
+     
+               
+                   <div class="container  ">
+                    <div class="col-md-2 mt-3 align-items-center d-flex"> 
+                        <p class="d-flex v align-items-center text-white "> 
+                         Survey Number</p>
+                     </div>
+            
+           
+                   
+               <select (change)="SURVEIES($event)" class="form-select fw-bold form-control foo "
+                   aria-label=".form-select-lg example">
+                   <option selected>Survey_No</option>
+                   <option [value]="survey.SURVEY_NO" *ngFor="let survey of allSyrvey;">
+                       {{survey.SURVEY_NO}}
+                   </option>
+               </select>
+           
+                   </div>
+   
+            
+
+
+
+
+            <!-- <h2 class=" text-center colr ">{{'chtest.Cost' |translate}}  </h2> -->
+        </nb-card-header>
+        <nb-card-body>
+            <div class="container ">
+
+
+
+
+
+
+                <form [formGroup]="form">
+                    <div class="row">
+                        <nb-radio-group name="reactive-forms-group">
+
+                            <!-- <nb-radio formControlName="option" (click)="radioChange()" checked="true"
+                                value="1">{{'chtest.Pavement_defects' |translate}}
+                            </nb-radio> this 18-5 -->  
+
+                            <!-- <nb-radio formControlName="option" (click)="radioChange1()" value="2">
+                                {{'chtest.sidewalk_defects' |translate}}
+                            </nb-radio> --> <!-- 11-5 مؤقتاااااا -->
+
+                        </nb-radio-group>
+                        <!-- <div class="col-md-6">
+                            <div class="col-md-6">
+                                <input nbradio type="radio" (change)="onOptionChange()" class=" form-control opt2"
+                                    formControlName="option" value="1">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-check-label " for="inlineRadio1">
+                                    عيوب الرصف
+                                </label>
+                            </div>
+
+
+
+                        </div> -->
+                        <!-- <div class="md-4">
+                            <div class="form-check">
+                                <input class="  form-control" type="radio" (change)="onOptionChange()"
+                                    formControlName="option" value="2">
+                                <label class="form-check-label" for="inlineRadio2">
+                                    عيوب الارصفه
+                                </label>
+                            </div>
+                        </div> -->
+
+
+
+                        <div class="hid" id="whenClick">
+
+                            <!-- <div class="col-md-12">
+                                <select (change)="mySelection($event)"
+                                    class="form-select form-select-lg mb-3 form-control"
+                                    aria-label=".form-select-lg example">
+                                     <option value="1">For All</option>
+                                    <option value="2">For Intersections</option>
+                                    <option value="3">For Regions</option>
+                                    <option value="4">For Sections</option> 
+                                </select>
+                            </div> -->
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </form>
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="colr"> {{'chtest.city' |translate}}
+                        </h3>
+                        <select (change)="City($event)" class="form-control grid-width-100 "
+                            aria-label=".form-select-lg example">
+                            <option class="test" selected>{{'chtest.city' |translate}}</option>
+                            <option [value]="city.REGION_ID" *ngFor="let city of arrofallcities ;">
+                                {{city.ENNAME}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="colr">{{'chtest.Munipilarity' |translate}}</h3>
+
+                        <select (change)="Street($event)" class="form-control grid-width-100"
+                            aria-label=".form-select-lg example">
+
+                            <option selected>{{'chtest.Munipilarity' |translate}}</option>
+                            <option [value]="munipilarity.MAIN_NO"
+                                *ngFor="let munipilarity of allMunicipalitiesBySpesificCityId;">
+                                {{munipilarity.ENNAME}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="colr">{{'chtest.district' |translate}}</h3>
+                        <!-- <select (click)="District($event)" class="form-select form-control foo bg-success"
+                        aria-label=".form-select-lg example">
+        
+                        <option selected>الحي</option>
+                        <option [value]="district.DIST_ID " *ngFor="let district of Districts ; let i=even ;"
+                            [style.backgroundColor]="i===true?'#ccc':''">
+                            {{district.ARNAME}}
+                        </option>
+                    </select> -->
+
+
+                        <select (ngModelChange)="onChange($event)" required   
+                            ngModel class="form-control grid-width-100">
+                            <option selected>Sections</option>
+                            <option *ngFor="let district of Districts" [value]="district.SECTION_NO">
+                                {{ district.SECTION_NO}}
+                            </option>  
+                        </select>
+
+
+                  
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </nb-card-body>
+    </nb-card>
+
+
+
+
+
+    
+</div>
+<div class="col-lg-12 m-auto  main-wrapper">
+    <nb-card>
+        <nb-card-header>
+            <h2 class="text-start ps-5 text-warning ">COST(SAR)</h2>
+        </nb-card-header>
+        <nb-card-body>
+            <div class="chart-container ">
+                <ngx-charts-bar-vertical responsive="true" [rotateXAxisTicks]="true" [barPadding]="0"
+                    [results]="results" [scheme]="colorScheme" [xAxis]="showXAxis" [yAxis]="showYAxis"
+                    [legend]="showLegend" [legendPosition]="'bottom'" [xAxisLabel]="xAxisLabel"
+                    [yAxisLabel]="yAxisLabel" [roundDomains]="roundDomains" [gradient]="gradient">
+
+                
+                </ngx-charts-bar-vertical>
+         
+            </div>
+           
+            <!-- <ngx-charts-bar-vertical >
+    </ngx-charts-bar-vertical> -->
+        </nb-card-body>
+    </nb-card>
+</div>

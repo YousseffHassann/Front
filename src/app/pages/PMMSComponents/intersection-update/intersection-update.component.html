@@ -1,0 +1,335 @@
+<div class="container">
+  <h3 class="t1 d-flex justify-content-center align-items-center mb-5  text-center w-50 m-auto  ">     {{'intersectionUpdateComponent.name' |translate}} </h3>
+</div>
+
+
+
+
+  <div class="container HideScrool">
+      <div class="row">
+        <div class="col-md-2 mt-3 align-items-center d-flex"> 
+           <p class="d-flex v align-items-center"> 
+            {{'intersectionUpdateComponent.region' |translate}}</p>
+        </div>
+    <div class="col-md-3 mt-3 mb-3  ">
+            <ng-multiselect-dropdown
+            [placeholder]="'REGIONS'"
+            [settings]="dropdownSettings"
+            [data]="dropdownList"
+            [(ngModel)]="selectedItems"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+          >
+          </ng-multiselect-dropdown>
+
+    </div>
+
+        
+  
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
+        <div class="col-md-2 mt-3 align-items-center d-flex"> 
+           <p class="d-flex v align-items-center"> 
+            {{'intersectionUpdateComponent.MainStreet' |translate}}</p>
+        </div>
+    <div class="col-md-3 mt-3 mb-3  ">
+      <select (change)="Streets($event)"  class="form-select form-control foo" >
+        <option class="test" selected>Choice</option>
+        <option  [value]="street.STREET_ID" *ngFor="let street of  streets; let i=even ;" 
+        [style.backgroundColor]="i===true?'#ccc':'' ">
+          {{street.ENNAME}}
+        </option>
+      </select> 
+
+    </div>
+
+        
+  
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+      
+
+     <!-- *ngIf="second" -->
+     <div class="row">
+          <div class="col-md-2 mt-3 align-items-center d-flex"> 
+             <p class="d-flex v align-items-center"> {{'intersectionUpdateComponent.intersections' |translate}}</p>
+          </div>
+    <div class="col-md-3 mt-3 mb-3">
+      <!-- (click)="getIntesectionByStreetId($event)" -->
+      <select   (change)="ShowIntersection($event)"  class="form-select form-control" >
+          <option class="test" selected> Choice </option>
+          <!-- <option class="test" selected> {{'intersectionUpdateComponent.Choose' |translate}} </option> -->
+          <option  [value]="intersection.INTERSECTION_ID" *ngFor="let intersection of  intersectionsTest; let i=even ;" [style.backgroundColor]="i===true?'#ccc':'' ">
+            <!-- {{intersection.INTEREC_STREET1 + " + " + intersection.INTEREC_STREET2}}  -->
+            {{intersection.INTER_NO}} 
+          </option>
+        </select>
+    </div>
+        </div>
+  
+  
+  
+
+
+
+
+
+        <div class="row">
+          <div class="col-md-2 mt-3 align-items-center d-flex"> 
+             <p class="d-flex v align-items-center"> Sections</p>
+          </div>
+    <div class="col-md-3 mt-3 mb-3">
+    
+      <select   (change)="showSectionsByIntersectionId($event)"  class="form-select form-control" >
+          <option class="test" selected> Choice </option>
+          <!-- <option class="test" selected> {{'intersectionUpdateComponent.Choose' |translate}} </option> -->
+          <option  [value]="intersection.SECTION_ID" *ngFor="let intersection of  sections_test; let i=even ;" [style.backgroundColor]="i===true?'#ccc':'' ">
+            <!-- {{intersection.INTEREC_STREET1 + " + " + intersection.INTEREC_STREET2}}  -->
+                       {{intersection.SECTION_NO}} 
+          </option>
+        </select>
+    </div>
+        </div>
+  
+  
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <ng2-smart-table class="mt-3" *ngIf="firsttable" [settings]="settings1" [source]="source1" ></ng2-smart-table>
+
+
+
+
+
+
+
+
+
+      
+
+
+
+<div *ngIf="firsttable"class="container">
+
+<!-- <p >{{interinfo[0].INTERSECT_TYPE}}</p>
+<p>{{interinfo[0].INTERSECT_CTRL_TYPE}}</p> -->
+
+  <form (ngSubmit)="submitupdateSampleFunction(updateForm)" [formGroup]="updateForm" >
+      
+      <div class="row">
+          <div class="col-md-2 mt-3 align-items-center d-flex"> 
+             <!-- <p class="d-flex  align-items-center"> طريقة التحكم بلتقاطع</p> -->
+             <p class="d-flex  align-items-center">    {{'intersectionUpdateComponent.control' |translate}}</p>
+
+            
+          </div>
+    <div class="col-md-3 mt-3 mb-3">
+      <!-- value="{{interinfo[0].INTERSECT_CTRL_TYPE}}" -->
+      <select  formControlName="INTERSECT_CTRL_TYPE_ID" (click)="control($event)"  class="form-select form-control foo">
+          <!-- <option selected="selected"  >اختيار</option> -->
+          <option  [value]="section.INTERSECT_CTRL_TYPE_ID" *ngFor="let section of  controls; let i=even ;" 
+          [style.backgroundColor]="i===true?'#ccc':''">
+            {{section.INTERSECT_CTRL_TYPE}}
+          </option>
+        </select>
+    </div>
+        </div>
+  
+  
+  
+  
+        <div class="row">
+          <div class="col-md-2 mt-3 align-items-center d-flex"> 
+             <!-- <p class="d-flex  align-items-center"> نوع التقاطع</p> -->
+             <p class="d-flex v align-items-center">   {{'intersectionUpdateComponent.type' |translate}} </p>
+         
+          </div>
+    <div class="col-md-3 mt-3 mb-3">
+      <select formControlName="INTERSECT_TYPE_ID" (click)="type($event)"  class="form-select form-control foo">
+          <!-- <option class="test" selected>اختيار</option> -->
+          <option  [value]="section.INTERSECT_TYPE_ID" *ngFor="let section of  types; let i=even ;" 
+          [style.backgroundColor]="i===true?'#ccc':'' ">
+            {{section.INTERSECT_TYPE}}
+          </option>
+        </select>
+    </div>
+        </div>
+
+
+
+      
+
+        <h3 class=" text-center m-auto w-50 text-success borderFormSmalll mb-1" *ngIf="UpdateMessage">   {{'intersectionUpdateComponent.mess' |translate}} </h3>
+
+        <div class="  d-flex justify-content-center align-items-center">
+          <!-- <button [disabled]="updateForm.invalid"   class="btn btn-info mt-3  " type="submit">حفظ البيانات </button> -->
+          <button [disabled]="updateForm.invalid"   class="btn btn-info mt-3  " type="submit"> {{'intersectionUpdateComponent.save' |translate}}</button>
+      </div>
+
+    </form>
+</div>
+
+
+<!-- <img  src="../pages/imgs/Screenshot (96).png" alt="dddd"> -->
+
+<!-- <img src="data:image/jpeg;base64,eW91ci1iaW5hcnktZGF0YQ=="> -->
+
+
+<!-- 
+{{BinaryButes}} -->
+
+<!-- <img class="" src="data:image/png;base64,{{BinaryButes}}"/>
+
+<img src="../pages/imgs/s.png" alt="">
+<img class="w-25" src="../pages/imgs/Screenshot(96).jpg" alt="Girl in a jacket" width="200" height="200"> -->
+
+
+
+<div class="firsttable">
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==21">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (1).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==14">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (2).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==13">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (3).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==12">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (4).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==11">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (5).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==10">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (6).png" alt="">
+</div>
+
+<div class="pico w-25  text-center m-auto mt-2 p-2 " *ngIf="TypeId==9">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (7).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==8">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (8).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==19">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (9).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==7">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (10).png" alt="">
+</div>
+
+
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==18">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (11).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==6">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (12).png" alt="">
+</div>
+
+
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==5">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (13).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==17">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (14).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==20">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (15).png" alt="">
+</div>
+
+
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==4">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (16).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==16">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (17).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==15">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (18).png" alt="">
+</div>
+
+
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==3">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (19).png" alt="">
+</div>
+
+<div class="pico w-25 h-25 text-center m-auto mt-2 p-2 " *ngIf="TypeId==2">
+  <img class="w-100" src="../../assets/images/MyImg/cbimage (20).png" alt="">
+</div>
+
+</div>
+
+<!-- <h3 class=" text-center m-auto w-50   text-info mb-1" *ngIf="SAMPLES_COUNT && SAMPLES_COUNT!=realCount"> <i class="fas fa-bug text-danger"></i>  Inter Sample Number Must Be  {{SAMPLES_COUNT}}  <i class="fas fa-bug text-danger"></i></h3> -->
+
+<ng2-smart-table class="mt-3" *ngIf="intersectionId !=='اختيار' && intersectionId" [settings]="settings2"     [source]="source2"  (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="EditInterSampel($event)"></ng2-smart-table>
+<ngx-alerts></ngx-alerts>
+
+
+<div class=" ">
+  <h5 class=" m-end text-right w-100 mt-3  text-info mb-1" *ngIf="SAMPLES_COUNT && SAMPLES_COUNT!=realCount">  <i class="fas fa-star text-warning"></i> Intersection-Samples Must Be  {{SAMPLES_COUNT}} </h5>
+
+</div>
+
+
+
+<ng2-smart-table class="mt-3" *ngIf="showsectiontable" [settings]="settingstest" [source]="sourcetest" (editConfirm)="EditSection($event)" ></ng2-smart-table>

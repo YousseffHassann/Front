@@ -1,0 +1,40 @@
+<div class="row">
+    <label class="label" style="margin-right: 0.5rem; margin-left: 0.5rem; margin-top: 1rem;">المحافظات</label>
+    <nb-select [(ngModel)]="selectedGov" name="governments" required [(selected)]="selectedGov">
+        <nb-option value="-1">
+            الكل</nb-option>
+        <nb-option *ngFor="let lookUpValue of lookupValues[8] let i = index" [value]="lookUpValue.Id">
+            {{lookUpValue.Name}}</nb-option>
+    </nb-select>
+    <label class="label" style="margin-right: 0.5rem; margin-left: 0.5rem; margin-top: 1rem;">الوضع
+        المادي</label>
+    <nb-select [(ngModel)]="selectedPhysicalStatus" name="physicalStatus" required>
+        <nb-option value="-1">
+            الكل</nb-option>
+        <nb-option *ngFor="let lookUpValue of lookupValues[0] let i = index" [value]="lookUpValue.lookup_ID">
+            {{lookUpValue.code_Desc_AR}}</nb-option>
+    </nb-select>
+    <label class="label" style="margin-right: 0.5rem; margin-left: 0.5rem; margin-top: 1rem;">نوع
+        الملكية</label>
+    <nb-select [(ngModel)]="selectedOwnerShipType" name="ownerShipType" required>
+        <nb-option value="-1">
+            الكل</nb-option>
+        <nb-option *ngFor="let lookUpValue of lookupValues[2]  let i = index" [value]="lookUpValue.lookup_ID">
+            {{lookUpValue.code_Desc_AR}}</nb-option>
+    </nb-select>
+    <label class="label" style="margin-right: 0.5rem; margin-left: 0.5rem; margin-top: 1rem;">حالة
+        الإيجار</label>
+    <nb-select [(ngModel)]="selectedRentalStatus" name="rentalStatus" required>
+        <nb-option value="-1">
+            الكل</nb-option>
+        <nb-option *ngFor="let lookUpValue of lookupValues[5]  let i = index" [value]="lookUpValue.lookup_ID">
+            {{lookUpValue.code_Desc_AR}}</nb-option>
+    </nb-select>
+
+    <button nbButton status="primary" type="button" (click)="onApply()" style="margin-right: 1rem;">
+        Apply
+    </button>
+    <!-- <button nbButton status="warning" type="button" (click)="onClear()" style="margin-right: 1rem;">
+        Reset
+    </button> -->
+</div>

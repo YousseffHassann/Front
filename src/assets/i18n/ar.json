@@ -1,0 +1,454 @@
+{
+    "LANGUAGE": {
+      "EN": "English",
+      "AR": "Arabic"
+    },
+  
+  
+  
+  
+  
+    "Home": "Home",
+    "EmailPlaceholder": "Enter Username",
+    "PasswordPlaceholder": "Enter Password",
+    "LogIn": "Login",
+    "app": "Namaa Smart Roads Assets Managment System",
+    "welcome": "Saudi Aramco Road Asset Managment System",
+    "generalsettingst": "General maintenance on the entire sector (4-36)",
+    "menu": {
+  
+  
+      "networkdeandide":"Network defination And Identification",
+      "networkdef":"Network   Defination",
+      "networkide":"Network Identification",
+      "dataana":"Data Analysis",
+      "datauplandpcicalc":"Data Upload And PCI Calculation",
+      "pavementconind":"PCI",
+      "pcidet":"PCI Details",
+      "pcimap":"PCI Map",
+      "md":" MD",
+      "mplans":"MD Plans",
+      "bugetplanlanes":"budgeting&planning(lanes)",
+      "reports":"Reports",
+      "pci":"PCI",
+      "mdreportstreet":"MD Report(Street)",
+      "mdreport":"MD Report",
+      "irireport":"IRI Report",
+      "mpriority":"maintenance Priority",
+      "coststa":"Cost Statistics",
+      "defectsta":"Defects Statistics",
+      "mdchart":"MD chart",
+      "summary":"Summary",
+      "dash":"Dashboard",
+      "allreports":"All Reports",
+  
+  
+  
+  
+  
+  
+      "assetmanagement": "Pavement Management",
+      "users": "Users ",
+      "addusers": "Add Users ",
+      "welcome2": "welcome ",
+      "pmms": "Roads",
+      "SystemSettings": "System Settings",
+      "preparingthecricalculationmd": "Preparing The Circulation Of Maintenance Decisions (4-36)",
+      "Preparingmaintenancedecisionsforsidewalkdefects": "Preparing Maintenance Decisions For Sidewalk Defects ",
+      "Preparingmaintenancedecisionsfordefects": "Preparing Maintenance Decisions For Defects ",
+      "SystemAnalysis": "Data Manipulation",
+      "Mainstreetdetails": "Main Streets Details ",
+      "Dataofdeletedsamplesanddefectsentered": "Data of deleted samples-defects entered ",
+      "TropicalPavementIRIClips": "International Roughness Index IRI ",
+      "Lanesmistakenlylinkedtosections": "Lanes Discrepancy",
+      "Streetconditiondetails": "Streets condition details ",
+      "LanewithequipmentandnotintheIRIsystem": "Missing IRI-Lanes ",
+      "LanewithequipmentandnotintheFWDsystem": "Missing FWD-Lanes  ",
+      "LanewithequipmentandnotintheSKIDsystem": "Missing SKID-Lanes  ",
+      "LanewithequipmentandnotintheGPRsystem": "Missing GPR-Lanes  ",
+      "Distress_Entry": "Distress Entry",
+      "defectsstatistics": "Cost Statistics",
+      "coststatistics": "Defects Statistics",
+      "addrole": "Add Validity ",
+      "adduser": "Add User ",
+      "pavementcoditioncalculation2": "Pavement Condition Index  ",
+      "pavementcoditioncalculation": "PCI MAP ",
+      "PMMSMD": "  Maintenance Decisions  ",
+      "maintenanceplane": "  Maintenance Plans   ",
+      "planning": " Planing & Budgeting   ",
+      "contractorsandcontracts": " Contractors && Contracts ",
+      "Contractor": " Contractors  ",
+      "reports": " Reports  ",
+      "PCI_InterSections": " Pavement Condition Index  ",
+      "Majorroadsections": "Main  RoadS Sections ",
+      "MajorroadIntersections": "Main  Roads Intersections ",
+      "sub-districtsandroads": "Sub-Districts & Roads ",
+      "Descriptivedataformajorroadsegments": "Edit Lanes  ",
+      "md_reports": "Maintenance Decision Reports",
+      "sectionUpdate": "Descriptive data for sectionUpdate",
+      "intersectionUpdate": "Descriptive data for IntersectionUpdate",
+      "regionUpdate": "Descriptive data for regionUpdate",
+      "UploadFile": "Data Migration ",
+      "sec": "Edit Intersections ",
+      "reg": "Edit Streets "
+    },
+    "add-user": {
+      "user_id": "ID Number",
+      "username": "User Name",
+      "PASSWORD": "PASSWORD",
+      "ENTRY_DATE": "ENTRY DATE",
+      "ROLE_ID": "ROLE_ID"
+    },
+    "generalsettings": {
+      "name": "Preparing The Circulation Of Maintenance Decisions",
+      "STREET_TYPE": "STREET TYPE",
+      "RECOMMENDED_DECISION_ID": "RECOMMENDED DECISION",
+      "LIMIT_RATIO": "LIMITRATIO",
+      "GMAINT_DEC_ID": "Gmaint Decision"
+    },
+    "maintdeciding": {
+      "name": "Preparing Daintenance Decisions For Defects",
+      "DIST_CODE": "DIST CODE",
+      "DIST_SEVER": "DISTSEVER",
+      "DENSITY_FROM": "DENSITY FROM",
+      "DENSITY_TO": "DENSITY TO",
+      "MAINT_DEC_ID": "MAINT DEC"
+    },
+    "maintdeciding2swalk": {
+      "name": "Preparing Maintenance Decisions For Sidewalk",
+      "DIST_CODE": "Distress Code",
+      "DIST_SEVER": "Distress Severity",
+      "DENSITY_FROM": "Density From",
+      "DENSITY_TO": "Density To",
+      "MAINT_DEC_ID": "Maintenance Decision"
+    },
+    "EquipmentSectionsDetails": {
+      "name": " Main Streets Details",
+      "from-equipment": "From Equipment",
+      "From_system": "From System",
+      "New_from_equipment": " From Equipment(New)",
+      "SECTION_NO": "Section #",
+      "SEC_LANES_COUNT": "Lanes Count ",
+      "SEC_DIRECTION": "Direction",
+      "SEC_LANES_TYPE": "Lanes Type",
+      "SEC_LENGTH": "Section Length",
+      "SEC_WIDTH": "Section Width",
+      "SEC_LANES_LENGTH": "Lanes length"
+    },
+    "DeletedSamples": {
+      "name": "Data of deleted samples && defects entered",
+      "ARNAME": "Street Name",
+      "STREET_ID": "STREET ID",
+      "MAIN_NO": "MAIN NO",
+      "SAMPLE_ID": "SAMPLE ID"
+    },
+    "equipmentone": {
+      "name": "International Roughness Index (IRI)",
+      "Main_Street": "Main Street",
+      "ARNAME": "ARNAME ",
+      "COUNTSECTION": "COUNT SECTION ",
+      "COUNTLANE": "COUNT LANE ",
+      "SURVEY_NO": "SURVEY NO ",
+      "SECTION_NO": "COUNT LANE ",
+      "TCOUNTLANE": "TCOUNTLANE ",
+      "LTYPE": "LTYPE "
+    },
+    "LaneSectionsErorrs": {
+      "name": "Lanes Discrepancy",
+      "MAIN_NO": "Main Street",
+      "SECTION_NO": "Street Name ",
+      "SURVEY_NO": "Count Section ",
+      "IS_DDF": "Count Lane "
+    },
+    "RoadesUdi": {
+      "name": "Streets condition details",
+      "MAIN_NO": "Main Street",
+      "SECTION_NO": "SECTION NO ",
+      "CENTERLINE": "Steet Long ",
+      "AREA": "AREA ",
+      "UDI_STREET": "UDI_STREET ",
+      "LTYPE": "LTYPE ",
+      "LTYPECOUN": "LTYPE COUNt ",
+      "SURVEY_DATE": "SURVEY DATE ",
+      "SURVEY_NO": "SURVEY NO  "
+    },
+    "equipment-validate-iri": {
+      "name": "Missing IRI-Lanes",
+      "Street_name": "Street Name ",
+      "SECTION_NO": "SECTION_NO",
+      "LANE": "LANE "
+    },
+    "equipment-validate-fwd": {
+      "name": "Missing Fwd-Lanes ",
+      "Street_name": "Street Name ",
+      "SECTION_NO": "SECTION_NO",
+      "LANE": "LANE "
+    },
+    "equipment-validate-skid": {
+      "name": "Missing SKID-Lanes ",
+      "Street_name": "Street Name ",
+      "SECTION_NO": "SECTION_NO",
+      "LANE": "LANE "
+    },
+    "equipment-validate-gpr": {
+      "name": "Missing GPR-Lanes ",
+      "Street_name": "Street Name ",
+      "SECTION_NO": "SECTION_NO",
+      "LANE": "LANE "
+    },
+    "chtest": {
+      "name": "Cost Statistics ",
+      "Cost": "Cost (SAR) ",
+      "city": "Area",
+      "Munipilarity": "Street ",
+      "Pavement_defects": "Pavement Defects ",
+      "sidewalk_defects": "Sidewalk Defects ",
+      "district": "Section ",
+      "intersections":"Intersection"
+    },
+    "chtest2": {
+      "name": "Defects Statistics ",
+      "Quantitiesandareas": "Count & Areas ",
+      "city": "Area",
+      "Munipilarity": "Street ",
+      "Pavement_defects": "Pavement Defects ",
+      "sidewalk_defects": "Sidewalk Defects ",
+      "district": "Section ",
+      "intersections":"Intersection"
+    },
+    "DistressSurvey": {
+      "name": "Main Roads Sections",
+      "mainstreet": "Main Street ",
+      "Choose": "Choose ",
+      "sections": "sections",
+      "Municipal": "Municipal",
+      "District": "District",
+      "MainStreet": "Main Street",
+      "From": "From",
+      "To": "To",
+      "direction": "direction",
+      "length": " length",
+      "sectionnumber": " Section Number",
+      "lanes": " lanes",
+      "addDis": "add ",
+      "surveyNo": "Survey Number",
+      "inter": "intersections",
+      "upd": "Update",
+      "AddDistress": "Add Distress",
+      "this": "Add This Distress"
+    },
+    "insertIntersectionDistress": {
+      "name": "Main Roads Intersections ",
+      "mainstreet": "main Street ",
+      "intersections": "Intersections ",
+      "intersectiondata": " Intersection Data",
+      "sectionnumber": "Section Number",
+      "samples": "Samples",
+      "MainStreet": "Main Streets",
+      "DISTRESS_EN_TYPE": "DISTRESS_EN_TYPE",
+      "DIST_SEVERITY": "DIST_SEVERITY",
+      "DIST_AREA": "DIST_AREA",
+      "DIST_DENSITY": " DIST_DENSITY",
+      "DEDUCT_VALUE": "DEDUCT_VALUE",
+      "DIST_DENSITY_UPD": "DIST_DENSITY_UPD",
+      "DEDUCT_DEN_DASH_UPD": "DEDUCT_DEN_DASH_UPD",
+      "DISTRESS_NOTES": "DISTRESS_NOTES",
+      "SURVEY_DATE": "SURVEY_DATE",
+      "INTER_SAMP_NO": "INTER_SAMP_NO",
+      "NOTES": "NOTES",
+      "Withstreet": "With Street",
+      "Choose": "Choose ",
+      "addDis": "add "
+    },
+    "SectionUpdateComponent": {
+      "MainStreet": "Main Street",
+      "Choose": "Choose ",
+      "Sections": "Sections ",
+      "name": "Edit Lanes   ",
+      "mainstreet": "main Street ",
+      "intersections": "intersections ",
+      "intersectiondata": " intersection data",
+      "sectionnumber": "section number",
+      "samples": "samples",
+      "type": "type ",
+      "control": "control",
+      "save": "saved ",
+      "mess": "Saved Successfully   ",
+      "laneSamples": "  laneSamples",
+      "using": "using ",
+      "SAMPLE": "samples",
+      "add": "  Add This Distress"
+    },
+  
+    "homepage": {
+      "login":" Sign in",
+      "logout":" Sign out",
+      "username":" username ",
+      "pass":" password"
+  },
+  
+  
+  "sidebar":{
+    "networkdeandide":"Network defination And Identification",
+    "networkdef":"Network   Defination",
+    "networkide":"Network Identification",
+    "dataana":"Data Analysis",
+    "datauplandpcicalc":"Data Upload And PCI Calculation",
+    "pavementconind":"PCI",
+    "pcidet":"PCI Details",
+    "pcimap":"PCI Map",
+    "md":" MD",
+    "mplans":"MD Plans",
+    
+    "reports":"Reports",
+    "pci":"PCI",
+    "mdreportstreet":"MD Report(Street)",
+    "mdreport":"MD Report",
+    "irireport":"IRI Report",
+    "mpriority":"maintenance Priority",
+    "coststa":"Cost Statistics",
+    "defectsta":"Defects Statistics",
+    "mdchart":"MD chart",
+    "summary":"Summary"
+    
+        },
+  
+    "intersectionUpdateComponent": {
+      "region":"Area ",
+      "MainStreet": "Street",
+      "Choose": "Choose ",
+      "Sections": "Intersection ",
+      "name": "Edit Intersections  ",
+      "mainstreet": "Main Street ",
+      "intersections": "Intersections ",
+      "intersectiondata": " Intersection data",
+      "sectionnumber": "Section number",
+      "samples": "Samples",
+      "type": "Type ",
+      "control": "Control",
+      "save": "Save",
+      "mess": "  Saved Successfully "
+    },
+    
+    "RegionUpdateComponent": {
+      "munic": "Municipality",
+      "Choose": "Choose ",
+      "Sections": "Sections ",
+      "name": "Edit Streets  ",
+      "dis": "District  ",
+      "region": "Area ",
+      "intersectiondata": " Intersection data",
+      "sectionnumber": "Section Number",
+      "samples": "Samples",
+      "type": "Type ",
+      "control": "Control",
+      "save": "Save"
+    },
+  
+  
+     
+    "UploadFileComponent": {
+      "name":" Upload File ",
+      "select":"select file",
+      "db":"Files Supported: MDB ONLY",
+      "upload":"Upload File",
+      "filename":"File Name",
+      "surveynumber":"Survey_Number",
+  
+      "pcicalc":"PCI Calculation",
+      "disrep":"Distress Report",
+      "export":"Export To Excell"
+  },
+  
+  
+    "RegionDistress": {
+      "name": "Area Defects & Sub-Roads",
+      "Choose": "Choose ",
+      "Sections": "Sections "
+    },
+    "dataresultMd": {
+      "PCI_VALUE": "PCI_VALUE",
+      "PCI_RATE": "PCI_RATE ",
+      "MAINT_AREA": "MAINT_AREA ",
+      "DISTRESS_EN_TYPE": "DISTRESS_EN_TYPE ",
+      "LANE_TYPE": "LANE_TYPE ",
+      "RECOMMENDED_DECISION": "RECOMMENDED_DECISION "
+  
+  
+    },
+    "PMMS": {
+      "name": "Pavement condition calculations ",
+      "mainstreets": "Main Streets",
+      "subsidiarystreets": "Subsidiary streets ",
+      "Mainroadsegments": "Main Road Segments ",
+      "intersectionsofaspecifiedmajorroad": "Intersections Of a Specified Major Road ",
+      "geographicaldata": "Geographical Information Data(GIS)",
+      "SURVEY_NO": "SURVEY NO  ",
+      "street": "Street  ",
+      "specifiedarea": "Specified area  ",
+      "specificneighborhood": "Specific Neighborhood  ",
+      "specificsub-municipality": "Specific Sub-Municipality  ",
+      "pavementcoditioncalculation": "Pavement Codition Index "
+    },
+    "PMMSMD": {
+      "name": "Maintenance Decision ",
+      "mainstreets": "Main Streets",
+      "subsidiarystreets": "Subsidiary Streets ",
+      "Mainroadsegments": "Main Road Segments ",
+      "intersectionsofaspecifiedmajorroad": "Intersections Of a Specified Major Road ",
+      "geographicaldata": "Geographical Data ",
+      "SURVEY_NO": "SURVEY NO  ",
+      "street": "Street  ",
+      "specifiedarea": "Specified Area  ",
+      "specificneighborhood": "Specific Neighborhood  ",
+      "specificsub-municipality": "Specific Sub-Municipality  ",
+      "Maintenancedecisionscalculate ": "Maintenance Decisions Calculate "
+    },
+    "PLanning": {
+      "name": "Planning & budgeting ",
+      "title": "Insert Planning & budgeting ",
+      "Sections": "Sections ",
+      "InterSections": "InterSections ",
+      "ٌRegions": "ٌRegions ",
+      "calculate_plane": "Calculate Plan",
+      "year": " Year  ",
+      "Budget": " Budget  ",
+      "RECORD_ID": "RECORD_ID",
+      "SURVEY_NO": "SURVEY_NO",
+      "MAINT_AREA": "MAINT_AREA",
+      "MD_COST": "Maintenance Decision COST",
+      "REGION_NO": "REGION_NO",
+      "EXPECTED_YEAR": "EXPECTED_YEAR",
+      "ARNAME": "Street Name",
+      "FROM_STREET": "FROM STREET",
+      "TO_STREET": "To STREET",
+      " SECTION_TITLE": " SECTION TITLE",
+      "MAINT_COST": "Maintenance Cost",
+      "MAINT_PRIORITY": "Maintenance Cost",
+      "SECTION_NO": "Section_No"
+    },
+    "Reports": {
+      "name": "Pavement Condition Reports",
+      "NameMd": "Maintenance Decision Reports",
+      "tab1": "Sections Report",
+      "tab2": "Intersections Report ",
+      "tab3": "Regions Reports",
+      "tab4": "Maintenance Decisions For Major Street Sections",
+      "tab5": "Maintenance Decisions For Major Street Intersections",
+      "tab6": "Subsidiary Streets",
+      "Reports": "Reports",
+      "run_report": "Show Report",
+      "SURVEY_NO": "Survey No",
+      "districtID": "districtID"
+    },
+  
+  
+    "Structure":{
+      "network_level":"Network Level ",
+      "chooce_level":" Choose Network Level ",
+      "route":" تعريف الطريق",
+      "section": "تعريف المقطع",
+      "intersection": "التقاطع"
+   }
+  
+  }

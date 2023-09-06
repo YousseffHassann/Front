@@ -1,0 +1,56 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  ngx-chartjs-pie,
+  ngx-chartjs-bar,
+  ngx-chartjs-line,
+  ngx-chartjs-multiple-xaxis,
+  ngx-chartjs-bar-horizontal,
+  ngx-chartjs-radar {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+
+    ::ng-deep chart {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .foo
+  {
+    font-size: large;
+    font-weight: 500;
+    color: rebeccapurple;
+    border-color: darkorchid;
+    border-style: dashed;
+    
+  }
+
+
+  .fooo:hover
+  {
+    background-color: aqua;
+    color: blue;
+    font-size: larger;
+    font-size: 50;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

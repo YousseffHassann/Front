@@ -1,0 +1,49 @@
+
+
+
+<div class="header-container text-center   ">
+    <div class="logo-container ">
+        <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+            <nb-icon class="headerColor" icon="menu-2-outline"></nb-icon>
+        </a>
+
+        <!-- <img src="/assets/images/WEBSITE-11.png" width="60" height="50" />
+        <img  width="60" height="50" class="" src="assets/images/Namaa Logo-01.jpg"/> -->
+
+        <!-- <a class="logo center" href="#" (click)="navigateHome()">{{'app' |translate }} </a> -->
+    
+    </div>
+
+</div>
+<!-- <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
+</nb-select> -->
+<div class="header-container ">
+<h3 class="headerColor ">
+    {{usern}} 
+
+</h3>
+    <span class="form-inline">
+       
+        <!-- <nb-select [(ngModel)]="selectedLanguage" (ngModelChange)="onLanguageChange()">
+            <nb-option *ngFor="let lang of languages" [value]="lang.code">
+                {{ lang.name }}
+            </nb-option>
+        </nb-select> -->
+        <!-- <nb-select [(ngModel)]="selectedLanguage" (ngModelChange)="onLanguageChange()">
+            <nb-option value="ar">عربي</nb-option>
+            <nb-option value="en">en</nb-option>
+        </nb-select> -->
+
+    </span>
+    <nb-actions size="small">
+
+        <!-- <nb-action class="control-item" icon="email-outline"></nb-action>
+        <nb-action class="control-item" icon="bell-outline"></nb-action> -->
+        <nb-action class="user-action" *nbIsGranted="['view', 'user']">
+            <nb-user *ngIf="isAuthenticated" [nbContextMenu]="userMenu" [onlyPicture]="userPictureOnly"
+                [name]="user.firstName" [picture]="user?.nick">
+            </nb-user>
+        </nb-action>
+    </nb-actions>
+</div>

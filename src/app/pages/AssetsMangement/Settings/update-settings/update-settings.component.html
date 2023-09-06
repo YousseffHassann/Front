@@ -1,0 +1,27 @@
+<form ngForm="form">
+    <div class="form-group">
+        <label for="RECORD_ID">RECORD_ID</label>
+        <!-- <input type="text" name="MAINT_DEC_ID" class="form-control"> -->
+        <input type="text" [(ngModel)]="ge.MdSetting.RECORD_ID" name="RECORD_ID" class="form-control">
+
+    </div>
+    <div class="form-group">
+        <label for="MAINT_DEC_ID">MAINT_DEC_ID</label>
+        <input type="text" [(ngModel)]="ge.MdSetting.MAINT_DEC_ID" name="MAINT_DEC_ID" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="STREET_TYPE">STREET_TYPE</label>
+        <input type="text" [(ngModel)]="ge.MdSetting.STREET_TYPE" name="STREET_TYPE" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="LIMIT_RATIO">LIMIT_RATIO</label>
+        <input type="text" [(ngModel)]="ge.MdSetting.LIMIT_RATIO" name="LIMIT_RATIO" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="GMAINT_DEC_ID">GMAINT_DEC_ID</label>
+        <input type="text" [(ngModel)]="ge.MdSetting.LIMIT_RATIO" name="GMAINT_DEC_ID" class="form-control">
+    </div>
+
+
+</form>

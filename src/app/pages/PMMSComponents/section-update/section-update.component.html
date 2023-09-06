@@ -1,0 +1,598 @@
+  
+
+
+<div class="container">
+    <h3 class="t1  d-flex justify-content-center align-items-center mb-5   text-center w-50 m-auto  ">  {{'SectionUpdateComponent.name' |translate}} </h3>
+  
+    <div class="row">
+      <div class="col-md-2 mt-3 align-items-center d-flex"> 
+         <p class="d-flex v align-items-center">{{'SectionUpdateComponent.MainStreet' |translate}}</p>
+      </div>
+  <div class="col-md-3 mt-3 mb-3">
+  
+  
+  
+    
+          <!-- <select (click)="street($event)"  class="form-select form-control foo" >
+            <option class="test v" selected>{{'DistressSurvey.Choose' |translate}}</option>
+            <option  [value]="street.STREET_ID" *ngFor="let street of  streets; let i=even ;" 
+            [style.backgroundColor]="i===true?'#ccc':'' ">
+              {{street.ARNAME}}
+            </option>
+          </select> -->
+  
+
+          <ng-multiselect-dropdown 
+          [placeholder]="'custom placeholder'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+  
+  
+  
+  
+  </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 mt-3 align-items-center d-flex"> 
+           <p class="d-flex v align-items-center"> {{'SectionUpdateComponent.intersections' |translate}}</p>
+        </div>
+  <div class="col-md-3 mt-3 mb-3">
+    <select (click)="section($event)"  class="form-select form-control foo  " >
+        <option class="test" selected>اختيار</option>
+        <option  [value]="section.SECTION_ID" *ngFor="let section of  Sections; let i=even ;" 
+        [style.backgroundColor]="i===true?'#ccc':'' ">
+          {{section.SECTION_FROM_TO}}
+        </option>
+      </select>
+  </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  <div class="container" *ngIf="links && firstTable" >
+    <div class="container">
+  
+        <div class="row">
+    <div class="col-md-12 btn btn-primary-outline pull-right">
+    <div class="container">
+        <div class="row">
+  
+    <!-- <div class="col-md-2 btn btn-primary-outline pull-right">
+        <button (click)="one()" class="testBTN">بيانات عامة</button>
+    </div>
+  
+    <div class="col-md-3 btn btn-primary-outline pull-right">
+        <button (click)="two()" class="testBTN"> العلامات الأرضية والتشجير</button>
+    </div>
+  
+    <div class="col-md-2 btn btn-primary-outline pull-right">
+        <button (click)="three()" class="testBTN"> الأرصفة والجزر</button>
+    </div>
+  
+    <div class="col-md-2">
+      <button (click)="eight()" class="testBTN"> حفريات الخدمات</button>
+      </div> -->
+  
+        </div>
+    </div>
+    </div>
+        </div>
+    </div>
+    
+    <div class="p-2">
+    </div>
+    
+    <div class="container">
+        <div class="row">
+    <div class="col-md-12">
+    <div class=" container">
+        <div class="row ">
+  <!-- 
+          <div class="col-md-2 btn btn-primary-outline pull-right">
+            <button (click)="five()" class="testBTN"> الإنارة واللوحات</button>
+        </div>
+  
+  <div class="col-md-2 ">
+    <button (click)="six()" class="testBTN "> الجسور والأنفاق   </button>
+  </div>
+  <div class="col-md-2">
+  <button (click)="seven()" class="testBTN"> المناهل والمصائد  </button>
+  </div> -->
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="col-md-2">
+  <button (click)="nine()" class="testBTN">  {{'SectionUpdateComponent.laneSamples' |translate}} </button>
+  </div>
+  
+  <div class="col-md-2 ">
+    <button (click)="four()" class="testBTN">  {{'SectionUpdateComponent.using' |translate}}  </button>  
+  </div>
+
+  
+  
+    <!-- <div class="col-md-2">
+        <button (click)="ten()" class="testBTN">   تسليم المساح</button>
+    </div> -->
+        </div>
+    </div>
+    </div>
+        </div>
+    </div>
+    
+    <div class="p-3">
+    </div>
+    
+    <ng2-smart-table class="mt-3" [settings]="settings1" [source]="source1" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+  </div>
+  
+  
+  
+  <div class="container mt-5" *ngIf="laneandsamples">
+    
+  
+  <!--
+    <table class="table mt-5  text-bold text-white">
+    <thead>
+      <tr class="">
+        <th class="" scope="col">نوع المسار</th>
+        <th class="text-center"  scope="col">طول المسار</th>
+        <th class="text-center"  scope="col">عرض المسار </th>
+        <th class=""  scope="col">عدد العينات</th>
+        <th class="text-center"  scope="col">مساحة العينات </th>
+        <th class="text-center"  scope="col">تعديل </th>
+        <th class="text-center"  scope="col">عرض العينات</th>
+  
+      </tr>
+    </thead>
+   
+       <tbody>
+  
+  
+        <tr *ngFor="let section of   let i=even" [style.backgroundColor]="i===true?'#500':'#500' ">
+        <td>{{section.MUNICIPALITY}}</td>
+        <td>{{section.DISTRICT}}</td>
+        <td>{{section.MAIN_ST_TITLE}}</td>
+        <td>{{section.SEC_DIRECTION}}</td>
+        <td>{{section.FROM_STREET}}</td>
+        <td><button (click)="updateSample()"> تعديل</button></td>
+        <td><button (click)="showSamples()"> عرض العينات</button></td>
+   
+      </tr>
+    </tbody>         
+  </table>
+  -->
+  
+  <h2 class="text-info mb-2"><i class="fas fa-thumbtack "></i>    {{'SectionUpdateComponent.laneSamples' |translate}} </h2>
+  
+  <ng2-smart-table class="mt-3 c  mb-5" [settings]="settings2" [source]="source2"  (custom)="onCustomAction($event)" (editConfirm)="onUpdateConfirm($event)"></ng2-smart-table>
+  
+  
+  <div *ngIf="smaplesCheck" class="mt-3">
+    <h2 class="text-info mb-2"> <i class="fas fa-handshake"></i>   {{'SectionUpdateComponent.SAMPLE' |translate}}  ({{LaneType}}) </h2>
+    <ng2-smart-table class="mt-3 host" [settings]="settings3" [source]="source3"  (custom)="onCustomActions3($event)" (editConfirm)="($event)"></ng2-smart-table>
+  
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <div class="mt-5 container">
+  
+  <h3 class=" text-center m-auto w-50 text-success borderFormSmalll mb-1" *ngIf="messageSuccess">Data Saved Successfully</h3>
+    <div class="mt-4 m-auto  bh mt-5 borderForm" *ngIf="update1">
+  
+  
+      <!--form-->
+      <form class="mt-5 m-auto  " *ngIf="update1" (ngSubmit)="UpdateRegisteration(registerationFormSample)" [formGroup]="registerationFormSample"  >
+      
+      
+      
+      <div class="mb-2">
+      
+      
+        <label class="hov"  for=""> Survey Number</label>
+        <input  readonly type="text" value="{{sample_no}}">
+      
+      
+      <label formControlName="SAMPLE_LENGTH" class="hov" for="">Length</label>
+      <input formControlName="SAMPLE_LENGTH"  type="text" value="{{sample_length}}">
+      
+      <div *ngIf="registerationFormSample.get('SAMPLE_LENGTH')?.errors && registerationFormSample.get('SAMPLE_LENGTH')?.touched "class="alert  mydecorate">
+        <p class="alert alert-info text-danger text-center" *ngIf="registerationFormSample.get('SAMPLE_LENGTH')?.errors?.['required']">required</p>
+        <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('SAMPLE_LENGTH')?.errors?.['pattern']">من فضلك ادخل رقم صحيح </p>
+      
+      </div>
+      
+      <label formControlName="SAMPLE_WIDTH"for="" class="hov">Width</label>
+      <input formControlName="SAMPLE_WIDTH" type="text"  value="{{sample_width}}">
+      <div *ngIf="registerationFormSample.get('SAMPLE_WIDTH')?.errors && registerationFormSample.get('SAMPLE_WIDTH')?.touched "class="alert  mydecorate">
+        <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('SAMPLE_WIDTH')?.errors?.['required']">required</p>
+        <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('SAMPLE_WIDTH')?.errors?.['pattern']">من فضلك ادخل رقم صحيح </p>
+      
+      </div>
+      
+      <label class="hov" for=""> Area (m^2)</label>
+      <input readonly type="text" value="{{sample_length*sample_width}}">
+      </div>
+      
+      
+      <div class="mb-2">
+      
+      <input formControlName="U_TURN_TRUE" type="checkbox" value="">
+      <label formControlName="U_TURN_TRUE" for="" class="p-2 hov">    U-Turn Found?	</label>
+      
+      <label formControlName="U_TURN_LENGTH" for="" class="p-2 hov">Length</label>
+      <input formControlName="U_TURN_LENGTH" type="text" value="">
+      <div *ngIf="registerationFormSample.get('U_TURN_LENGTH')?.errors && registerationFormSample.get('U_TURN_LENGTH')?.touched "class="alert  mydecorate">
+      <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('U_TURN_LENGTH')?.errors?.['pattern']">من فضلك ادخل رقم صحيح </p>
+      
+      </div>
+      
+      <label formControlName="U_TURN_WIDTH" for="" class="p-2 hov">Width</label>
+      <input formControlName="U_TURN_WIDTH" type="text" value="">
+      <div *ngIf="registerationFormSample.get('U_TURN_WIDTH')?.errors && registerationFormSample.get('U_TURN_WIDTH')?.touched "class="alert  mydecorate">
+      <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('U_TURN_WIDTH')?.errors?.['pattern']">من فضلك ادخل رقم صحيح </p>
+      
+      </div>
+      
+      </div>
+      
+      <div class="mb-2">
+      
+      <input formControlName="SPEED_BUMPS_TRUE" type="checkbox" value="true">
+      <label  formControlName="SPEED_BUMPS_TRUE" for="" class="p-2 hov">   There are industrial pitfalls
+      </label>
+      
+      
+      <label formControlName="SPEED_BUMPS_LEGAL" for="" class="p-2 hov"> Ligall</label>
+      <input name="checkbox_1" formControlName="SPEED_BUMPS_LEGAL" (click)="change2()"  type="checkbox" value="" id="SPEED_BUMPS_LEGALId" >
+      
+      
+      <label formControlName="SPEED_BUMPS_ILLEGAL" for="" class="p-2 hov">Illegal </label>
+      <input class="hov" formControlName="SPEED_BUMPS_ILLEGAL" type="checkbox" value="">
+      
+      
+      
+      <label  formControlName="PARKING_METHOD" for="" class="p-2 hov">Count</label>
+      <input   formControlName="PARKING_METHOD" type="text" value="">
+      <div *ngIf="registerationFormSample.get('PARKING_METHOD')?.errors && registerationFormSample.get('PARKING_METHOD')?.touched "class="alert  mydecorate">
+      <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('PARKING_METHOD')?.errors?.['pattern']">Enter Valid Number </p>
+      
+      </div>
+      
+      
+      
+      </div>
+      <div class="mb-2">
+      
+      <input formControlName="CONCRETE_BLOCKS" type="checkbox" value="" class="hov">
+      <label formControlName="CONCRETE_BLOCKS" for="" class="p-2 hov">There are concrete barriers</label>
+      
+      <label formControlName="CONCRETE_BLOCKS_COUNT" for="" class="p-2 hov">Count</label>
+      <input formControlName="CONCRETE_BLOCKS_COUNT" type="text" value="">
+      <div *ngIf="registerationFormSample.get('CONCRETE_BLOCKS_COUNT')?.errors && registerationFormSample.get('CONCRETE_BLOCKS_COUNT')?.touched "class="alert  mydecorate">
+      <p class="alert alert-info text-danger text-center"  *ngIf="registerationFormSample.get('CONCRETE_BLOCKS_COUNT')?.errors?.['pattern']">Enter Valid Number </p>
+      
+      </div>
+      
+      </div>
+      
+      <div class="mb-2">
+      
+      <input formControlName="SIDEWALK_PAINT_TRUE" type="checkbox" value="">
+      <label formControlName="SIDEWALK_PAINT_TRUE" for="" class="p-2 hov"> Sidewalks are painted</label>
+      
+      <label formControlName="SIDEWALK_PAINT_GOOD" for="" class="p-2 hov"> Paint the sidewalks in good condition</label>
+      <input class="hov" formControlName="SIDEWALK_PAINT_GOOD" type="checkbox" value="">
+      
+      
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="mb-2">
+      
+      <input formControlName="HANDICAPPED_SLOPE_TRUE" type="checkbox" value="">
+      <label formControlName="HANDICAPPED_SLOPE_TRUE" for="" class="p-2 hov"> There are ramps for the disabled</label>
+      
+      <label formControlName="HANDICAPPED_SLOPE_GOOD" for="" class="p-2 hov"> Ramps for the disabled are in good condition</label>
+      <input class="hov" formControlName="HANDICAPPED_SLOPE_GOOD" type="checkbox" value="">
+      
+      
+      </div>
+      
+      
+      <div class=" d-flex justify-content-center align-items-center">
+      <button [disabled]="registerationFormSample.invalid"   class="btn btn-info mb-5 mt-2" type="submit"> Save Information</button>
+      </div>
+      
+      </form>
+      
+      
+      </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!--المساح-->
+  
+  
+  
+  
+  <!-- (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm" -->
+  
+  <form  (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm" class="container mb-5 mt-5 borderForm" *ngIf="massah">
+    <div class="container ">
+        <h2 class="text-info">تسليم المساح</h2>
+      <div class="row ">
+        <div class="col-md-3  m-auto">
+            <label class="myfontForm"  for=''>المساح</label>
+            <div>
+  
+  
+              <select formControlName="SURVEYOR_ID" (click)="GetSurvevorId($event)" class="form-select form-control">
+                <option class="test" selected>اختيار</option>
+                <option  [value]="survevor.SURVEYOR_NO" *ngFor="let survevor of  AllSurvevors; let i=even ;" 
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                  {{survevor.USERNAME}}
+                </option>
+              </select>
+  
+  
+              <div *ngIf="registerationForm.get('SURVEYOR_ID')?.errors && registerationForm.get('SURVEYOR_ID')?.touched "class="alert  mydecorate">
+                <p class="alert alert-info text-danger text-center"*ngIf="registerationForm.get('SURVEYOR_ID')?.errors?.['required']">من فضلك ادخل قيمة </p>
+             </div>
+  
+      </div>
+         
+  
+          <br>
+  <br>
+  
+           <label class="myfontForm"  class="" for=' '>  Date Of Recieving</label>
+           <input   id="" formControlName="ISSUE_DATE" class="my-2 form-control bg-info " type="date"  >
+  
+           <div *ngIf="registerationForm.get('ISSUE_DATE')?.errors && registerationForm.get('ISSUE_DATE')?.touched "class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"  *ngIf="registerationForm.get('ISSUE_DATE')?.errors?.['required']">Enter Date</p>
+            <p class="alert alert-info text-danger text-center"  *ngIf="registerationForm.get('ISSUE_DATE')?.errors?.['pattern']">Date like 30/5/2020 </p>
+           </div>
+  
+  
+           <label class="myfontForm"  class="" for=' '> تاريخ التسليم</label>
+           <input   id="" formControlName="RECEIVE_DATE" class="my-2 form-control bg-info  " type="date"  >
+  
+           <div *ngIf="registerationForm.get('RECEIVE_DATE')?.errors && registerationForm.get('RECEIVE_DATE')?.touched "class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"  *ngIf="registerationForm.get('RECEIVE_DATE')?.errors?.['required']">من فضلك ادخل التاريخ </p>
+            <p class="alert alert-info text-danger text-center"  *ngIf="registerationForm.get('RECEIVE_DATE')?.errors?.['pattern']">Date like 30/5/2020 </p>
+           </div>
+  
+  
+           <!-- <label class="myfontForm"  class="" for=' '> رقم المسحة</label>
+           <input value="3" readonly  id="" formControlName="SURVEY_NO" class="my-2 form-control  " type="text">
+           <div *ngIf="registerationForm.get('SURVEY_NO')?.errors && registerationForm.get('SURVEY_NO')?.touched "class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"  *ngIf="registerationForm.get('SURVEY_NO')?.errors?.['required']"> من فضلك ادخل قيمة  </p>
+            <p class="alert alert-info text-danger text-center"  *ngIf="registerationForm.get('SURVEY_NO')?.errors?.['pattern']">من فضلك ادخل رقم صحيح </p>
+           </div> -->
+  
+  
+   
+  
+      <label class="myfontForm"  > Notes</label>
+      <textarea   id="" formControlName="NOTES" class="my-2 form-control  " type="text"  > </textarea>
+      <div *ngIf="registerationForm.get('NOTES')?.errors && registerationForm.get('NOTES')?.touched "class="alert  mydecorate">
+        <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('NOTES')?.errors?.['required']">من فضلك ادخل قيمة</p>
+        <p class="alert alert-info text-danger"  *ngIf="registerationForm.get('NOTES')?.errors?.['minlength']" >اقل قيمة اربعة احرف</p>
+        <p class="alert alert-info text-danger"  *ngIf="registerationForm.get('NOTES')?.errors?.['maxlength']" >اكبر قيمة عشرون حرفا</p>
+      </div>
+        </div>
+  
+      </div>
+    </div>
+    <br>
+    <div class="  d-flex justify-content-center align-items-center">
+        <button    class="btn btn-info mt-3  " type="submit">  {{'SectionUpdateComponent.add' |translate}}    </button>   
+        <!-- [disabled]="registerationForm.invalid" -->
+    </div>
+    </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <!-- الاستخدامات المجاوره -->
+  
+  
+  
+    <h3 class=" text-center m-auto w-50 text-success borderFormSmalll mb-1" *ngIf="neighbour_usingMessage"> {{'SectionUpdateComponent.mess' |translate}}   </h3>
+  
+  
+  <form *ngIf="neighbour_using" class="mt-5  " (ngSubmit)="SubmitRegisteration4(registerationForm4)" [formGroup]="registerationForm4">
+  
+    <div class="container">
+      <h2 class=" mt-2 mb-3 text-info"> <i class="fas fa-thumbtack "></i>  {{'SectionUpdateComponent.using' |translate}}  </h2>
+      <div class="row">
+    
+        <div class="first col-md-12">
+    
+          <input  formControlName="HOUSES" type="checkbox" value="" >
+          <label class="col-md-3 hov" for="">HOUSING</label>
+    
+          <input formControlName="COMMERIAL" type="checkbox" value="" >
+          <label class="col-md-3 hov"  for="">COMMERCIAL</label>
+    
+          <input formControlName="PUBLICS" type="checkbox" value="" >
+          <label class="col-md-3 hov"  for="">Utilities</label>
+    
+        </div>
+      </div>
+    
+    
+      <div class="row">
+        
+        <div class="first col-md-12">
+    
+    
+          <input formControlName="GARDENS" type="checkbox" value="" >
+          <label class="col-md-3 hov" for="">Gardens && Barks</label>
+    
+          <input formControlName="REST_HOUSE"  type="checkbox" value="" >
+          <label class="col-md-3 hov"  for="">Breaks</label>
+    
+          <input formControlName="INDISTERIAL" type="checkbox" value="" >
+          <label class="col-md-3 hov"  for=""> Maintenance Areas</label>
+    
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="  d-flex justify-content-center align-items-center">
+      <button    class="btn btn-info mt-3  " type="submit">  {{'SectionUpdateComponent.save' |translate}}   </button>   
+      <!-- [disabled]="registerationForm.invalid" -->
+  </div>
+  
+  </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- حفريات الخدمات   -->
+  
+  
+  
+  <!-- <form >
+  
+    <div class="container">
+      <div class="row">
+        <div class="MyDive col-md-12">
+  
+  <input class="" type="checkbox">
+  <label class="col-md-2" for="">خدمات اتصالات</label>
+  
+  <label for="">الطول</label>
+  <input class="col-md-1 ml-5" type="text">
+  
+  
+  <input class="" type="checkbox">
+  <label class="col-md-2" for=""> خدمات كهرباء</label>
+  
+  <label for="">الطول</label>
+  <input class="col-md-1" type="text">
+  
+  
+  
+  
+        </div>
+      </div>
+  
+  <br>
+  
+  
+  <div class="row">
+  <div class="MyDive col-md-12">
+  
+  <input class="" type="checkbox">
+  <label class="col-md-2" for=""> خدمات مياه</label>
+  
+  <label for="">الطول</label>
+  <input class="col-md-1 ml-5" type="text">
+  
+  
+  <input class="" type="checkbox">
+  <label class="col-md-2" for="">خدمات صرف صحي</label>
+  
+  <label for="">الطول</label>
+  <input class="col-md-1" type="text">
+  
+        </div>
+      </div>  
+  
+  
+    </div>
+  
+  
+  
+  </form> -->
+  
+  
+  
+  
+  
+  
+  
+  

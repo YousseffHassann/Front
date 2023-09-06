@@ -1,0 +1,48 @@
+// .pico
+// {
+//     background-image: url("../pages/imgs/OIP.jpg");
+//     background-size: cover;
+// }
+
+// .m
+// {
+//     background-image: url("../../assets/images/camera1.jpg");
+//     background-size: cover;
+// }
+
+.borderFormSmalll
+{
+ // background-image: url("imgs/00000.jpg");
+ // background-size: cover;
+  border: 10px solid #277DA1;
+  border-radius: 50px;
+  padding: 1px;
+  border-style: groove;
+  background-color: black;
+}
+
+
+
+:host ::deep ng2-smart-table thead > tr > th  { 
+  // background-color:aquamarine;  
+  background-color:#277DA1;
+ // color: crimson;
+ }
+
+ .v
+ {
+   font-size: larger;
+   font-weight: bold;
+ }
+
+ :host ::deep ng2-smart-table-title > a { color: white; }
+
+
+
+ .HideScrool {
+   //width: 200px;
+   height: 300px;
+   //overflow-x: hidden;
+   overflow-y: hidden;
+   white-space: nowrap;
+ }

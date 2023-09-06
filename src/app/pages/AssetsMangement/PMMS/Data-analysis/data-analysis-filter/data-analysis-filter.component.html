@@ -1,0 +1,116 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="inputEmail" class="label"> الشارع الرئيسي  </label>
+
+      <select (ngModelChange)="onChange($event)"
+        required
+        name="STREET_ID"
+        [(ngModel)]="STREET_ID"
+        ngModel
+        class="form-control grid-width-100"
+        data-style="btn-success"
+      >
+        <option
+          *ngFor="let streetsIRI of StreetsIRI"
+          [value]="streetsIRI.STREET_ID"
+        >
+          {{ streetsIRI.ARNAME }} ( {{ streetsIRI.MAIN_NO }})
+        </option>
+      </select>
+
+      <label for="inputEmail" class="label"> رقم المسحة   </label>
+<select (ngModelChange)="onChangeSURVEY_NO($event)"
+required
+name="SURVEY_NO"
+[(ngModel)]="SURVEY_NO"
+ngModel
+class="form-control grid-width-100"
+data-style="btn-success">
+  <option value="1">1</option>
+  <option value="2">2</option>
+
+  <option value="3">3</option>
+
+  <option value="4">4</option>
+
+  <option value="5">5</option>
+  <option value="6">6</option>
+
+</select>
+
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>    
+      </nb-card-header>
+    
+      <nb-card-body> 
+          
+         
+         
+          
+        <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+    
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>    
+      </nb-card-header>
+    
+      <nb-card-body> 
+          
+         
+         
+          
+        <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+    
+      </nb-card-body>
+    </nb-card>
+  </div>
+ 
+  
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+  <nb-card>
+    <nb-card-header>    البيانات من النظام
+
+    </nb-card-header>
+  
+    <nb-card-body> 
+        
+       
+        
+      <ng2-smart-table [settings]="settings2" [source]="source2"> </ng2-smart-table>
+      dasdasd
+{{selectedTeam}}
+    </nb-card-body>
+  </nb-card>
+</div>
+<div class="col-lg-6">
+  <nb-card>
+    <nb-card-header> إستوائية رصف الطريق مقاطع   IRI
+    </nb-card-header>
+  
+    <nb-card-body> 
+        
+       
+        
+      <ng2-smart-table [settings]="settings3" [source]="source3"> </ng2-smart-table>
+      <!-- <div *ngFor="let getStreetssecIRI of GetStreetssecIRI">
+        <h3>{{getStreetssecIRI.json}}</h3>
+     </div> -->
+    </nb-card-body>
+  </nb-card>
+</div>
+</div>
+

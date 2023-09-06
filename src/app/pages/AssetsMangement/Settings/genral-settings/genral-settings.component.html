@@ -1,0 +1,25 @@
+
+
+
+<nb-card>
+    <nb-card-header class="text-center">
+        <!-- <h1>Preparing the circulation of maintenance decisions</h1> -->
+
+        <h1>{{'generalsettings.name' |translate}}</h1>
+
+
+    </nb-card-header>
+
+
+</nb-card>
+
+
+<ngx-alerts></ngx-alerts>
+
+<div style="width: 100%;">
+    <div class="row">
+        <ng2-smart-table class="table-responsive" [settings]="settings1" (editConfirm)="updateRecord($event)"
+            [source]="source1">
+        </ng2-smart-table>
+    </div>
+</div>

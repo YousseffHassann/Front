@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1 class="t1">{{'PLanning.name' |translate}}</h1>
+
+    </div>
+</div>
+<nb-card>
+    <nb-card-header>{{'PLanning.name' |translate}}
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="insert" (ngSubmit)="insertbudget()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <label for="inputFirstName" class="label">{{'PLanning.year' |translate}}
+                        </label>
+
+
+
+
+                        <input  formControlName="YEAR_OF_BUDGET" type="year" nbInput fullWidth id="YEAR_OF_BUDGET"
+                        placeholder="Year">
+                        <div *ngIf="insert.get('YEAR_OF_BUDGET')?.errors && insert.get('YEAR_OF_BUDGET')?.touched"
+                        class="alert  mydecorate">
+                        <p class="alert alert-info text-danger text-center"
+                          *ngIf="insert.get('YEAR_OF_BUDGET')?.errors?.['required']"> Year of Budget is required</p>
+                        <p class="alert alert-info text-danger text-center"
+                          *ngIf="insert.get('YEAR_OF_BUDGET')?.errors?.['pattern']">Enter a vaild year</p>
+                      </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputLastName" class="label">{{'PLanning.Budget' |translate}}
+                    </label>
+                    <input (keypress)="onKeypressEvent()" formControlName="BUDGET" type="text" nbInput fullWidth
+                        id="BUDGET" placeholder="Budget">
+                </div>
+
+                <div *ngIf="insert.get('BUDGET')?.errors && insert.get('BUDGET')?.touched"
+                class="alert  mydecorate">
+                <p class="alert alert-info text-danger text-center"
+                  *ngIf="insert.get('BUDGET')?.errors?.['required']">  Budget is required</p>
+                <p class="alert alert-info text-danger text-center"
+                  *ngIf="insert.get('BUDGET')?.errors?.['maxlength']">max Budget is 15 digits</p>
+
+                  <p class="alert alert-info text-danger text-center"
+                  *ngIf="insert.get('BUDGET')?.errors?.['pattern']">Enter A Valid Number</p>
+
+
+                
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <!-- <label for="SECTION_RATIO" class="label">SECTIONS %</label> -->
+                        <input hidden formControlName="SECTION_RATIO" type="text" nbInput fullWidth id="YEAR_OF_BUDGET"
+                            placeholder="SECTIONS">
+                    </div>
+                </div>
+                <div class="col-sm-4 ">
+                    <div class="form-group ">
+                        <!-- <label for="INTERSECTION_RATIO" class="label">INTERSECTIONS %</label> -->
+                        <input hidden formControlName="INTERSECTION_RATIO" type="text" nbInput fullWidth id="BUDGET"
+                            placeholder="INTERSECTIONS">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <!-- <label for="REGION_RATIO" class="label">Regions %</label> -->
+                        <input  hidden formControlName="REGION_RATIO" type="text" nbInput fullWidth id="BUDGET"
+                            placeholder="Regions">
+                    </div>
+                </div>
+            </div>
+<div class=" w-50 m-auto">
+    <button class="w-100 m-auto text-center " [disabled]="insert.invalid"  nbButton fullWidth status="primary" type="submit">{{'PLanning.calculate_plane'|translate}}</button>
+
+</div>
+        </form>
+
+        <!-- <button (click)="clickEvent()" nbButton>
+getdata</button> -->
+    </nb-card-body>
+</nb-card>
+
+
+<nb-card-body>
+    <nb-tabset>
+        <nb-tab tabTitle=" {{'PLanning.Sections'|translate}}">
+            <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+
+
+        </nb-tab>
+        <!--  <nb-tab tabTitle="{{'PLanning.InterSections'|translate}} ">
+            <ng2-smart-table [settings]="settings2" [source]="source2"> </ng2-smart-table>
+            <span status="danger">
+              
+            </span>
+
+        </nb-tab>
+        <nb-tab tabTitle="{{'PLanning.ٌRegions'|translate}} ">
+            <ng2-smart-table [settings]="settings3" [source]="source3"> </ng2-smart-table>
+        </nb-tab> -->
+    </nb-tabset>
+</nb-card-body>
+
+<nb-card>
+    <nb-card-header>
+    </nb-card-header>
+
+    <nb-card-body>
+
+
+
+
+
+
+    </nb-card-body>
+</nb-card>
+<ngx-alerts></ngx-alerts>
+
+
+<button *ngIf="butrep" (click)="afterclick()" nbButton class="w-100 " wi  fullWidth status="primary" type="submit">Show Report</button>
+
+
+
+<div *ngIf="report " class="row">
+    <iframe [src]="safeSrc" width="1500" height="1000" frameborder="0" webkitallowfullscreen
+      mozallowfullscreen allowfullscreen></iframe>
+
+    <button class="btn btn-success btn-sm mb-5 mt-5  button1"
+      (click)="downloadReport()">Export to Excel</button>
+
+  </div>

@@ -1,0 +1,45 @@
+
+
+
+<!-- <ngx-title></ngx-title> -->
+
+<div class="">
+  <h3 class="t1 d-flex justify-content-center align-items-center mb-5  text-center   ">PCI MAP</h3>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card status="defult">
+      <nb-card-body>
+        <nb-tabset>
+          <nb-tab tabTitle="{{'PMMS.mainstreets' |translate}}">
+            <ngx-calculate-main-street-sections-pci>
+            </ngx-calculate-main-street-sections-pci>
+          </nb-tab>
+          <!-- <nb-tab tabTitle="{{'PMMS.subsidiarystreets' |translate}}">
+            <ngx-intersectionstreet></ngx-intersectionstreet></nb-tab> -->
+        </nb-tabset>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header class="text-center">{{'PMMS.geographicaldata' |translate}}</nb-card-header>
+      <nb-card-body>
+        <app-esri-mapPMMS [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel"
+          (mapLoadedEvent)="mapLoadedEvent($event)">
+
+        </app-esri-mapPMMS></nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>{{'PMMS.name' |translate}}</nb-card-header>
+      <nb-card-body>
+        <ngx-dataresult></ngx-dataresult>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

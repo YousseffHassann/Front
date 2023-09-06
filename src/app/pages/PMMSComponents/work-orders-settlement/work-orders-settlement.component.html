@@ -1,0 +1,68 @@
+<h1>Work Order Settlement</h1>
+  <nb-card status="">
+    <nb-card-header>Work Order Settlement </nb-card-header>
+    <nb-card-body>
+      <nb-card status="">
+        <nb-card-body>
+          <div class="col-md-12 mt-5 mb-5">
+            <div class="">
+
+              <label>Contractors</label>
+              <ng-multiselect-dropdown [placeholder]="'Contractors'" [settings]="contractorsdropdownSettings"
+                [data]="contractorsdropdownList" [(ngModel)]="contractorsselectedItems" (onSelect)="onContractorSelection($event)"
+                (onDeSelect)="onContractorDeSelection()"></ng-multiselect-dropdown>
+
+            </div>
+          </div>
+          <div class="col-md-12 mt-5 mb-5">
+            <div class="">
+
+                <label>Contracts</label>
+                <ng-multiselect-dropdown [placeholder]="'Contracts'" [settings]="contractsdropdownSettings"
+                  [data]="contractsdropdownList" [(ngModel)]="contractsselectedItems"
+                  (onSelect)="onContractSelection($event)"  (onDeSelect)="onContractDeSelection()"></ng-multiselect-dropdown>
+              </div>
+          </div>
+          <div class="col-md-12 mt-5 mb-5">
+            <div class="">
+
+                <label>Work Orders</label>
+                <ng-multiselect-dropdown [placeholder]="'Work Orders'" [settings]="wodropdownSettings"
+                  [data]="wodropdownList" [(ngModel)]="woselectedItems"
+                  (onSelect)="onWOSelection($event)"  (onDeSelect)="onContractDeSelection()"></ng-multiselect-dropdown>
+              </div>
+          </div>
+      
+   
+    </nb-card-body>
+
+</nb-card> 
+<div class="row">
+  <div class="col-12">
+    <nb-card size="large">
+      <nb-tabset fullWidth>
+        <nb-tab tabTitle="Work orders">
+          <nb-card>
+            <nb-card-body>
+              <ng2-smart-table [settings]="WOsettings" [source]="WOsource" (edit)="openForm($event)">
+              </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+</div>
+
+</nb-card-body>
+
+</nb-card> 
+
+
+
+<!-- <div class=" d-flex justify-content-center align-items-center mt-5">
+  <ng2-smart-table [settings]="WOsettings" [source]="WOsource" (edit)="openForm($event)">
+  </ng2-smart-table>
+</div>
+ -->
+

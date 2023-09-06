@@ -1,0 +1,372 @@
+<div class="borderForm" *ngIf="checkAdd">
+
+
+
+    <!-- <form #formDirective="ngForm" (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm">
+
+        <div class="container ">
+            <div class="row">
+
+
+
+                <div class="col-md-6">
+
+                    <label class="myfontForm" for=''>Maintenance Decision</label>
+                    <div class="mt-2">
+                        <ng-multiselect-dropdown formControlName="MaintenanceDecision"
+                            [placeholder]="recommendedDecisionPlaceHolder" [settings]="mddropdownSettings"
+                            [data]="MDList" [(ngModel)]="mdselectedItems" (onSelect)="onMDSelection($event)">
+                        </ng-multiselect-dropdown>
+                        <div *ngIf="registerationForm.get('MaintenanceDecision')?.errors && registerationForm.get('MaintenanceDecision')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MaintenanceDecision')?.errors?.['required']">Please enter
+                                a value</p>
+                        </div>
+                    </div>
+
+
+                    <label class="myfontForm" for=' '>Main No</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MainNo" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('MainNo')?.errors && registerationForm.get('MainNo')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MainNo')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+                    <label class="myfontForm" for=' '>Lane Type</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="LaneType" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('LaneType')?.errors && registerationForm.get('LaneType')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('LaneType')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <label class="myfontForm" for=' '>MD Cost</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MDCost" class=" form-control" readonly >
+                        <div *ngIf="registerationForm.get('MDCost')?.errors && registerationForm.get('MDCost')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MDCost')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+
+                    <label class="myfontForm" for=' '>Maintenance width</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="Maintenancewidth" class=" form-control" type="number">
+                        <div *ngIf="registerationForm.get('Maintenancewidth')?.errors && registerationForm.get('Maintenancewidth')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('Maintenancewidth')?.errors?.['required']"> Please enter a
+                                value</p>
+                        </div>
+                    </div>
+
+
+
+                    <label class="myfontForm" for=' '>Unit Cost</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="UnitPrice" class="form-control" type="number" readonly>
+                        <div *ngIf="registerationForm.get('UnitPrice')?.errors && registerationForm.get('UnitPrice')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('UnitPrice')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <label class="myfontForm" for=' '>Section No</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="SectionNo" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('SectionNo')?.errors && registerationForm.get('SectionNo')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('SectionNo')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <label class="myfontForm" for=' '>Sample No</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="SampleNo" class="form-control" readonly>
+                        <div *ngIf="registerationForm.get('SampleNo')?.errors && registerationForm.get('SampleNo')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('SampleNo')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <label class="myfontForm" for=' '>MD Area</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MDArea" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('MDArea')?.errors && registerationForm.get('MDArea')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MDArea')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+                    <label class="myfontForm" for=' '>Maintenance length</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MaintenanceLength" class=" form-control" type="number">
+                        <div *ngIf="registerationForm.get('MaintenanceLength')?.errors && registerationForm.get('MaintenanceLength')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MaintenanceLength')?.errors?.['required']"> Please enter a
+                                value</p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <label class="myfontForm" for=' '>MD Level</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MDLevel" class=" form-control" type="number" readonly>
+                        <div *ngIf="registerationForm.get('MDLevel')?.errors && registerationForm.get('MDLevel')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MDLevel')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="  d-flex justify-content-center align-items-center">
+            <button [disabled]="registerationForm.invalid" class="btn btn-info mt-3 " type="submit"> Add settlement
+            </button>
+            <!-- <button class="btn btn-danger mt-3 ml-5" (click)="Close(formDirective)"> Exit
+            </button> 
+        </div>
+
+
+
+
+    </form>
+
+ -->
+
+
+
+    <form #formDirective="ngForm" (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm">
+
+        <div class="container ">
+            <div class="row">
+
+
+
+                <div class="col-md-6">
+                    <label class="myfontForm" for=' '>Main No</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MainNo" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('MainNo')?.errors && registerationForm.get('MainNo')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MainNo')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+                   
+                    <label class="myfontForm" for=' '>Section No</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="SectionNo" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('SectionNo')?.errors && registerationForm.get('SectionNo')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('SectionNo')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <label class="myfontForm" for=' '>Lane Type</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="LaneType" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('LaneType')?.errors && registerationForm.get('LaneType')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('LaneType')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <label class="myfontForm" for=' '>Sample No</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="SampleNo" class="form-control" readonly>
+                        <div *ngIf="registerationForm.get('SampleNo')?.errors && registerationForm.get('SampleNo')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('SampleNo')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+
+                    
+                    <label class="myfontForm" for=''>Maintenance Decision</label>
+                    <div class="mt-2">
+                        <input placeholder="{{recommendedDecisionPlaceHolder}}"  class="form-control" readonly>                 
+                    </div>
+
+                    <label class="myfontForm" for=''>MD Cost</label>
+                    <div class="mt-2">
+                        <input placeholder="{{mDCost}}"  class="form-control" readonly>                 
+                    </div>
+
+                    <label class="myfontForm" hidden for=' '>MD Level</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MDLevel" class=" form-control" type="number" readonly hidden>
+                        <div *ngIf="registerationForm.get('MDLevel')?.errors && registerationForm.get('MDLevel')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MDLevel')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+
+                    
+
+
+                    <label class="myfontForm" for=' '>MD Area</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MDArea" class=" form-control" readonly>
+                        <div *ngIf="registerationForm.get('MDArea')?.errors && registerationForm.get('MDArea')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MDArea')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label class="myfontForm" for=''>Maintenance Decision</label>
+                    <div class="mt-2">
+                        <ng-multiselect-dropdown formControlName="MaintenanceDecision"
+                            [placeholder]="recommendedDecisionPlaceHolder" [settings]="mddropdownSettings"
+                            [data]="MDList" [(ngModel)]="mdselectedItems" (onSelect)="onMDSelection($event)">
+                        </ng-multiselect-dropdown>
+                        <div *ngIf="registerationForm.get('MaintenanceDecision')?.errors && registerationForm.get('MaintenanceDecision')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MaintenanceDecision')?.errors?.['required']">Please enter
+                                a value</p>
+                        </div>
+                    </div>
+
+
+          
+                    <label class="myfontForm" for=' '>Maintenance length</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MaintenanceLength" class=" form-control" type="number">
+                        <div *ngIf="registerationForm.get('MaintenanceLength')?.errors && registerationForm.get('MaintenanceLength')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MaintenanceLength')?.errors?.['required']"> Please enter a
+                                value</p>
+                        </div>
+                    </div>
+                  
+
+                    
+                    <label class="myfontForm" for=' '>Maintenance width</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="Maintenancewidth" class=" form-control" type="number">
+                        <div *ngIf="registerationForm.get('Maintenancewidth')?.errors && registerationForm.get('Maintenancewidth')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('Maintenancewidth')?.errors?.['required']"> Please enter a
+                                value</p>
+                        </div>
+                    </div>
+
+
+
+                    <label class="myfontForm" for=' '>MD Cost</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="MDCost" class=" form-control" readonly >
+                        <div *ngIf="registerationForm.get('MDCost')?.errors && registerationForm.get('MDCost')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('MDCost')?.errors?.['required']"> Please enter a value</p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <label class="myfontForm" for=' '>Unit Cost</label>
+                    <div class="mt-2">
+                        <input id="" formControlName="UnitPrice" class="form-control" type="number" readonly>
+                        <div *ngIf="registerationForm.get('UnitPrice')?.errors && registerationForm.get('UnitPrice')?.touched"
+                            class="alert  mydecorate">
+                            <p class="alert alert-info text-danger text-center"
+                                *ngIf="registerationForm.get('UnitPrice')?.errors?.['required']"> Please enter a value
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="  d-flex justify-content-center align-items-center">
+            <button [disabled]="registerationForm.invalid" class="btn btn-info mt-3 " type="submit"> Add settlement
+            </button>
+            <!-- <button class="btn btn-danger mt-3 ml-5" (click)="Close(formDirective)"> Exit
+            </button> -->
+        </div>
+
+
+
+
+    </form>
+
+</div>

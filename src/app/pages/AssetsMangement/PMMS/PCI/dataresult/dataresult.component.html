@@ -1,0 +1,36 @@
+<div *ngIf="loading">
+  <nb-card [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="danger">
+    <nb-card-body>
+      <div *ngIf="!loading" class="row">
+
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+
+<div *ngIf="!loading">
+  <div *ngIf="valueaction == '1'; then actiontable1"></div>
+  <div *ngIf="valueaction == '2'; then actiontable2"></div>
+  <div *ngIf="valueaction == '3'; then actiontable3"></div>
+  <div *ngIf="valueaction == '4'; then actiontable4"></div>
+  <div *ngIf="valueaction == '5'; then actiontable5"></div>
+
+  <ng-template #actiontable1>
+    <ng2-smart-table  [settings]="settings1" [source]="source1"> </ng2-smart-table>
+  </ng-template>
+  <ng-template #actiontable2>
+    <ng2-smart-table class="no-hover" [settings]="settings2" [source]="source2"> </ng2-smart-table>
+  </ng-template>
+  <ng-template #actiontable3>
+    <ng2-smart-table [settings]="settings3" [source]="source3"> </ng2-smart-table>
+  </ng-template>
+  <ng-template #actiontable4>
+    <ng2-smart-table class="no-hover" [settings]="settings4" [source]="source4"> </ng2-smart-table>
+  </ng-template>
+
+  <ng-template #actiontable5>
+    <ng2-smart-table   [settings]="settings5" [source]="source5"> </ng2-smart-table>
+  </ng-template>
+
+</div>

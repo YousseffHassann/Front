@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'english';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap'),
+
+}
+    @import '../@theme/styles/themes';@include nb-install-component() {
+
+:host {::ng-deep router-outlet+* {
+    display: block;
+    animation: fade 1s;
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
+  .w1 {
+    background-image: url('/assets/images/WEBSITE-23.png.png');
+
+    /* Full-screen */
+    height: 100%;
+    /* Center the background image */
+    background-position: center;
+    /* Scale and zoom in the image */
+    background-size: cover;
+    /* Add position: relative to enable absolutely positioned elements inside the image (place text) */
+    position: relative;
+    /* Add a white text color to all elements inside the .bgimg container */
+    color: white;
+    /* Add a font */
+    font-family: "Courier New", "english", monospace;        /* Set the font-size to 25 pixels */
+    font-size: 25px;
+  }
+}

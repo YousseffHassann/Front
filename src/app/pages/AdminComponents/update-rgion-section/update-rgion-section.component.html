@@ -1,0 +1,95 @@
+
+<div class="container">
+  <h3 class="t1 d-flex justify-content-center align-items-center mb-5  text-center w-50 m-auto  ">     Edit Section (Lanes)</h3>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-2 mt-3 align-items-center d-flex ">
+        <p class="v"> Areas </p>
+        <!-- <p class="v">{{'DistressSurvey.mainstreet' |translate}}</p> -->
+    </div>
+            <div class="col-md-3 mt-3 mb-3">
+                  <div>
+              <ng-multiselect-dropdown
+              [placeholder]="'custom placeholder'"
+              [settings]="dropdownSettings"
+              [data]="dropdownList"
+              [(ngModel)]="selectedItems"
+              (onSelect)="onItemSelect($event)"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+      
+
+                  </div>
+            </div>
+    </div>
+
+
+
+    <!-- <ng2-smart-table class="mt-4" *ngIf="checkload" [settings]="settings2" [source]="source2" (editConfirm)="EditStreet($event)" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table> -->
+
+
+
+    
+    <div class="row" >
+        <div class="col-md-2  align-items-center d-flex ">
+            <p>Streets</p>
+            <!-- <p class="v">{{'DistressSurvey.sections' |translate}}</p> -->
+        </div>
+                <div class="col-md-3 mb-3 ">
+                      <div class="">
+                        <select   (click)="GettStreetbyRegionId($event)"  class="form-select form-control">
+                          <option class="test" selected> choice </option>
+                          <option  [value]="street.STREET_ID" *ngFor="let street of  streets; let i=even ;" [style.backgroundColor]="i===true?'#ccc':'' ">
+                            {{street.ENNAME }} 
+                          </option>
+                        </select>
+                      </div>
+                </div>
+            </div> 
+
+
+
+
+
+
+                
+    <div class="row" >
+      <div class="col-md-2  align-items-center d-flex ">
+          <p>Sections</p>
+          <!-- <p class="v">{{'DistressSurvey.sections' |translate}}</p> -->
+      </div>
+              <div class="col-md-3 mb-3 ">
+                    <div class="">
+                      <select   (click)="getallsectionByStreetId($event)"  class="form-select form-control">
+                        <option class="test" selected> choice </option>
+                        <option  [value]="section.SECTION_ID" *ngFor="let section of  sections; let i=even ;" [style.backgroundColor]="i===true?'#ccc':'' ">
+                          {{section.SECTION_NO}}
+                        </option>
+                      </select>
+                    </div>
+              </div>
+          </div> 
+
+
+
+
+          <div class=" text-center  load ">
+            <div class="spinner-border text-muted bg-warning  " *ngIf="!lanes &&sectionId  && sectionId!=='اختيار' "></div>
+          </div>
+          
+
+
+
+
+<div class="container mt-4 ">
+
+
+
+    <ng2-smart-table class="mt-4 bg-danger" *ngIf="lanes" [settings]="settings3" [source]="source3" (editConfirm)="EditLane($event)" (deleteConfirm)="DeleteLane($event)"></ng2-smart-table>
+
+  </div>

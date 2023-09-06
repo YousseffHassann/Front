@@ -1,0 +1,111 @@
+
+<div class="contractors-container">
+  <form [formGroup]="registerationForm" (ngSubmit)="onSubmit(registerationForm,contractorform)" #contractorform="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>{{'ContractorComponent.ContractorName'|translate}}</label>
+        <input type="text" class="form-control" formControlName="contractorname" [(ngModel)]="contToAdd.CONTRACTOR_NAME" required maxlength="20">
+        <div *ngIf="registerationForm.get('contractorname')?.errors && registerationForm.get('contractorname')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorname')?.errors?.['required']">contractor name is required</p>
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorname')?.errors?.['minlength']">min length 4</p>
+          <p  class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorname')?.errors?.['maxlength']">max length 20</p>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label>{{'ContractorComponent.ContractorDescription'|translate}}</label>
+        <input type="text" class="form-control" formControlName="contractordesc" [(ngModel)]="contToAdd.DESCRIPTION" required>
+        <div *ngIf="registerationForm.get('contractordesc')?.errors && registerationForm.get('contractordesc')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractordesc')?.errors?.['required']">contractor description is required</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>{{'ContractorComponent.ContractorEmail'|translate}}</label>
+      <input type="email" class="form-control" formControlName="contractoremail" [(ngModel)]="contToAdd.EMAIL" required>
+      <div *ngIf="registerationForm.get('contractoremail')?.errors && registerationForm.get('contractoremail')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractoremail')?.errors?.['required']">contractor email is required</p>
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractoremail')?.errors?.['pattern']">email format is incorrect</p>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>{{'ContractorComponent.ContractorNumber'|translate}}</label>
+      <input type="number" class="form-control" formControlName="contractornumber" [(ngModel)]="contToAdd.CONTRACTOR_NO" required>
+      <div *ngIf="registerationForm.get('contractornumber')?.errors && registerationForm.get('contractornumber')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractornumber')?.errors?.['required']">contractor number is required</p>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>{{'ContractorComponent.ContractorMobile'|translate}}</label>
+        <input type="text" class="form-control" formControlName="contractormobile" [(ngModel)]="contToAdd.MOBILE" required maxlength="11">
+        <div *ngIf="registerationForm.get('contractormobile')?.errors && registerationForm.get('contractormobile')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractormobile')?.errors?.['required']">contractor mobile number is required</p>
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractormobile')?.errors?.['minlength']">contractor mobile number format is incorrect</p>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>{{'ContractorComponent.ContractorFax'|translate}}</label>
+        <input type="text" class="form-control" formControlName="contractorfax" [(ngModel)]="contToAdd.FAX" required maxlength="11">
+        <div *ngIf="registerationForm.get('contractorfax')?.errors && registerationForm.get('contractorfax')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorfax')?.errors?.['required']">contractor fax is required</p>
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorfax')?.errors?.['minlength']">contractor fax format is incorrect</p>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>{{'ContractorComponent.ContractorPhoneNumebr'|translate}}</label>
+        <input type="text" class="form-control" formControlName="contractorphone" [(ngModel)]="contToAdd.PHONE" maxlength="11">
+        <div *ngIf="registerationForm.get('contractorphone')?.errors && registerationForm.get('contractorphone')?.touched "
+          class="alert  mydecorate">
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorphone')?.errors?.['required']">contractor phone number is required</p>
+          <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('contractorphone')?.errors?.['minlength']">contractor phone number format is incorrect</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <ng-multiselect-dropdown formControlName="zones" [placeholder]="'Zones'" [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
+        (onSelect)="onDDItemSelect($event)" (onSelectAll)="onDDSelectAll($event)" (onDeSelect)="onDDItemDeSelect($event)" (onDeSelectAll)="onDDdeSelectAll($event)"></ng-multiselect-dropdown>
+      </div>
+    </div>
+
+    <div class="sub-button">
+      <button type="submit" class="btn btn-primary"  [disabled]="registerationForm.invalid">SAVE</button>
+    </div>
+    <br>
+  </form>
+  <div>
+    <button type="button" class="btn btn-info" (click)="celarForm(contractorform)">Clear Form</button>
+  </div>
+</div>
+<br>
+
+<!-- <div>
+  <ng-multiselect-dropdown name="zones-DD-list" [placeholder]="'Zones'" [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems"
+  (onSelect)="onDDItemSelect($event)" (onSelectAll)="onDDSelectAll($event)" (onDeSelect)="onDDItemDeSelect($event)" (onDeSelectAll)="onDDdeSelectAll($event)"></ng-multiselect-dropdown>
+</div> -->
+
+<nb-card>
+  <nb-card-header>
+    Contractors Table
+  </nb-card-header>
+
+  <nb-card-body>
+    <!-- <button (click)="onClick()"> Disable checkbox </button> -->
+    <ng2-smart-table #table [settings]="settings" [source]="source" (deleteConfirm)="DeleteCont($event)" (edit)="refillform($event)" (userRowSelect)="onUserRowSelect($event)">
+    </ng2-smart-table>
+    <br>
+    <!-- <button class="btn btn-primary" (click)="returnChecked()">Check out</button> -->
+    <!-- <input type="checkbox" [checked]="true"> -->
+  </nb-card-body>
+</nb-card>

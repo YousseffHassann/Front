@@ -1,0 +1,526 @@
+<ng-template>
+  <ng2-smart-table [settings]="settings4" [source]="source1"> </ng2-smart-table>
+</ng-template>
+
+
+
+
+
+
+
+
+<div class=" mt-5 b container ">
+  <!-- <h3 class="  d-flex justify-content-center align-items-center  text-center w-50 m-auto text-black p-1">عيوب تقاطعات الطرق الرئيسية</h3> -->
+  <h1 class="t1  d-flex justify-content-center align-items-center mb-5   text-center w-50 m-auto ">
+    {{'insertIntersectionDistress.name' |translate}}</h1>
+  <div class="container ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-md-2 mt-3 align-items-center d-flex ">
+        <p class="v">{{'insertIntersectionDistress.mainstreet' |translate}} </p>
+      </div>
+      <div class="col-md-3 mb-3 mt-3  ">
+        <div>
+          <!-- <select (click)="Streets($event)" class="form-select form-control foo  ">
+                      <option class="test v" selected>{{'insertIntersectionDistress.Choose' |translate}}</option>
+                      <option  [value]="street.STREET_ID" *ngFor="let street of  streets; let i=even ;" 
+                                    [style.backgroundColor]="i===true?'#ccc':'' ">
+                                      {{street.ARNAME}}
+                                    </option>
+                    </select> -->
+
+
+          <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [settings]="dropdownSettings"
+            [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+    </div>
+    <div class="row" *ngIf="  streetId!=null &&  streetId!='اختيار'">
+      <div class="col-md-2  align-items-center d-flex ">
+        <!-- <p>التقاطعات</p> -->
+        <p class="v">{{'insertIntersectionDistress.intersections' |translate}}</p>
+      </div>
+      <div class="col-md-3 mb-3 ">
+        <div class="">
+          <select (click)="getIntesectionByStreetId($event)" class="form-select form-control">
+            <option class="test" selected> اختيار </option>
+            <option [value]="intersection.INTERSECTION_ID" *ngFor="let intersection of  intersections; let i=even ;"
+              [style.backgroundColor]="i===true?'#ccc':'' ">
+              {{intersection.INTEREC_STREET1 + " + " + intersection.INTEREC_STREET2}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="container b mt-5" *ngIf="   intersectionId!=null &&  intersectionId!='اختيار'">
+      <p class=" text-center w-50 m-auto p-1"> Section Info ({{IntersectionName}}) </p>
+
+
+      <ng2-smart-table [settings]="settings1" [source]="source1"
+        (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+
+      <!-- one
+
+
+    <table class="table mt-5  text-bold text-white">
+        <thead>
+          <tr class="">
+            <th class="" scope="col">رقم التقاطع</th>
+            <th class="text-center"  scope="col">شارع رئيسي</th>
+            <th class="text-center"  scope="col"> مع شارع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let intersection of intesectionInfo  let i=even" [style.backgroundColor]="i===true?'#500':'#500' ">
+            <td>{{intersection.INTER_NO}}</td>
+            <td>{{intersection.INTEREC_STREET1}}</td>
+            <td>{{intersection.INTEREC_STREET2}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+
+-->
+
+
+
+    </div>
+    <div class="row mt-5" *ngIf="intersectionId!=null &&  intersectionId!='اختيار'">
+      <div class="container  ">
+        <p class=" text-center w-50 m-auto p-1"> {{'insertIntersectionDistress.samples'
+          |translate}} ( {{IntersectionName}}) </p>
+
+
+
+
+        <!-- blue 7 table
+           
+      <table class="table mt-5  text-bold text-white" *ngIf="intersectionId!=null &&  intersectionId!='اختيار' &&intersectionId!='اختيار' ">
+                        <thead>
+                          <tr >
+                            <th scope="col">رقم العينة</th>
+                            <th scope="col">المساحة (م2)</th>
+                            <th scope="col">ملاحظات</th>
+                            <th scope="col"> تعديل</th>
+                            <th scope="col">  عرض العيوب</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let sample  of samples let i=even" [style.backgroundColor]="i===true?'#000080':'#500' " >
+                            <td>{{sample.INTER_SAMP_NO}}</td>
+                            <td >{{sample.INTERSEC_SAMP_AREA}}</td>
+                            <td>{{sample.NOTES}}</td>
+                            <td><button (click)="clickUpdate(sample.INTER_SAMP_NO)" class=" btn-info">تعديل</button></td>
+                            <td><button (click)="GetDistressB7ySampleId(sample.INTER_SAMP_NO ,sample.LENGTH,sample.WIDTH,sample.INTER_SAMP_ID)" class=" btn-danger">عرض العيوب...</button></td>
+                          </tr>
+                          <div class=" w-100 d-flex justify-content-center   align-items-center">
+
+                          </div>
+                        </tbody>
+                      </table>
+ -->
+
+
+
+
+        <ng2-smart-table [settings]="settings4" (deleteConfirm)="onDeleteConfirm($event)"
+          (editConfirm)="onEditConfirm($event)" [source]="source4" (custom)="onCustomAction($event)"></ng2-smart-table>
+
+
+
+
+        <div *ngIf="updateSample &&intersectionId!='اختيار'">
+          <div class="container  ">
+            <form (ngSubmit)="submitupdateSampleFunction(updateForm)" [formGroup]="updateForm">
+
+              <label class="text-danger myfont" for="INTERSEC_SAMP_AREA">AREA </label>
+              <input class="text-success myfont" formControlName="INTERSEC_SAMP_AREA" type="text">
+
+              <label class="text-danger myfont" for="NOTES">Notes</label>
+              <input class="text-success myfont" formControlName="NOTES" type="text">
+
+              <button class="m-1 btn-success   " type="submit"> Svee Updates </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="container b mt-5" *ngIf="checkClick">
+          <div *ngIf="intersectionId!=null &&  intersectionId!='اختيار'  ">
+            <!--<h5 class="text-info text-center">تاريخ المسحة {{surveyDate |date:'MM/dd/yyyy'}}</h5>-->
+            <h5 class="text-info text-center" *ngIf="checkClick"> Survey No </h5>
+            <!-- <div class=" d-flex justify-content-center   align-items-center">  this 15/5
+<div class=" col-md-3 mb-3 text-warning">
+ <div class="">
+
+   <select (click)="getSurveydateBySampleId($event)"  class="form-select form-control" *ngIf="checkClick" >
+     <option class="test" selected> اختيار </option>
+     <option  [value]="date.SURVEY_NO" *ngFor="let date of  DatesOfSurvey; let i=even ;" [style.backgroundColor]="i===true?'#ccc':'' ">
+       {{date.SURVEY_NO}}
+     </option>
+   </select>
+
+ </div>
+</div>
+</div> -->
+
+          </div>
+          <div *ngIf=" surveyDate!='Invalid date' &&  surveyDate!=='اختيار'">
+            <div *ngIf=" intersectionId!=null &&  intersectionId!='اختيار'  ">
+              <p class=" text-center w-50 m-auto p-1">Distress For Sample ({{inter_samp_no}}) By Survey Number =>
+                {{SURVEY_NO}} </p>
+            </div>
+
+
+
+
+
+            <!-- two
+
+
+
+                  <table  class="table mt-5  text-bold text-white "  >
+                    <thead>
+                      <tr >
+                        <th class="text-danger text-center myfont" scope="col"> اسم ورمز العيب</th>
+                        <th scope="col">شدة العيب</th>
+                        <th scope="col">المساحة (م2)</th>
+                        <th scope="col">(%)الكثافة</th>
+                        <th scope="col">نقاط الحسم</th>
+                        <th scope="col"> تصحيح الكثافة</th>
+                        <th scope="col"> معامل التصحيح الكلي</th>
+                        <th scope="col">   الملاحظات</th>
+                        <th scope="col">  تاريخ المسح </th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let distress  of DistressDate let i=even" [style.backgroundColor]="i===true?'		#000080':'		#500'   " >
+                      <td class="c">{{distress.DISTRESS_EN_TYPE}}</td>
+                      <td>{{distress.DISTRESS_SEVERITY}}</td>
+                      <td>{{distress.DIST_AREA}}</td>
+                      <td>{{distress.DISTRESS_DENSITY_TYPE  }}</td>
+                      <td>{{distress.DEDUCT_VALUE}}</td>
+                      <td>{{distress.DIST_DENSITY_UPD}}</td>
+                      <td>{{distress.DEDUCT_DEN_DASH_UPD}}</td>
+                      <td>{{distress.DISTRESS_NOTES}}</td>
+                      <td class="">{{distress.SURVEY_DATE |date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+-->
+
+            <ng2-smart-table *ngIf="DistressDate!=null" [settings]="settings2" [source]="source2"
+              (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+
+
+
+          </div>
+
+          <!-- <h1 >خطاء من فضلك ادخل طول وعرض العينة حتي تتمكن من اخال العيب</h1> -->
+          <h3 *ngIf="HideAdd " class=" text-center m-auto w-50   text-info mb-1"> <i class="fas fa-bug "></i>
+            <h1>Enter Length && Width</h1> <i class="fas fa-bug text-danger"></i>
+          </h3>
+
+
+          <div *ngIf="intersectionId!=null &&  intersectionId!='اختيار' && !HideAdd ">
+            <button (click)="openForm()" class=" btn-info btn    m-1 ">
+              <p>{{'insertIntersectionDistress.addDis' |translate}}</p>
+            </button>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="container borderForm w-100 mt-5" *ngIf="checkAdd ">
+          <h4 class=" m-auto text-end  mb-2 mt-6 text-black"> Enter Distress For({{inter_samp_no}})</h4>
+          <form (ngSubmit)="SubmitRegisteration(registerationForm)" [formGroup]="registerationForm"
+            class=" container  mb-5">
+            <div class="container ">
+              <div class="row ">
+                <div class="col-md-3  m-auto">
+                  <label for='' class="myfontForm">Distress Name</label>
+                  <div>
+                    <select formControlName="DIST_CODE" (click)="my_dist_code( $event)"
+                      class="form-select form-control">
+                      <option class="test" selected>اختيار</option>
+                      <option [value]=" dis.DIST_CODE" *ngFor="let dis of  DistressAll; let i=even ;"
+                        [style.backgroundColor]="i===true?'#ccc':'' ">
+                        {{dis.DISTRESS_EN_TYPE}}
+                      </option>
+                    </select>
+                    <div
+                      *ngIf="registerationForm.get('DIST_CODE')?.errors && registerationForm.get('DIST_CODE')?.touched "
+                      class="alert  mydecorate">
+                      <p class="alert alert-info text-danger text-center"
+                        *ngIf="registerationForm.get('DIST_CODE')?.errors?.['required']">Enter Value</p>
+                    </div>
+
+                  </div>
+
+                  <label class="myfontForm mt-1" for='USERNAME '>Savirity</label>
+                  <br>
+                  <!--
+            
+            <div>
+              <select formControlName="DIST_SEVERITY" (click)="my_dist_code($event)"  class="form-select form-control " >
+                <option class="test" selected>اختيار</option>
+                <option  [value]="dis.DIST_SEVERITY" *ngFor="let dis of  saviritydata; let i=even ;" 
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                  {{dis.DIST_SEVERITY}}
+                </option>
+              </select>
+              <div *ngIf="registerationForm.get('DIST_SEVERITY')?.errors && registerationForm.get('DIST_SEVERITY')?.touched "class="alert  mydecorate">
+                <p class="alert alert-info text-danger text-center" *ngIf="registerationForm.get('DIST_SEVERITY')?.errors?.['required']">من فضلك ادخل قيمة </p>
+             </div>
+      </div>
+-->
+
+
+                  <select (click)="my_dist_code($event)" formControlName="DIST_SEVERITY" class="form-select mb-2 mt-2 "
+                    aria-label="Default select example">
+
+                    <option class="form-conrol" value="L"> Chocce Value</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="H">H</option>
+                  </select>
+                  <div
+                    *ngIf="registerationForm.get('DIST_SEVERITY')?.errors && registerationForm.get('DIST_SEVERITY')?.touched "
+                    class="alert  mydecorate">
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('DIST_SEVERITY')?.errors?.['required']"> Please Enter Value </p>
+                  </div>
+                  <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!--placeholder="{{sample_area}} max value" -->
+                  <label class="myfontForm" for=' '> Area (m^2)</label>
+                  <input id="" formControlName="DIST_AREA" class="my-2 form-control" type="text">
+
+                  <p class="alert alert-info text-danger text-center" *ngIf="ErrorMessage">Distress Area Must Be Less
+                    Than Sample Area</p>
+
+
+                  <div
+                    *ngIf="registerationForm.get('DIST_AREA')?.errors && registerationForm.get('DIST_AREA')?.touched "
+                    class="alert  mydecorate">
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('DIST_AREA')?.errors?.['required']"> Enter Value </p>
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('DIST_AREA')?.errors?.['pattern']">Enter Valid Number </p>
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('DIST_AREA')?.errors?.['max']">لايمكن لمساحة العيب أن تتجاوز مساحة
+                      العينة{{sample_area}}</p>
+
+                  </div>
+
+
+                  <label class="myfontForm" for=' '> Survey Number</label>
+                  <input readonly id="" formControlName="SURVEY_NO" class="my-2 form-control  " type="text">
+                  <div
+                    *ngIf="registerationForm.get('SURVEY_NO')?.errors && registerationForm.get('SURVEY_NO')?.touched "
+                    class="alert  mydecorate">
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('SURVEY_NO')?.errors?.['required']"> Enter Value </p>
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('SURVEY_NO')?.errors?.['pattern']">Enter Valid Number </p>
+                  </div>
+
+
+                  <label class="text-danger myfontForm" for=' '> Survey Date </label>
+                  <input id="" formControlName="SURVEY_DATE" class="my-2 form-control  " type="date">
+
+                  <div
+                    *ngIf="registerationForm.get('SURVEY_DATE')?.errors && registerationForm.get('SURVEY_DATE')?.touched "
+                    class="alert  mydecorate">
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('SURVEY_DATE')?.errors?.['required']"> Enter Date </p>
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('SURVEY_DATE')?.errors?.['pattern']">Date like 30/5/2020 </p>
+                  </div>
+
+                  <label class="myfontForm"> Notes</label>
+                  <textarea id="" formControlName="DISTRESS_NOTES" class="my-2 form-control  " type="text"> </textarea>
+                  <div
+                    *ngIf="registerationForm.get('DISTRESS_NOTES')?.errors && registerationForm.get('DISTRESS_NOTES')?.touched "
+                    class="alert  mydecorate">
+                    <p class="alert alert-info text-danger text-center"
+                      *ngIf="registerationForm.get('DISTRESS_NOTES')?.errors?.['required']">Enter Value</p>
+                    <p class="alert alert-info text-danger"
+                      *ngIf="registerationForm.get('DISTRESS_NOTES')?.errors?.['minlength']"> Minum 4 Caracters</p>
+                    <p class="alert alert-info text-danger"
+                      *ngIf="registerationForm.get('DISTRESS_NOTES')?.errors?.['maxlength']"> Maxmum 20 Caracters/p>
+
+                  </div>
+                  <p class="alert alert-info text-danger" *ngIf="registerationForm.get('DISTRESS_NOTES')?.errors?.['pattern']">Delete
+                    Special Caracters </p>
+                </div>
+
+              </div>
+            </div>
+            <br>
+            <div class="  d-flex justify-content-center align-items-center">
+              <button [disabled]="registerationForm.invalid" class="btn btn-info mt-3  " type="submit"> Add This
+                Distress </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <div class=" mt-5 container ">
+
+        <!--
+ <div *ngIf=" intersectionId!=null &&  intersectionId!='اختيار' &&  ShowDistressPci2Table ">
+  <p class="bg-success text-center w-50 m-auto text-white p-1">العيوب للعينة({{inter_samp_no}}) </p>
+</div>
+-->
+
+
+
+
+
+        <!--  three
+
+
+
+<table class="table mt-5  text-bold text-white " *ngIf="intersectionId!=null &&  intersectionId!='اختيار' && ShowDistressPci2Table ">
+  <thead>
+    <tr >
+      <th scope="col"> اسم ورمز العيب</th>
+      <th scope="col">شدة العيب</th>
+      <th scope="col">المساحة (م2)</th>
+      <th scope="col">(%)الكثافة</th>
+      <th scope="col">نقاط الحسم</th>
+      <th scope="col"> تصحيح الكثافة</th>
+      <th scope="col"> معامل التصحيح الكلي</th>
+      <th scope="col">   الملاحظات</th>
+      <th scope="col">  تاريخ المسح </th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let distress  of DistressPci2Info let i=even" [style.backgroundColor]="i===true?'#250':'#190'" >
+    <td>{{distress.DISTRESS_EN_TYPE}}</td>
+    <td>{{distress.DIST_SEVERITY}}</td>
+    <td>{{distress.DIST_AREA}}</td>
+    <td>{{distress.DIST_DENSITY}}</td>
+    <td>{{distress.DEDUCT_VALUE}}</td>
+    <td>{{distress.DIST_DENSITY_UPD}}</td>
+    <td>{{distress.DEDUCT_DEN_DASH_UPD}}</td>
+    <td>{{distress.DISTRESS_NOTES}}</td>
+    <td>{{distress.SURVEY_DATE |date:'dd/MM/yyyy'}}</td>
+  </tr>
+</tbody>
+</table>
+
+
+-->
+
+
+        <!-- all in sample
+<ng2-smart-table *ngIf="intersectionId!=null &&  intersectionId!='اختيار' && ShowDistressPci2Table " [settings]="settings3" [source]="source3" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+
+-->
+
+
+
+
+      </div>
+
+
+
+
+      <!-- <p  *ngIf="checkClick" class=" text-center w-50 m-auto text-black p-1"> © جميع حقوق الطبع والنشر محفوظة لدى خارطة الإنماء للإستشارات الهندسية </p> -->
+
+
+
+      <!-- <p class="alert alert-info text-danger text-center"   *ngIf="ErrorMessage"> Distress Area Must Be Less Than Sample Area</p> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--<ng2-smart-table [settings]="settings44" [source]="source11"> </ng2-smart-table>-->

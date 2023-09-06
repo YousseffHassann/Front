@@ -1,0 +1,65 @@
+<nb-card>
+  <nb-card-body>
+    <form #streetFormMd2="ngForm" (ngSubmit)="ondatasubmitMd2(streetFormMd2.value)">
+      <div class="row">
+        <div class="col-sm-6">
+          <nb-radio-group>
+            <nb-radio (click)="radioChange1()" value="1">{{'PMMSMD.specifiedarea'|translate}} </nb-radio>
+            <nb-radio (click)="radioChange2()" value="2">{{'PMMSMD.specificneighborhood'|translate}}</nb-radio>
+            <nb-radio (click)="radioChange3()" value="3">{{'PMMSMD.specificsub-municipality'|translate}}</nb-radio>
+          </nb-radio-group>
+        </div>
+        <div class="col-sm-6">
+          <div *ngIf="!radio1; then radio1aselect"></div>
+
+          <div *ngIf="!radio2; then radio2aselect"></div>
+          <div *ngIf="!radio3; then radio3select"></div>
+
+          <ng-template #radio1aselect>
+            <select [(ngModel)]="Region_ID" ngModel name="Region_ID" class="form-control grid-width-100"
+              data-style="btn-success">
+              <option
+                *ngFor="let surveyedRegions of SurveyedRegions"
+                [value]="surveyedRegions.REGION_ID"
+              >
+                {{ surveyedRegions.ARNAME }}
+              </option>
+            </select></ng-template>
+
+          <ng-template #radio2aselect>
+            <select [(ngModel)]="DIST_ID" ngModel name="DIST_ID" class="form-control grid-width-100"
+              data-style="btn-success">
+              <option
+                *ngFor="let surveyedDistricts of SurveyedDistricts"
+                [value]="surveyedDistricts.DIST_ID"
+              >
+                {{ surveyedDistricts.DIST_NAME }}
+              </option>
+            </select></ng-template>
+
+          <ng-template #radio3select>
+            <select [(ngModel)]="munic_id" ngModel name="munic_id" class="form-control grid-width-100"
+              data-style="btn-success">
+              <option *ngFor="let surveyedMunicipalities of SurveyedMunicipalities"
+                [value]="surveyedMunicipalities.MUNIC_ID">
+                {{ surveyedMunicipalities.MUNIC_ANAME }}
+              </option>
+            </select>
+          </ng-template>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="label"> {{'PMMSMD.SURVEY_NO'|translate}} </label>
+
+          <select required name="survey" [(ngModel)]="survey" ngModel class="form-control grid-width-100"
+            data-style="btn-success">
+            <option *ngFor="let availableSurveys of AvailableSurveys" [value]="availableSurveys.SURVEY_NO">
+              {{ availableSurveys.SURVEY_NO }}
+            </option>
+          </select>
+        </div>
+        <button  fullWidth status="success" type="submit"
+          nbButton>{{'PMMSMD.Maintenancedecisionscalculate'|translate}}</button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

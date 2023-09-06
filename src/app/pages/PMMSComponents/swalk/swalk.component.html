@@ -1,0 +1,503 @@
+<div class=" mt-5 b container ">
+
+  <div class="  ">
+    <h3 class="t1  d-flex justify-content-center align-items-center mb-5   text-center w-50 m-auto  ">
+      Sidewalk Distresses</h3>
+  </div>
+
+
+
+
+
+  <div class="demo-items offset-md-1  d-flex justify-content-start fonto mb-5 mt-5">
+    <div class=" w-25">
+      <nb-radio-group name="success" class="status-success" (valueChange)="onChange($event)">
+
+        <nb-radio class="status-success" [value]="1">
+          Main Street
+        </nb-radio>
+
+        <nb-radio class="status-success" [value]="0">
+          By Street
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+  </div>
+
+  <div class="col-md-6 mx-auto">
+    <div *ngIf="x==1">
+
+      <div class="row d-flex justify-content-center mt-5">
+
+        <div class="col-md-6 mt-3 mb-3">
+          <div class="joe">
+            <div class="d-flex justify-content-start">
+              <p>Main Street </p>
+            </div>
+
+            <ng-multiselect-dropdown [placeholder]="'اختيار'" [settings]="dropdownSettings" [data]="streets"
+              [(ngModel)]="selectedItems" (onSelect)="MainStreets($event)"
+              (onDeSelect)="onDeSelect($event)"></ng-multiselect-dropdown>
+
+            <div class="demo-items offset-md-1  d-flex justify-content-start fonto  mb-3 mt-3">
+              <div>
+                <nb-radio-group name="rd1" class="status-success" (valueChange)="onChange1($event)">
+                  <nb-radio class="status-success" [value]="1" checked="true">
+                    Section
+                  </nb-radio>
+                  <nb-radio class="status-success" [value]="0">
+                    Intersection
+                  </nb-radio>
+                </nb-radio-group>
+              </div>
+            </div>
+            <div *ngIf="y==1">
+
+              <div class="col-md-12 mt-3 mb-3">
+                <div>
+                  <label class=" text-center d-flex justify-content-start">Section</label>
+
+                  <select (click)="Sections($event)" class="form-select form-control foo ">
+                    <option class="test" selected>اختيار</option>
+                    <option [value]="sec.SECTION_ID" *ngFor="let sec of  sections; let i=event ;"
+                      [style.backgroundColor]="i===true?'#ccc':'' ">
+                      {{sec.SECTION_TITLE}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+
+
+
+              <div class="col-md-12 mt-3 mb-3">
+                <div>
+                  <label class=" text-center d-flex justify-content-start">Sidewalk</label>
+
+                  <select (click)="Swalks($event)" class="form-select form-control foo ">
+                    <option class="test" selected>اختيار</option>
+                    <option [value]="swalk.SWALK_ID" *ngFor="let swalk of  secswalks; let i=event ;"
+                      [style.backgroundColor]="i===true?'#ccc':'' ">
+                      {{swalk.ARNAME}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+
+
+
+
+
+
+            </div>
+            <div *ngIf="y==0">
+              <div class="col-md-12 mt-3 mb-3">
+                <div>
+                  <label class=" text-center d-flex justify-content-start">Intersection</label>
+
+                  <select (click)="InterSections($event)" class="form-select form-control foo ">
+                    <option class="test" selected>اختيار</option>
+                    <option [value]="intersec.INTERSECTION_ID" *ngFor="let intersec of  intersections; let i=event ;"
+                      [style.backgroundColor]="i===true?'#ccc':'' ">
+                      {{intersec. INTEREC_STREET2}} - {{intersec. INTEREC_STREET1}} - {{intersec.MAIN_NO}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-12 mt-3 mb-3">
+                <div>
+                  <label class=" text-center d-flex justify-content-start">Sidewalk</label>
+
+                  <select (click)="Swalks($event)" class="form-select form-control foo ">
+                    <option class="test" selected>اختيار</option>
+                    <option [value]="swalk.SWALK_ID" *ngFor="let swalk of  intersecswalks; let i=event ;"
+                      [style.backgroundColor]="i===true?'#ccc':'' ">
+                      {{swalk.ARNAME}} - {{swalk.SECTION_NO}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+      <div *ngIf="swalkId!=null &&  swalkId!='اختيار' && y==1 "
+        class="d-flex justify-content-center align-items-center">
+        <button (click)="openForm()" class="btn btn-info btn-sm   m-1 my-5">Add Distress</button>
+      </div>
+      <div class="borderForm mx-5 my-5" *ngIf="checkAdd && y==1">
+        <form #formDirective="ngForm" (ngSubmit)="SubmitRegisteration(registerationForm1)"
+          [formGroup]="registerationForm1">
+          <label class="mt-5" for=' '> Survey date</label>
+          <input id="" formControlName="SurveyDate" class="my-2 form-control" type="date">
+          <div *ngIf="registerationForm1.get('SurveyDate')?.errors && registerationForm1.get('SurveyDate')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm1.get('SurveyDate')?.errors?.['required']"> Survey date is required</p>
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm1.get('SurveyDate')?.errors?.['pattern']">Date like 30/5/2020 </p>
+          </div>
+
+
+          <label class="myfontForm" for=''>Distress Code </label>
+          <div>
+            <select formControlName="DistCode" (click)="my_dist_code($event)" class="form-select form-control">
+              <option class="test" selected>اختيار</option>
+              <option [value]=" dis.DIST_CODE" *ngFor="let dis of  DistressAll; let i=even ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{dis.DISTRESS_EN_TYPE}}
+              </option>
+            </select>
+            <div *ngIf="registerationForm1.get('DistCode')?.errors && registerationForm1.get('DistCode')?.touched"
+              class="alert  mydecorate">
+              <p class="alert alert-info text-danger text-center"
+                *ngIf="registerationForm1.get('DistCode')?.errors?.['required']">Please enter a value</p>
+            </div>
+          </div>
+
+
+          <label class="myfontForm" class="" for=' '> Area (m<sup>2</sup>) </label>
+          <input id="" formControlName="DistArea" class="my-2 form-control" type="number">
+          <div *ngIf="registerationForm1.get('DistArea')?.errors && registerationForm1.get('DistArea')?.touched"
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm1.get('DistArea')?.errors?.['required']"> Please enter a value</p>
+          </div>
+
+
+          <label class="myfontForm"> Notes</label>
+          <textarea id="" formControlName="DistressNotes" class="my-2 form-control" type="text"> </textarea>
+          <div
+            *ngIf="registerationForm1.get('DistressNotes')?.errors && registerationForm1.get('DistressNotes')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm1.get('DistressNotes')?.errors?.['required']">Please enter a value</p>
+            <p class="alert alert-info text-danger"
+              *ngIf="registerationForm1.get('DistressNotes')?.errors?.['minlength']"> minimum value lenght 4 characters</p>
+            <p class="alert alert-info text-danger"
+              *ngIf="registerationForm1.get('DistressNotes')?.errors?.['maxlength']"> maximum value lenght 20 characters</p>
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm1.get('DistressNotes')?.errors?.['pattern']"> Notes field can't contain special
+              characters</p>
+          </div>
+
+
+          <label class="myfontForm" class="" for=' '>Sidewalk Area</label>
+          <input min="0.01" id="" formControlName="SwalkArea" class="my-2 form-control" type="number">
+          <div *ngIf="registerationForm1.get('SwalkArea')?.errors && registerationForm1.get('SwalkArea')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm1.get('SwalkArea')?.errors?.['required']">Please enter a value</p>
+            <p class="alert alert-info text-danger" *ngIf="registerationForm1.get('SwalkArea')?.errors?.['min']">
+              Sidewalk Area is not valid</p>
+            <p class="alert alert-info text-danger" *ngIf="registerationForm1.get('SwalkArea')?.errors?.['maxLength']">
+              Sidewalk area is too large</p>
+          </div>
+
+
+          <p class="alert alert-info text-danger text-center"
+            *ngIf="registerationForm.errors?.areaValid && (registerationForm.touched ||registerationForm.dirty)">The
+            distress area can't be more than sidewalk area</p>
+
+          <div class="  d-flex justify-content-center align-items-center">
+            <button [disabled]="registerationForm1.invalid" class="btn btn-info mt-3 " type="submit"> Add This Distress
+            </button>
+            <button class="btn btn-danger mt-3 ml-5" (click)="Close(formDirective)"> Exit
+            </button>
+          </div>
+
+        </form>
+      </div>
+      <!-- <br /><br /><br /><br /><br /> -->
+
+      <div class=" d-flex justify-content-center align-items-center my-5 mx-5">
+        <ng2-smart-table *ngIf="( swalkId!=null &&  swalkId!='اختيار' && y ==1 ) " [settings]="settings1"
+          [source]="source1"></ng2-smart-table>
+      </div>
+
+<ngx-reports *ngIf="( swalkId!=null &&  swalkId!='اختيار' && y ==1 )" [sidewalkId]='swalkId'></ngx-reports>
+
+      <div *ngIf="swalkId!=null &&  swalkId!='اختيار'  && y == 0"
+        class="d-flex justify-content-center align-items-center">
+        <button (click)="openForm()" class="btn btn-info btn-sm   m-1 my-5">Add Distress</button>
+      </div>
+
+      <div class="borderForm mx-5 my-5" *ngIf="checkAdd && y==0">
+
+        <!-- <h4 class="m-auto text-end  mb-2 mt-5 mb-5 text-black">اضافة عيب على هذا الرصيف</h4> -->
+        <form #formDirective="ngForm" (ngSubmit)="SubmitRegisteration(registerationForm2)"
+          [formGroup]="registerationForm2">
+
+          <label class="mt-5" for=' '> Survey date</label>
+          <input id="" formControlName="SurveyDate" class="my-2 form-control" type="date">
+          <div *ngIf="registerationForm2.get('SurveyDate')?.errors && registerationForm2.get('SurveyDate')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm2.get('SurveyDate')?.errors?.['required']"> Survey date is required</p>
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm2.get('SurveyDate')?.errors?.['pattern']">Date like 30/5/2020 </p>
+          </div>
+
+
+          <label class="myfontForm" for=''>Distress Code </label>
+          <div>
+            <select formControlName="DistCode" (click)="my_dist_code($event)" class="form-select form-control">
+              <option class="test" selected>اختيار</option>
+              <option [value]=" dis.DIST_CODE" *ngFor="let dis of  DistressAll; let i=even ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{dis.DISTRESS_EN_TYPE}}
+              </option>
+            </select>
+            <div *ngIf="registerationForm2.get('DistCode')?.errors && registerationForm2.get('DistCode')?.touched"
+              class="alert  mydecorate">
+              <p class="alert alert-info text-danger text-center"
+                *ngIf="registerationForm2.get('DistCode')?.errors?.['required']">Please enter a value</p>
+            </div>
+          </div>
+
+
+          <label class="myfontForm" class="" for=' '> Area (m<sup>2</sup>) </label>
+          <input id="" formControlName="DistArea" class="my-2 form-control" type="number">
+          <div *ngIf="registerationForm2.get('DistArea')?.errors && registerationForm2.get('DistArea')?.touched"
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm2.get('DistArea')?.errors?.['required']"> Please enter a value</p>
+          </div>
+
+
+          <label class="myfontForm"> Notes</label>
+          <textarea id="" formControlName="DistressNotes" class="my-2 form-control" type="text"> </textarea>
+          <div
+            *ngIf="registerationForm2.get('DistressNotes')?.errors && registerationForm2.get('DistressNotes')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm2.get('DistressNotes')?.errors?.['required']">Please enter a value</p>
+            <p class="alert alert-info text-danger"
+            *ngIf="registerationForm1.get('DistressNotes')?.errors?.['minlength']"> minimum value lenght 4 characters</p>
+            <p class="alert alert-info text-danger"
+              *ngIf="registerationForm2.get('DistressNotes')?.errors?.['maxlength']"> maximum value 20 characters</p>
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm2.get('DistressNotes')?.errors?.['pattern']"> Notes field can't contain special
+              characters</p>
+          </div>
+
+
+          <label class="myfontForm" class="" for=' '>Sidewalk Area</label>
+          <input min="0.01" id="" formControlName="SwalkArea" class="my-2 form-control" type="number">
+          <div *ngIf="registerationForm2.get('SwalkArea')?.errors && registerationForm2.get('SwalkArea')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm2.get('SwalkArea')?.errors?.['required']">Please enter a value</p>
+            <p class="alert alert-info text-danger" *ngIf="registerationForm2.get('SwalkArea')?.errors?.['min']">
+              Sidewalk Area is not valid</p>
+            <p class="alert alert-info text-danger" *ngIf="registerationForm2.get('SwalkArea')?.errors?.['maxLength']">
+              Sidewalk area is too large</p>
+          </div>
+
+          <p class="alert alert-info text-danger text-center"
+            *ngIf="registerationForm.errors?.areaValid && (registerationForm.touched ||registerationForm.dirty)">The
+            distress area can't be more than sidewalk area</p>
+
+          <div class="  d-flex justify-content-center align-items-center">
+            <button [disabled]="registerationForm2.invalid" class="btn btn-info mt-3 text-danger" type="submit"> Add This Distress
+            </button>
+            <button class="btn btn-danger mt-3 ml-5" (click)="Close(formDirective)"> Exit
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <div class=" d-flex justify-content-center align-items-center my-5 mx-5">
+        <ng2-smart-table *ngIf="( swalkId!=null &&  swalkId!='اختيار'   && y == 0) " [settings]="settings1"
+          [source]="source1"></ng2-smart-table>
+      </div>
+
+    </div>
+<ngx-reports *ngIf="( swalkId!=null &&  swalkId!='اختيار' && y ==0 )" [sidewalkId]='swalkId'></ngx-reports>
+
+    <div *ngIf="x==0">
+
+      <div class="d-flex justify-content-center  mx-5 my-5">
+
+        <div class="col-md-6 mt-3 mb-3">
+          <div>
+            <label class=" text-center d-flex justify-content-start">Municipality</label>
+
+            <select (click)="Municipalities($event)" class="form-select form-control foo ">
+              <option class="test" selected>Municipality</option>
+              <option [value]="munic.MUNIC_ID" *ngFor="let munic of  municipalities; let i=event ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{munic.MUNIC_NAME}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-3 mb-3">
+          <div>
+            <label class=" text-center d-flex justify-content-start">District</label>
+
+            <select (click)="GetDistricts($event)" class="form-select form-control foo">
+              <option class="test" selected>District</option>
+              <option [value]="dist.DIST_ID" *ngFor="let dist of  districts; let i=event ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{dist.ARNAME}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-3 mb-3">
+          <div>
+            <label class=" text-center d-flex justify-content-start">Region</label>
+
+            <select (click)="GetRegions($event)" class="form-select form-control foo ">
+              <option class="test" selected>Region</option>
+              <option [value]="reg.REGION_ID" *ngFor="let reg of regions; let i=event ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{reg.ARNAME}} - {{reg. REGION_NO}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-3 mb-3 joe1">
+          <div>
+            <label class=" text-center d-flex justify-content-start">Street</label>
+
+            <ng-multiselect-dropdown [placeholder]="'Street'" [settings]="dropdownSettings" [data]="secStreets"
+              (onSelect)="SecondaryStreets($event)"></ng-multiselect-dropdown>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-3 mb-3">
+          <div>
+            <label class=" text-center d-flex justify-content-start">Sidewalk</label>
+
+            <select (click)="Swalks($event)" class="form-select form-control foo ">
+              <option class="test" selected>اختيار</option>
+              <option [value]="swalk.SWALK_ID" *ngFor="let swalk of  swalks; let i=event ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{swalk.ARNAME}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+       
+
+      
+       
+    
+      </div>
+
+      <div *ngIf="swalkId!=null &&  swalkId!='اختيار'  "
+        class="d-flex justify-content-center align-items-center my-5 mx-5">
+        <button (click)="openForm()" class="btn btn-info btn-sm   m-1 my-5"> Add Distress</button>
+      </div>
+
+      <div class="borderForm" *ngIf="checkAdd ">
+
+        <!-- <h4 class="m-auto text-end  mb-2 mt-5 mb-5 text-black">اضافة عيب على هذا الرصيف</h4> -->
+
+        <form #formDirective="ngForm" (ngSubmit)="SubmitRegisteration(registerationForm)"
+          [formGroup]="registerationForm">
+          <label class="mt-5" for=' '> Survey date</label>
+          <input id="" formControlName="SurveyDate" class="my-2 form-control" type="date">
+          <div *ngIf="registerationForm.get('SurveyDate')?.errors && registerationForm.get('SurveyDate')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm.get('SurveyDate')?.errors?.['required']"> Survey date is required</p>
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm.get('SurveyDate')?.errors?.['pattern']">Date like 30/5/2020 </p>
+          </div>
+
+
+          <label class="myfontForm" for=''>Distress Code </label>
+          <div>
+            <select formControlName="DistCode" (click)="my_dist_code($event)" class="form-select form-control">
+              <option class="test" selected>اختيار</option>
+              <option [value]=" dis.DIST_CODE" *ngFor="let dis of  DistressAll; let i=even ;"
+                [style.backgroundColor]="i===true?'#ccc':'' ">
+                {{dis.DISTRESS_EN_TYPE}}
+              </option>
+            </select>
+            <div *ngIf="registerationForm.get('DistCode')?.errors && registerationForm.get('DistCode')?.touched"
+              class="alert  mydecorate">
+              <p class="alert alert-info text-danger text-center"
+                *ngIf="registerationForm.get('DistCode')?.errors?.['required']">Please enter a value</p>
+            </div>
+          </div>
+
+
+          <label class="myfontForm" class="" for=' '> Area (m<sup>2</sup>) </label>
+          <input id="" formControlName="DistArea" class="my-2 form-control" type="number">
+          <div *ngIf="registerationForm.get('DistArea')?.errors && registerationForm.get('DistArea')?.touched"
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm.get('DistArea')?.errors?.['required']"> Please enter a value</p>
+          </div>
+
+
+          <label class="myfontForm"> Notes</label>
+          <textarea id="" formControlName="DistressNotes" class="my-2 form-control" type="text"> </textarea>
+          <div
+            *ngIf="registerationForm.get('DistressNotes')?.errors && registerationForm.get('DistressNotes')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm.get('DistressNotes')?.errors?.['required']">Please enter a value</p>
+            <p class="alert alert-info text-danger"
+            *ngIf="registerationForm1.get('DistressNotes')?.errors?.['minlength']"> minimum value lenght 4 characters</p>
+            <p class="alert alert-info text-danger"
+              *ngIf="registerationForm.get('DistressNotes')?.errors?.['maxlength']"> maximum value 20 characters</p>
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm.get('DistressNotes')?.errors?.['pattern']"> Notes field can't contain special
+              characters</p>
+          </div>
+
+
+          <label class="myfontForm" class="" for=' '>Sidewalk Area</label>
+          <input min="0.01" id="" formControlName="SwalkArea" class="my-2 form-control" type="number">
+          <div *ngIf="registerationForm.get('SwalkArea')?.errors && registerationForm.get('SwalkArea')?.touched "
+            class="alert  mydecorate">
+            <p class="alert alert-info text-danger text-center"
+              *ngIf="registerationForm.get('SwalkArea')?.errors?.['required']">Please enter a value</p>
+            <p class="alert alert-info text-danger" *ngIf="registerationForm.get('SwalkArea')?.errors?.['min']">
+              Sidewalk Area is not valid</p>
+            <p class="alert alert-info text-danger" *ngIf="registerationForm.get('SwalkArea')?.errors?.['maxLength']">
+              Sidewalk area is too large</p>
+          </div>
+
+          <p class="alert alert-info text-danger text-center"
+            *ngIf="registerationForm.errors?.areaValid && (registerationForm.touched ||registerationForm.dirty)">The
+            distress area can't be more than sidewalk area</p>
+
+          <div class="  d-flex justify-content-center align-items-center">
+            <button [disabled]="registerationForm.invalid" class="btn btn-info mt-3 " type="submit"> Add This Distress
+            </button>
+            <button class="btn btn-danger mt-3 ml-5" (click)="Close(formDirective)"> Exit
+            </button>
+          </div>
+
+        </form>
+      </div>
+      <hr>
+      <br /><br /><br /><br /><br />
+      <div class=" d-flex justify-content-center align-items-center my-5 mx-5">
+        <ng2-smart-table *ngIf="( swalkId!=null &&  swalkId!='اختيار' ) " [settings]="settings1"
+          [source]="source1"></ng2-smart-table>
+      </div>
+<ngx-reports *ngIf="( swalkId!=null &&  swalkId!='اختيار')" [sidewalkId]='swalkId'></ngx-reports>
+
+    </div>
+  </div>
+</div>

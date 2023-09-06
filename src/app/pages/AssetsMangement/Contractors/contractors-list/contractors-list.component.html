@@ -1,0 +1,67 @@
+<div class="row">
+        <div class="col-md-12 text-center">
+                <button nbButton fullWidth type="button" status="primary" (click)="openModal(template)">Add
+                        Contractor</button>
+
+        </div>
+        <br />
+</div>
+<ng2-smart-table [settings]="settings1" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="updateRecord($event)"
+        [source]="source1"> </ng2-smart-table>
+
+
+<ng-template #template>
+        <div class="modal-header">
+                <h4 class="modal-title pull-left">Modal</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">×</span>
+                </button>
+        </div>
+        <div class="modal-body">
+
+                <form [formGroup]="insert" (ngSubmit)="insertbudget()">
+                        <div class="form-group">
+                                <label for="CONTRACTOR_NAME">CONTRACTOR_NAME</label>
+                                <input formControlName="CONTRACTOR_NAME" type="text" class="form-control"
+                                        id="CONTRACTOR_NAME" aria-describedby="CONTRACTOR_NAME">
+
+                        </div>
+                        <div class="form-group">
+                                <label for="DESCRIPTION">DESCRIPTION</label>
+                                <input formControlName="DESCRIPTION" type="text" class="form-control" id="DESCRIPTION"
+                                        aria-describedby="DESCRIPTION">
+
+                        </div>
+                        <div class="form-group">
+                                <label for="MOBILE">MOBILE</label>
+                                <input formControlName="MOBILE" type="text" class="form-control" id="MOBILE"
+                                        aria-describedby="MOBILE">
+                        </div>
+                        <div class="form-group">
+                                <label for="CONTRACTOR_NO">CONTRACTOR_NO</label>
+                                <input formControlName="CONTRACTOR_NO" type="text" class="form-control"
+                                        id="CONTRACTOR_NO" aria-describedby="CONTRACTOR_NO">
+                        </div>
+                        <div class="form-group">
+                                <label for="FAX">FAX</label>
+                                <input formControlName="FAX" type="text" class="form-control" id="FAX"
+                                        aria-describedby="FAX">
+                        </div>
+                        <div class="form-group">
+                                <label for="FAX">PHONE</label>
+                                <input formControlName="PHONE" type="text" class="form-control" id="PHONE"
+                                        aria-describedby="PHONE">
+                        </div>
+                        <div class="form-group">
+                                <label for="FAX">EMAIL</label>
+                                <input formControlName="EMAIL" type="text" class="form-control" id="EMAIL"
+                                        aria-describedby="EMAIL">
+                        </div>
+                        <button type="submit" class="btn btn-primary">حفظ البيانات</button>
+                </form>
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+        </div>
+</ng-template>
+<ngx-alerts></ngx-alerts>

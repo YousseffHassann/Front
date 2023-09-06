@@ -1,0 +1,139 @@
+
+
+.testBTN {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+
+
+
+  list-style: none;
+  list-style-type: none;
+  text-decoration: none;   //line
+  border-style: none;
+}
+
+.testBTN:hover
+{
+  color: blue;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+
+td {
+  border: 1px solid;
+  border-color:black;
+  color: blue;
+}
+
+th{
+  border-top: 10px solid blue;
+  color: darkgreen;
+}
+
+.bh
+{
+width: 90%;
+}
+.borderForm
+{
+// background-image: url("imgs/00000.jpg");
+// background-size: cover;
+// border: 30px solid blue;
+border-radius: 60px;
+padding: 20px;
+border-style: groove;
+
+}
+
+.borderFormSmalll
+{
+// background-image: url("imgs/00000.jpg");
+// background-size: cover;
+// border: 10px solid blue;
+border-radius: 50px;
+padding: 1px;
+border-style: groove;
+background-color: black;
+
+}
+
+ ::ng-deep .ng2-smart-actions ng2-st-tbody-edit-delete {display: inline !important;}
+ ::ng-deep ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    padding-top: 1px;
+  //  color: blue;
+}
+
+
+.hov:hover
+{
+color: aqua;
+transition-property: all;
+transition-duration: 1s;
+}
+
+input
+{
+border-radius: 10px;
+border: 3px solid #277DA1;
+}
+
+label:hover
+{
+color: aqua;
+}
+
+input:hover
+{
+transition-property: all;
+border: 3px solid black;
+border-radius: 50px;
+border-style: dashed;
+
+background-color: aquamarine;
+
+transition-duration: 1s;
+
+
+
+}
+
+
+
+button:hover{
+background-color: aquamarine;
+transition-property: all;
+transition-duration: 0.5s;
+}
+
+
+
+
+// :host /deep/ ng2-smart-table thead > tr > th  { 
+// // background-color:aquamarine;  
+// background-color:#277DA1;
+// //color: crimson;
+// }
+
+.v
+{
+  font-size: larger;
+  font-weight: bold;
+}
+
+
+ ::deep ng2-smart-table thead > tr > th  { 
+  background-color:#277DA1;
+}
+
+

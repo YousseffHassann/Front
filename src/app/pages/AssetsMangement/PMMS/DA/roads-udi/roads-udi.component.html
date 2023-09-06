@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="t1">{{'RoadesUdi.name' |translate}}
+    </h1>
+
+  </div>
+</div>
+<div *ngIf="loading">
+
+
+  <div [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+
+  </div>
+</div>
+<div *ngIf="!loading">
+  <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+
+
+</div>

@@ -1,0 +1,32 @@
+<h1>Section NO : {{sectionNo}}</h1>
+
+<br>
+
+<body>
+  <table class="tb" style="width:47rem;">
+    <tr>
+      <th>Data From</th>
+      <th>Lane Type</th>
+      <th>Lane Length, m</th>
+      <th>Lane Width, m</th>
+    </tr>
+    <tr  *ngFor="let lanes of finalArray">
+      <td>{{lanes.FILENAME}}</td>
+      <td>{{lanes.LANE_TYPE}}</td>
+      <td>{{lanes.LANE_LENGTH}}</td>
+      <td>{{lanes.LANE_WIDTH}}</td>
+    </tr>
+  </table>
+</body>
+
+<!-- <div *ngFor="let lanes of actualLanes">
+  {{lanes.LANE_TYPE}} {{lanes.LANE_LENGTH}} {{lanes.LANE_WIDTH}}
+</div>
+
+<div *ngFor="let lanes of lol">
+  {{lanes.LANE}} {{lanes.LANE_LENGTH}} {{lanes.LANE_WIDTH}}
+</div> -->
+
+<!-- <div *ngFor="let lanes of finalData">
+  {{lanes}}
+</div> -->

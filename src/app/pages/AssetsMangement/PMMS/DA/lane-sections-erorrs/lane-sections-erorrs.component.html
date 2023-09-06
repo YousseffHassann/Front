@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="t1">{{'LaneSectionsErorrs.name' |translate}}
+    </h1>
+
+  </div>
+</div>
+
+
+<div *ngIf="!loading">
+
+  <div class=" text-center  load ">
+    <div class="spinner-border text-muted bg-warning  " *ngIf="!loading"></div>
+  </div>
+
+</div>
+
+
+
+<div *ngIf="loading">
+
+  <ng2-smart-table [settings]="settings1" [source]="source1"> </ng2-smart-table>
+
+</div>
+

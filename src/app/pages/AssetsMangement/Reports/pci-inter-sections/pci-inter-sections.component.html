@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1 class="t1">{{'Reports.name' |translate}}</h1>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card status="defult">
+            <nb-card-header class="text-center"> {{'Reports.Reports' |translate}} </nb-card-header>
+            <nb-card-body>
+                <nb-tabset (changeTab)="selectTab($event)">
+                    <nb-tab tabTitle="  {{'Reports.tab1' |translate}}  
+                    
+                     ">
+                        <form [formGroup]="form2" (ngSubmit)="submitForm2()">
+                            <div class="col-md-12 mt-3 mb-3">
+                                <div>
+                                  <label class=" text-center d-flex justify-content-start">{{'Reports.SURVEY_NO' |translate}}</label>
+                
+                                  <select (click)="Surveys($event)"  formControlName="SN2" class="form-select form-control foo ">
+                                    <option class="test" selected>اختيار</option>
+                                    <option [value]="survey.SURVEY_NO" *ngFor="let survey of  surveys; let i=event ;"
+                                      [style.backgroundColor]="i===true?'#ccc':'' ">
+                                      {{survey.SURVEY_NO}}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+
+                            <!-- <label>{{'Reports.districtID' |translate}}</label>
+                            <input nbInput fullWidth type="text" placeholder="202" formControlName="DID2">
+                            <br />
+                            <button nbButton fullWidth status="info" type="submit">
+                                {{'Reports.run_report' |translate}}</button> -->
+                                <!-- <ng-multiselect-dropdown [placeholder]="'اختيار'" [settings]="dropdownSettings" [data]="districts"
+                                [(ngModel)]="selectedItems" (onSelect)="Districts($event)"
+                               ></ng-multiselect-dropdown>
+                   -->
+
+
+                                <div class="col-md-12 mt-3 mb-3">
+                                    <div>
+                                      <label class=" text-center d-flex justify-content-start">District</label>
+                          
+                                      <select (click)="Districts($event)"  formControlName="DID2" class="form-select form-control foo">
+                                        <option class="test" selected>District</option>
+                                        <option [value]="dist.DIST_ID" *ngFor="let dist of  districts; let i=event ;"
+                                          [style.backgroundColor]="i===true?'#ccc':'' ">
+                                          {{dist.ARNAME}}
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <button nbButton fullWidth status="info" type="submit">
+                                    {{'Reports.run_report' |translate}}</button>
+                        </form>
+                    </nb-tab>
+                    <nb-tab tabTitle="  {{'Reports.tab2' |translate}}  
+    
+     ">
+                        <form class="form-inline" [formGroup]="form" (ngSubmit)="submitForm()">
+                            <label>{{'Reports.SURVEY_NO' |translate}} </label>
+                            <input nbInput fullWidth placeholder="7" type="text" formControlName="SN">
+
+                            <label>{{'Reports.districtID' |translate}}</label>
+                            <input nbInput fullWidth placeholder="202" type="text" formControlName="DID">
+                            <button nbButton fullWidth status="info" type="submit">
+                                {{'Reports.run_report' |translate}}</button>
+
+                        </form>
+
+                    </nb-tab>
+                    <nb-tab tabTitle="  {{'Reports.tab3' |translate}}  
+    
+     ">
+                        <form class="form-inline" [formGroup]="form3" (ngSubmit)="submitForm3()">
+                            <label>{{'Reports.SURVEY_NO' |translate}} </label>
+                            <input  nbInput fullWidth type="text" placeholder="7" formControlName="SN3">
+
+                            <label>{{'Reports.districtID' |translate}}</label>
+                            <input  nbInput fullWidth type="text" placeholder="101" formControlName="DID3">
+                            <button nbButton fullWidth status="info" type="submit">
+                                {{'Reports.run_report' |translate}}</button>
+
+                        </form>
+
+                    </nb-tab>
+                </nb-tabset>
+            </nb-card-body>
+        </nb-card>
+    </div>
+
+
+    <div class="col-lg-12">
+        <nb-card status="danger">
+            <nb-card-header>{{'Reports.Reports' |translate}} </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <iframe [src]="safeSrc" width="1500" height="1000" frameborder="0" webkitallowfullscreen
+                        mozallowfullscreen allowfullscreen></iframe>
+                </div>
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

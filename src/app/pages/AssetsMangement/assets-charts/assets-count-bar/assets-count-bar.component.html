@@ -1,0 +1,27 @@
+<nb-card>
+    <nb-card-header>
+        <div class="row show-grid">
+            <div class="col-md-1" style="margin-top: 0.5rem;">
+                <div>عدد الأصول</div>
+            </div>
+            <div class="col-md-2">
+                <div>
+                    <nb-select fullWidth [(ngModel)]="selectedGroup" (selectedChange)="onSelected()">
+                        <nb-option value="0">المحافظات</nb-option>
+                        <nb-option value="1">الوضع المادي</nb-option>
+                        <nb-option value="2">نوع الاستخدام</nb-option>
+                        <nb-option value="3">نوع الملكية</nb-option>
+                        <nb-option value="4">النوع</nb-option>
+                        <nb-option value="5">الوضع القانوني</nb-option>
+                        <nb-option value="6">حالة الإيجار</nb-option>
+                        <nb-option value="7">الوضع الاستثماري</nb-option>
+                        <nb-option value="8">قيمةالاستثمار</nb-option>
+                    </nb-select>
+                </div>
+            </div>
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <chart #countBarChart type="bar" [data]="data" [options]="options" style="height: 500px;"></chart>
+    </nb-card-body>
+</nb-card>

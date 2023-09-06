@@ -1,0 +1,6 @@
+<nb-card>
+    <nb-card-body>
+        <!-- <input #search class="search-input" id="search" type="text" placeholder="بحث..." (keydown.enter)="onSearch(search.value)"> -->
+        <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="onEditConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,82 @@
+[dir="rtl"] .nb-theme-dark ng2-smart-table table tr.ng2-smart-titles th {
+  padding-left: 1.75rem;
+  text-align: center;
+  color: black;
+}
+
+::ng-deep .nb-theme-custom-dark ng2-smart-table table tr th,
+ ::ng-deep.nb-theme-custom-dark ng2-smart-table table tr th a{
+    color: white;
+    text-align: center;
+ }
+
+ ::ng-deep .nb-theme-custom-dark ng2-smart-table th.ng2-smart-actions-title-add a{
+  display: none;
+ }
+
+
+::ng-deep .no-hover:hover {
+  background-color: transparent !important;
+}
+::ng-deep ng2-smart-table thead>tr>th {
+  background-color: #277CA1;
+  color:white;
+}
+::ng-deep ng2-smart-table table tr {
+  background-color: #277CA1;
+  color:white;
+}
+// ::ng-deep ng2-smart-table table tr:nth-child(3n+1) {
+//   background-color: black;
+// }
+
+// ::ng-deep ng2-smart-table table tr:nth-child(3n+2) {
+//   background-color: red;
+// }
+
+// ::ng-deep ng2-smart-table table tr:nth-child(3n) {
+//   background-color: white;
+// }
+
+
+::ng-deep ng2-smart-table table tr td {
+  background-color: #f5f5f5;
+  text-align: center;
+font-size: 0.9375rem;
+  font-weight: 800;
+}
+
+ ::ng-deep ng2-smart-table table tr th{
+    color: white;
+ }
+::ng-deep ng2-smart-table table tr th a{
+    text-align: center;
+  color: white;
+}
+::ng-deep ng2-smart-table nav.ng2-smart-pagination-nav .pagination li a,
+::ng-deep ng2-smart-table nav.ng2-smart-pagination-nav .pagination li>span{
+      font-size: 3.875rem;
+}
+ ::ng-deep ng2-smart-table thead tr.ng2-smart-filters th .ng2-smart-filter input{
+      text-align: center;
+}
+
+::ng-deep ng2-smart-table table tr th a {
+  color: #ffff;
+}
+
+
+.smrttableButton{
+  background-color: rgba(6, 136, 17, 0.658) !important;
+  //padding-left: 10px !important;
+  margin-left: 2.2rem;
+}
+
+:host ::ng-deep tr.red {
+  //background: rgb(255, 81, 18);
+  .smrttableButton{
+    background-color: red !important;
+    //padding-left: 10px !important;
+    margin-left: 2.2rem;
+  }
+}

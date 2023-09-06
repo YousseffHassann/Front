@@ -1,0 +1,58 @@
+<div class="parent ">
+    
+
+    <div   class="bor border  border-3 ">
+        <!-- <div   class="bor border  border-3 "> -->
+        <h3 class=" text-white fosi">
+         Network Level</h3>
+   
+<!-- 
+         {{'Structure.network_level' |translate}} -->
+
+        <!-- <h3 class=" text-white fosi ">Network Level</h3> -->
+        <select ngClass="f  m-auto" (click)="KIND($event)"  class="form-select form-control foo " >
+            <option  value="0" [selected]="" hidden class="test " selected>  Choose Network_Level</option>
+            <option value="1" class="test" >Route Identification</option>
+            <option value="2" class="test" >Section Identification</option>
+            <option value="3" class="test" >Intersection Identification</option>
+          </select> 
+    </div>
+
+
+    <div *ngIf="lang=='ar'"  class="bor border  border-3 ">
+
+            <h1 class=" text-white fosi text-right w-100 ">
+                {{'Structure.network_level' |translate}}</h1>
+
+      
+        <select ngClass="f  m-auto" (click)="KIND($event)"  class="form-select form-control foo " >
+            <option  value="0" [selected]="" hidden class="text-right  " selected>  {{'Structure.choose_level' |translate}}</option>
+            <option value="1" class="text-right " > {{'Structure.route' |translate}}</option>
+            <option value="2" class="text-right " > {{'Structure.section' |translate}} </option>
+            <option value="3" class="text-right " > {{'Structure.intersection' |translate}} </option>
+          </select> 
+    </div>
+
+
+
+
+<!-- <div *ngIf="Selected &&Selected!=0" class="border border-3  mt-5    bor  ">  -->
+    <div *ngIf="Selected &&Selected!=0" class="border border-3  mt-5    bor  "> 
+    <!-- <div  class="border border-3  mt-5    bor  "> -->
+
+<div *ngIf="Selected==1" class="   cardo  text-center">
+   
+    <img class="w-75"  src="../../assets/images/Structure/Route.png" alt="dddd"> 
+ </div>
+
+ <div  *ngIf="Selected==2" class="   cardo  text-center">
+
+    <img class="w-75"  src="../../assets/images/Structure/Section.png" alt="dddd"> 
+ </div>
+
+ <div *ngIf="Selected==3" class="  cardo  text-center">
+
+    <img class="w-75"  src="../../assets/images/Structure/Intersection.png" alt="dddd"> 
+ </div>
+</div>
+</div>

@@ -1,0 +1,32 @@
+.button1 {
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+
+
+    ::ng-deep {
+        .is-invalid {
+          .dropdown-btn {
+            border: 1px solid red !important;
+          }
+        }
+        .multiselect-dropdown {
+          .dropdown-btn {
+            .selected-item {
+             background-color: #138C9A
+    
+             !important;
+           
+              &:hover {
+                box-shadow: 1px 1px 2px 0px #5a5a5a !important;
+              }
+            }
+          }
+        }
+      }
+      
+      label
+      {
+        font-size: large;
+      }

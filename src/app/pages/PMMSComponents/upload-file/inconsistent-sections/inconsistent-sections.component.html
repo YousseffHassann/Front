@@ -1,0 +1,17 @@
+
+
+<table class="tb" style="width:47rem;" *ngIf="finalData?.length>0">
+  <p>The following sections are missed from the GIS data</p>
+  <tr  *ngFor="let lanes of finalData">
+    <td>{{lanes.SECTION_NO}}</td>
+  </tr>
+</table>
+
+
+<br *ngIf="finalData?.length>0 && inConsistLanesNumber?.length>0"><br *ngIf="finalData?.length>0 && inConsistLanesNumber?.length>0">
+<table class="tb" style="width:47rem;" *ngIf="inConsistLanesNumber?.length>0">
+  <p>The following sections have inconsistent lanes with GIS data</p>
+  <tr  *ngFor="let lanes of inConsistLanesNumber">
+    <td>{{lanes.SECTION_NO}}</td>
+  </tr>
+</table>

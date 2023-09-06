@@ -1,0 +1,369 @@
+<div class="col-12">
+  <nb-card>
+    <nb-tabset fullWidth (changeTab)="changeTab($event)">
+      <nb-tab tabTitle="إضافة الأصول" [active]="tab1">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8" style="float: none; margin: auto">
+              <nb-card
+                [nbSpinner]="isLoading"
+                nbSpinnerSize="large"
+                nbSpinnerStatus="primary"
+              >
+                <!-- <nb-card-header></nb-card-header> -->
+                <nb-card-body>
+                  <form #assetsForm="ngForm" (ngSubmit)="onSubmit(assetsForm)">
+                    <img
+                      [src]="imageUrl?.placeHolderUrl"
+                      class="img-fluid"
+                      alt="example placeholder"
+                    />
+                    <div class="row">
+                      <button
+                        nbButton
+                        status="info"
+                        type="button"
+                        (click)="fileInput.click()"
+                        style="margin-right: 1rem"
+                      >
+                        <span>إضافة صورة</span>
+                        <input
+                          #fileInput
+                          type="file"
+                          (change)="onSelectedImage($event)"
+                          style="display: none"
+                        />
+                      </button>
+                      <button
+                        nbButton
+                        status="success"
+                        type="button"
+                        (click)="onUpload()"
+                        [disabled]="selectedImageFile == null"
+                        style="margin-right: 1rem"
+                      >
+                        حمل الصورة
+                      </button>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >الاسم</label
+                        >
+                        <input
+                          type="text"
+                          nbInput
+                          fullWidth
+                          ngModel
+                          name="name"
+                          id="name"
+                          required
+                        />
+                      </div>
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >العنوان</label
+                        >
+                        <input
+                          type="text"
+                          nbInput
+                          fullWidth
+                          ngModel
+                          name="address"
+                          id="address"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >الوثيقة القانونية</label
+                        >
+                        <input
+                          type="text"
+                          nbInput
+                          fullWidth
+                          ngModel
+                          name="legalDocument"
+                          id="legalDocument"
+                          required
+                        />
+                      </div>
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >المحافظة</label
+                        >
+                        <nb-select fullWidth ngModel name="govId" required>
+                          <nb-option
+                            *ngFor="let gov of governments; let i = index"
+                            [value]="gov.Id"
+                          >
+                            {{ gov.Name }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- physical status -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >الوضع المادي</label
+                        >
+                        <nb-select
+                          fullWidth
+                          ngModel
+                          name="physicalStatus"
+                          required
+                        >
+                          <nb-option
+                            *ngFor="let lookUpValue of physicalStatusLookups"
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                      <!-- usageType -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >نوع الاستخدام</label
+                        >
+                        <nb-select fullWidth ngModel name="usageType" required>
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of usageTypeLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- ownerShipType -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >نوع الملكية</label
+                        >
+                        <nb-select
+                          fullWidth
+                          ngModel
+                          name="ownerShipType"
+                          required
+                        >
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of ownerShipTypeLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+
+                      <!-- Types -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >النوع</label
+                        >
+                        <nb-select fullWidth ngModel name="type" required>
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of typesLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <!-- legalStatus -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >الوضع القانوني</label
+                        >
+                        <nb-select
+                          fullWidth
+                          ngModel
+                          name="legalStatus"
+                          required
+                        >
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of legalStatusLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                      <!-- rentalStatus -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >حالة الإيجار</label
+                        >
+                        <nb-select
+                          fullWidth
+                          ngModel
+                          name="rentalStatus"
+                          required
+                        >
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of rentalStatusLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- investmentStatus -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >الوضع الاستثماري</label
+                        >
+                        <nb-select
+                          fullWidth
+                          ngModel
+                          name="investmentStatus"
+                          required
+                        >
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of investmentStatusLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                      <!-- investmentValue -->
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >قيمة الاستثمار</label
+                        >
+                        <nb-select
+                          fullWidth
+                          ngModel
+                          name="investmentValue"
+                          required
+                        >
+                          <nb-option
+                            *ngFor="
+                              let lookUpValue of investmentValueLookups;
+                              let i = index
+                            "
+                            [value]="lookUpValue.lookup_ID"
+                          >
+                            {{ lookUpValue.code_Desc_AR }}</nb-option
+                          >
+                        </nb-select>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >المساحة</label
+                        >
+                        <input
+                          type="number"
+                          nbInput
+                          fullWidth
+                          ngModel
+                          name="area"
+                          id="area"
+                          required
+                        />
+                      </div>
+                      <div class="col-sm-6 form-group">
+                        <label class="label" style="margin-right: 0.5rem"
+                          >ملاحظات</label
+                        >
+                        <input
+                          type="text"
+                          nbInput
+                          fullWidth
+                          ngModel
+                          name="notes"
+                          id="notes"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <button
+                        nbButton
+                        status="primary"
+                        type="submit"
+                        [disabled]="!assetsForm.valid || imageUrl == null"
+                        style="margin-right: 1rem"
+                      >
+                        إضافة أصل
+                      </button>
+
+                      <button
+                        nbButton
+                        status="warning"
+                        type="button"
+                        [disabled]="!assetsForm.valid"
+                        (click)="onEdit(assetsForm)"
+                        style="margin-right: 1rem"
+                      >
+                        تعديل أصل
+                      </button>
+                    </div>
+                  </form>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+      </nb-tab>
+      <nb-tab tabTitle="تفاصيل الأصول" [active]="tab2">
+        <!-- <nb-card-header>تفاصيل الأصول</nb-card-header> -->
+        <nb-card-body>
+          <div class="col-lg-12">
+            <nb-card>
+              <nb-card-body>
+                <input
+                  #search
+                  class="search-input"
+                  type="text"
+                  placeholder="بحث...."
+                  (keydown.enter)="onSearch(search.value)"
+                />
+                <ng2-smart-table
+                  [settings]="settings"
+                  [source]="source"
+                  (deleteConfirm)="onDelete($event)"
+                ></ng2-smart-table>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </nb-card-body>
+      </nb-tab>
+      <nb-tab tabTitle=" معايير تقييم الأصل" [active]="tab3">
+        <ngx-assets-parameters [id]="selectedId"> </ngx-assets-parameters>
+      </nb-tab>
+    </nb-tabset>
+  </nb-card>
+</div>
